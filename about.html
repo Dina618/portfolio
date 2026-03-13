@@ -267,7 +267,7 @@
         </div>
       </div>
       <div class="quick-links">
-        <a href="mailto:dddina7788@gmail.com" class="quick-link">
+        <a href="/cdn-cgi/l/email-protection#ef8b8b8b86818ed8d8d7d7af88828e8683c18c8082" class="quick-link">
           Email
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
         </a>
@@ -386,11 +386,21 @@
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const cursor = document.getElementById('cursor');
     const ring = document.getElementById('cursorRing');
-    let mx=0, my=0, rx=0, ry=0;
-    document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
+    let mx=0, my=0, rx=0, ry=0, visible=false;
+    cursor.style.opacity='0';
+    ring.style.opacity='0';
+    document.addEventListener('mousemove', e => {
+      mx=e.clientX; my=e.clientY;
+      if(!visible) {
+        visible=true;
+        cursor.style.opacity='1';
+        ring.style.opacity='0.4';
+        rx=mx; ry=my;
+      }
+    });
     function animCursor() {
       cursor.style.left=mx+'px'; cursor.style.top=my+'px';
       rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12;
@@ -408,11 +418,4 @@
       entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
           setTimeout(() => entry.target.classList.remove('hidden'), i * 100);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    reveals.forEach(el => observer.observe(el));
-  </script>
-</body>
-</html>
+          observer
