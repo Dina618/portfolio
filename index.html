@@ -285,6 +285,7 @@
   <footer>
     <div class="footer-inner">
       <span class="footer-name">Dina Da</span>
+      
       <span class="footer-copy">© 2025</span>
     </div>
   </footer>
@@ -292,8 +293,18 @@
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const cursor = document.getElementById('cursor');
     const ring = document.getElementById('cursorRing');
-    let mx=0, my=0, rx=0, ry=0;
-    document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
+    let mx=0, my=0, rx=0, ry=0, visible=false;
+    cursor.style.opacity='0';
+    ring.style.opacity='0';
+    document.addEventListener('mousemove', e => {
+      mx=e.clientX; my=e.clientY;
+      if(!visible) {
+        visible=true;
+        cursor.style.opacity='1';
+        ring.style.opacity='0.4';
+        rx=mx; ry=my;
+      }
+    });
     function animCursor() {
       cursor.style.left=mx+'px'; cursor.style.top=my+'px';
       rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12;
