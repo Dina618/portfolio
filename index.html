@@ -117,6 +117,64 @@
     .nav-links a:hover { color: var(--ink); }
     .nav-links a:hover::after { width: 100%; }
 
+    /* Dropdown */
+    .nav-dropdown { position: relative; }
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 16px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-4px);
+      background: rgba(250,248,244,0.97);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(26,24,20,0.08);
+      border-radius: 12px;
+      padding: 8px;
+      min-width: 240px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      box-shadow: 0 16px 48px rgba(26,24,20,0.1);
+    }
+    .nav-dropdown:hover .dropdown-menu {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(-50%) translateY(0);
+    }
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+    .dropdown-item:hover { background: var(--cream-dark); }
+    .dropdown-item::after { display: none !important; }
+    .dropdown-num {
+      font-family: var(--serif);
+      font-size: 11px;
+      color: var(--ink-faint);
+      min-width: 20px;
+    }
+    .dropdown-title {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: 0;
+      text-transform: none;
+      flex: 1;
+    }
+    .dropdown-arrow {
+      color: var(--ink-faint);
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+    .dropdown-item:hover .dropdown-arrow {
+      transform: translateX(2px);
+      color: var(--indigo);
+    }
+
     /* Hero */
     .hero {
       min-height: 100vh;
@@ -754,7 +812,31 @@
   <nav id="nav">
     <a href="#" class="nav-name">Dina Da</a>
     <ul class="nav-links">
-      <li><a href="#projects">Projects</a></li>
+      <li class="nav-dropdown">
+        <a href="#projects">Projects ↓</a>
+        <div class="dropdown-menu">
+          <a href="https://ux-portfolio-dina-da.notion.site/AI-Mentor-Bot-AI-Powered-Interview-Coach-with-Emotional-Intelligence-2b8782c8919881148bd8d8f3604eacee" target="_blank" class="dropdown-item">
+            <span class="dropdown-num">01</span>
+            <span class="dropdown-title">AI Mentor Bot</span>
+            <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </a>
+          <a href="https://ux-portfolio-dina-da.notion.site/Boston-Cares-Making-Social-Impact-Accessible-Website-Redesign-2b8782c89198811a8b8adab18ce92a8b" target="_blank" class="dropdown-item">
+            <span class="dropdown-num">02</span>
+            <span class="dropdown-title">Boston Cares</span>
+            <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </a>
+          <a href="https://ux-portfolio-dina-da.notion.site/MyFitnessPal-Simplifying-Food-Logging-for-Weight-Loss-Beginners-App-Redesign-2b8782c891988131a116f4946d2046ea" target="_blank" class="dropdown-item">
+            <span class="dropdown-num">03</span>
+            <span class="dropdown-title">MyFitnessPal</span>
+            <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </a>
+          <a href="https://ux-portfolio-dina-da.notion.site/SilverChat-Accessible-design-for-older-adults-2f5782c89198806b9319d7e3a8e3aacb" target="_blank" class="dropdown-item">
+            <span class="dropdown-num">04</span>
+            <span class="dropdown-title">SilverChat</span>
+            <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </a>
+        </div>
+      </li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -957,10 +1039,10 @@
     <div class="contact-inner reveal">
       <h2 class="contact-heading">Let's create something <em>meaningful</em> together.</h2>
       <div class="contact-right">
-        <a href="mailto:your@email.com" class="contact-email">your@email.com</a>
+        <a href="mailto:dddina7788@gmail.com" class="contact-email">dddina7788@gmail.com</a>
         <div class="contact-links">
-          <a href="#" class="contact-link">LinkedIn</a>
-          <a href="#" class="contact-link">Resume</a>
+          <a href="https://www.linkedin.com/in/yujie-da-710b94198" target="_blank" class="contact-link">LinkedIn</a>
+          <a href="https://drive.google.com/file/d/1Pleb017FTgLfcyri5vlpK7WvynVu3IEl/view" target="_blank" class="contact-link">Resume</a>
         </div>
       </div>
     </div>
@@ -974,7 +1056,7 @@
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Custom cursor
     const cursor = document.getElementById('cursor');
     const ring = document.getElementById('cursorRing');
@@ -1016,12 +1098,4 @@
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    reveals.forEach(el => observer.observe(el));
-  </script>
-</body>
-</html>
+          s
