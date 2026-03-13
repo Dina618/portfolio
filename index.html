@@ -130,6 +130,8 @@
     footer { background: var(--ink); border-top: 1px solid rgba(250,248,244,0.06); padding: 24px 48px; }
     .footer-inner { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
     .footer-name { font-family: var(--serif); font-size: 13px; color: rgba(250,248,244,0.3); }
+    .footer-email { font-size: 11px; color: rgba(250,248,244,0.25); text-decoration: none; letter-spacing: 0.06em; transition: color 0.2s ease; }
+    .footer-email:hover { color: rgba(250,248,244,0.6); }
     .footer-copy { font-size: 11px; color: rgba(250,248,244,0.2); }
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
     @keyframes blobFloat { 0%,100% { transform: translate(-50%,-50%); } 50% { transform: translate(-50%,-55%); } }
@@ -285,7 +287,7 @@
   <footer>
     <div class="footer-inner">
       <span class="footer-name">Dina Da</span>
-      
+      <a href="mailto:dddina7788@gmail.com" class="footer-email">dddina7788@gmail.com</a>
       <span class="footer-copy">© 2025</span>
     </div>
   </footer>
@@ -293,18 +295,11 @@
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const cursor = document.getElementById('cursor');
     const ring = document.getElementById('cursorRing');
-    let mx=0, my=0, rx=0, ry=0, visible=false;
-    cursor.style.opacity='0';
-    ring.style.opacity='0';
-    document.addEventListener('mousemove', e => {
-      mx=e.clientX; my=e.clientY;
-      if(!visible) {
-        visible=true;
-        cursor.style.opacity='1';
-        ring.style.opacity='0.4';
-        rx=mx; ry=my;
-      }
-    });
+    let mx = window.innerWidth/2, my = window.innerHeight/2;
+    let rx = mx, ry = my;
+    cursor.style.left = mx+'px'; cursor.style.top = my+'px';
+    ring.style.left = rx+'px'; ring.style.top = ry+'px';
+    document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
     function animCursor() {
       cursor.style.left=mx+'px'; cursor.style.top=my+'px';
       rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12;
