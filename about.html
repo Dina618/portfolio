@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Dina Da</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #FAF8F4;
+      --cream-dark: #F2EFE9;
+      --ink: #1A1814;
+      --ink-light: #6B6560;
+      --ink-faint: #B8B3AE;
+      --indigo: #5B5BD6;
+      --indigo-light: #8B8BE8;
+      --rose: #E8756A;
+      --amber: #D4A847;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; overflow-x: hidden; cursor: none; }
+
+    /* Cursor */
+    .cursor { position: fixed; width: 8px; height: 8px; background: var(--ink); border-radius: 50%; pointer-events: none; z-index: 9999; transition: transform 0.15s ease; transform: translate(-50%, -50%); }
+    .cursor-ring { position: fixed; width: 32px; height: 32px; border: 1px solid var(--ink); border-radius: 50%; pointer-events: none; z-index: 9998; transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease; transform: translate(-50%, -50%); opacity: 0.4; }
+
+    /* Nav */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; background: rgba(250,248,244,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,24,20,0.06); }
+    .nav-name { font-family: var(--serif); font-size: 18px; font-weight: 500; letter-spacing: 0.02em; text-decoration: none; color: var(--ink); }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links a { font-family: var(--sans); font-size: 12px; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; transition: color 0.2s ease; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: var(--ink); transition: width 0.3s ease; }
+    .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+    /* Page layout */
+    .page { max-width: 1280px; margin: 0 auto; padding: 120px 48px 80px; display: grid; grid-template-columns: 380px 1fr; gap: 80px; align-items: start; }
+
+    /* Left column */
+    .left-col { position: sticky; top: 100px; display: flex; flex-direction: column; gap: 32px; }
+
+    /* Photo */
+    .photo-container {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--cream-dark);
+      position: relative;
+    }
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: linear-gradient(135deg, var(--cream-dark) 0%, rgba(91,91,214,0.06) 100%);
+    }
+    .photo-placeholder-icon {
+      font-family: var(--serif);
+      font-size: 48px;
+      font-style: italic;
+      color: var(--ink-faint);
+      opacity: 0.5;
+    }
+    .photo-placeholder-text {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+
+    /* Quick links */
+    .quick-links { display: flex; flex-direction: column; gap: 2px; }
+    .quick-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(26,24,20,0.08);
+      text-decoration: none;
+      color: var(--ink-light);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      transition: color 0.2s ease, padding-left 0.2s ease;
+    }
+    .quick-link:first-child { border-top: 1px solid rgba(26,24,20,0.08); }
+    .quick-link:hover { color: var(--ink); padding-left: 4px; }
+    .quick-link svg { transition: transform 0.2s ease; }
+    .quick-link:hover svg { transform: translate(2px, -2px); }
+
+    /* Right column */
+    .right-col { display: flex; flex-direction: column; gap: 64px; padding-top: 8px; }
+
+    /* Hello section */
+    .hello-section {}
+    .hello-name {
+      font-family: var(--serif);
+      font-size: clamp(48px, 6vw, 80px);
+      font-weight: 300;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+    .hello-name em { font-style: italic; color: var(--indigo); }
+    .hello-bio {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--ink-light);
+      max-width: 560px;
+    }
+    .hello-bio strong { color: var(--ink); font-weight: 500; }
+
+    /* Section heading */
+    .section-heading {
+      font-family: var(--serif);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .section-heading::after { content: ''; flex: 1; height: 1px; background: rgba(26,24,20,0.08); }
+
+    /* Experience timeline */
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 24px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(26,24,20,0.06);
+    }
+    .timeline-item:first-child { padding-top: 0; }
+    .timeline-year {
+      font-family: var(--serif);
+      font-size: 12px;
+      color: var(--ink-faint);
+      letter-spacing: 0.06em;
+      padding-top: 3px;
+      line-height: 1.5;
+    }
+    .timeline-content {}
+    .timeline-role {
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 4px;
+      letter-spacing: 0.01em;
+    }
+    .timeline-company {
+      font-family: var(--serif);
+      font-size: 14px;
+      font-style: italic;
+      color: var(--ink-light);
+      margin-bottom: 4px;
+    }
+    .timeline-location {
+      font-size: 11px;
+      color: var(--ink-faint);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* Education */
+    .edu-item {
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(26,24,20,0.06);
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 24px;
+    }
+    .edu-item:first-child { padding-top: 0; }
+    .edu-year { font-family: var(--serif); font-size: 12px; color: var(--ink-faint); letter-spacing: 0.06em; padding-top: 3px; line-height: 1.5; }
+    .edu-school { font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+    .edu-degree { font-family: var(--serif); font-size: 14px; font-style: italic; color: var(--ink-light); margin-bottom: 4px; }
+    .edu-detail { font-size: 11px; color: var(--ink-faint); line-height: 1.6; }
+
+    /* Fun facts */
+    .fun-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .fun-card {
+      background: var(--cream-dark);
+      border-radius: 8px;
+      padding: 20px 24px;
+      border: 1px solid rgba(26,24,20,0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .fun-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,24,20,0.06); }
+    .fun-card-label {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 8px;
+    }
+    .fun-card-value {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .fun-card-wide {
+      grid-column: 1 / -1;
+    }
+
+    /* Footer */
+    footer { background: var(--cream-dark); border-top: 1px solid rgba(26,24,20,0.06); padding: 24px 48px; margin-top: 80px; }
+    .footer-inner { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .footer-name { font-family: var(--serif); font-size: 13px; color: var(--ink-faint); }
+    .footer-copy { font-size: 11px; color: var(--ink-faint); }
+
+    /* Reveal */
+    .reveal { transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.hidden { opacity: 0; transform: translateY(20px); }
+
+    @media (max-width: 900px) {
+      nav { padding: 20px 24px; }
+      .page { grid-template-columns: 1fr; padding: 100px 24px 60px; gap: 48px; }
+      .left-col { position: static; }
+      .photo-container { aspect-ratio: 1/1; max-width: 280px; }
+      .fun-grid { grid-template-columns: 1fr; }
+      .fun-card-wide { grid-column: 1; }
+      footer { padding: 20px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <nav>
+    <a href="index.html" class="nav-name">Dina Da</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="page">
+    <!-- Left column -->
+    <div class="left-col reveal">
+      <div class="photo-container">
+        <div class="photo-placeholder">
+          <span class="photo-placeholder-icon">☺</span>
+          <span class="photo-placeholder-text">Photo coming soon</span>
+        </div>
+      </div>
+      <div class="quick-links">
+        <a href="mailto:dddina7788@gmail.com" class="quick-link">
+          Email
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/yujie-da-710b94198" target="_blank" class="quick-link">
+          LinkedIn
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1Pleb017FTgLfcyri5vlpK7WvynVu3IEl/view" target="_blank" class="quick-link">
+          Resume
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right column -->
+    <div class="right-col">
+
+      <!-- Hello -->
+      <div class="hello-section reveal">
+        <h1 class="hello-name">Hello,<br>I'm <em>Dina.</em></h1>
+        <p class="hello-bio">
+          I'm a UX Designer focused on creating <strong>empathetic, accessible experiences</strong> that make people's lives a little easier. Currently based in <strong>Boston</strong>, open to relocate.
+          <br><br>
+          What drives me to design is the belief that great products start with truly understanding people — their needs, their frustrations, and the small moments that matter most.
+        </p>
+      </div>
+
+      <!-- Experience -->
+      <div class="reveal">
+        <p class="section-heading">Experience</p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <span class="timeline-year">2025<br>Jun – Sep</span>
+            <div class="timeline-content">
+              <p class="timeline-role">Product Designer</p>
+              <p class="timeline-company">VortexNet LLC</p>
+              <p class="timeline-location">EdTech · Covina, CA</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-year">2022 – 2024</span>
+            <div class="timeline-content">
+              <p class="timeline-role">Brand Experience Designer</p>
+              <p class="timeline-company">GaoFu Foods</p>
+              <p class="timeline-location">Food E-commerce · Shanghai, China</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-year">2020 – 2021</span>
+            <div class="timeline-content">
+              <p class="timeline-role">Graphic Designer & Content Creator</p>
+              <p class="timeline-company">1 Point 3 Acres LLC</p>
+              <p class="timeline-location">Tech Forum · Seattle, WA</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="reveal">
+        <p class="section-heading">Education</p>
+        <div class="timeline">
+          <div class="edu-item">
+            <span class="edu-year">2024 – 2026</span>
+            <div>
+              <p class="edu-school">Northeastern University</p>
+              <p class="edu-degree">Master of Digital Media</p>
+              <p class="edu-detail">Concentration: Interactive Design<br>Usability & HCI, Digital Storytelling, Typography for Interactivity, Web Creation</p>
+            </div>
+          </div>
+          <div class="edu-item">
+            <span class="edu-year">2016 – 2020</span>
+            <div>
+              <p class="edu-school">Duquesne University</p>
+              <p class="edu-degree">B.A. Multiplatform Journalism</p>
+              <p class="edu-detail">Minor: Public Relations & Advertising</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Other little things -->
+      <div class="reveal">
+        <p class="section-heading">Other little things</p>
+        <div class="fun-grid">
+          <div class="fun-card">
+            <p class="fun-card-label">Currently based</p>
+            <p class="fun-card-value">Boston, MA 🫐</p>
+          </div>
+          <div class="fun-card">
+            <p class="fun-card-label">Favorite colors</p>
+            <p class="fun-card-value">Blue & Green 💚</p>
+          </div>
+          <div class="fun-card">
+            <p class="fun-card-label">Hobbies</p>
+            <p class="fun-card-value">Cooking & Drawing 🎨</p>
+          </div>
+          <div class="fun-card">
+            <p class="fun-card-label">Open to</p>
+            <p class="fun-card-value">Relocation ✈️</p>
+          </div>
+          <div class="fun-card fun-card-wide">
+            <p class="fun-card-label">Fun fact</p>
+            <p class="fun-card-value">Journalism major turned UX designer — I still think in stories. 📰 → 🎨</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-name">Dina Da</span>
+      <span class="footer-copy">© 2025</span>
+    </div>
+  </footer>
+
+  <script>
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx=0, my=0, rx=0, ry=0;
+    document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
+    function animCursor() {
+      cursor.style.left=mx+'px'; cursor.style.top=my+'px';
+      rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12;
+      ring.style.left=rx+'px'; ring.style.top=ry+'px';
+      requestAnimationFrame(animCursor);
+    }
+    animCursor();
+    document.querySelectorAll('a,button').forEach(el => {
+      el.addEventListener('mouseenter', () => { ring.style.width='48px'; ring.style.height='48px'; ring.style.opacity='0.6'; cursor.style.transform='translate(-50%,-50%) scale(0)'; });
+      el.addEventListener('mouseleave', () => { ring.style.width='32px'; ring.style.height='32px'; ring.style.opacity='0.4'; cursor.style.transform='translate(-50%,-50%) scale(1)'; });
+    });
+    const reveals = document.querySelectorAll('.reveal');
+    reveals.forEach(el => el.classList.add('hidden'));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.remove('hidden'), i * 100);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
