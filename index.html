@@ -46,24 +46,11 @@
     .hero-cta:hover { background: var(--indigo); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(91,91,214,0.25); }
     .hero-cta svg { transition: transform 0.3s; }
     .hero-cta:hover svg { transform: translateX(4px); }
-    .hero-visual { opacity: 0; animation: fadeUp 1.4s cubic-bezier(0.16,1,0.3,1) 0.5s forwards; position: relative; height: 480px; }
-    .blob-main { position: absolute; width: 300px; height: 360px; top: 50%; left: 50%; transform: translate(-40%,-50%); background: var(--cream-dark); border-radius: 58% 42% 52% 48%/44% 56% 44% 56%; overflow: hidden; animation: blobFloat 6s ease-in-out infinite; }
-    .blob-main::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg,rgba(91,91,214,0.07) 0%,rgba(232,117,106,0.05) 60%,rgba(212,168,71,0.07) 100%); }
-    .blob-accent { position: absolute; width: 140px; height: 140px; bottom: 50px; right: 10px; background: var(--indigo); border-radius: 45% 55% 60% 40%/55% 45% 55% 45%; opacity: 0.1; animation: blobFloat2 8s ease-in-out infinite; }
-    .blob-dot { position: absolute; width: 44px; height: 44px; top: 55px; left: 18px; background: var(--rose); border-radius: 50%; opacity: 0.18; animation: blobFloat3 5s ease-in-out infinite 1s; }
-    .blob-dot2 { position: absolute; width: 20px; height: 20px; bottom: 90px; left: 20px; background: var(--amber); border-radius: 50%; opacity: 0.28; animation: blobFloat3 7s ease-in-out infinite 2s; }
-    .blob-inner { position: absolute; inset: 0; overflow: hidden; }
-    .blob-line { position: absolute; background: var(--ink-faint); opacity: 0.25; }
-    .blob-line:nth-child(1) { width: 1px; height: 55%; top: 22%; left: 38%; transform: rotate(12deg); }
-    .blob-line:nth-child(2) { width: 38%; height: 1px; top: 42%; left: 18%; transform: rotate(-6deg); }
-    .blob-line:nth-child(3) { width: 1px; height: 38%; top: 32%; left: 62%; transform: rotate(-10deg); }
-    .blob-circle { position: absolute; border: 1px solid var(--ink-faint); border-radius: 50%; opacity: 0.2; }
-    .blob-circle:nth-child(4) { width: 90px; height: 90px; top: 28%; left: 22%; }
-    .blob-circle:nth-child(5) { width: 52px; height: 52px; bottom: 28%; right: 18%; }
-    .blob-word { position: absolute; font-family: var(--serif); font-size: 10px; font-style: italic; color: var(--ink-light); opacity: 0; letter-spacing: 0.12em; animation: fadeUp 1.6s ease forwards; }
-    .blob-word:nth-child(6) { top: 16%; left: 12%; transform: rotate(-6deg); animation-delay: 1.2s; }
-    .blob-word:nth-child(7) { bottom: 20%; right: 10%; transform: rotate(4deg); animation-delay: 1.4s; }
-    .blob-word:nth-child(8) { top: 52%; left: 8%; transform: rotate(-4deg); animation-delay: 1.6s; }
+    .hero-visual { opacity: 0; animation: fadeUp 1.4s cubic-bezier(0.16,1,0.3,1) 0.5s forwards; position: relative; height: 480px; display: flex; align-items: center; justify-content: center; }
+    .hero-img { width: 88%; max-width: 400px; object-fit: contain; animation: blobFloat 6s ease-in-out infinite; position: relative; z-index: 1; }
+    .blob-dot { position: absolute; width: 44px; height: 44px; top: 60px; left: 10px; background: var(--rose); border-radius: 50%; opacity: 0.22; animation: blobFloat3 5s ease-in-out infinite 1s; }
+    .blob-dot2 { position: absolute; width: 20px; height: 20px; bottom: 100px; left: 24px; background: var(--amber); border-radius: 50%; opacity: 0.32; animation: blobFloat3 7s ease-in-out infinite 2s; }
+    .blob-dot3 { position: absolute; width: 30px; height: 30px; top: 40%; right: 8px; background: var(--indigo); border-radius: 50%; opacity: 0.15; animation: blobFloat2 8s ease-in-out infinite 0.5s; }
     .scroll-indicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: 0; animation: fadeUp 1s ease 1.8s forwards; }
     .scroll-line { width: 1px; height: 48px; background: var(--ink-faint); position: relative; overflow: hidden; }
     .scroll-line::after { content: ''; position: absolute; left: 0; top: -100%; width: 100%; height: 100%; background: var(--ink); animation: scrollAnim 2s ease-in-out infinite; }
@@ -159,21 +146,10 @@
         <a href="#projects" class="hero-cta">View Work <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
       <div class="hero-visual">
-        <div class="blob-accent"></div>
         <div class="blob-dot"></div>
         <div class="blob-dot2"></div>
-        <div class="blob-main">
-          <div class="blob-inner">
-            <div class="blob-line"></div>
-            <div class="blob-line"></div>
-            <div class="blob-line"></div>
-            <div class="blob-circle"></div>
-            <div class="blob-circle"></div>
-            <span class="blob-word">design</span>
-            <span class="blob-word">empathy</span>
-            <span class="blob-word">research</span>
-          </div>
-        </div>
+        <div class="blob-dot3"></div>
+        <img class="hero-img" src="hero-illustration.png" alt="UX Designer illustration" />
       </div>
     </div>
     <div class="scroll-indicator">
