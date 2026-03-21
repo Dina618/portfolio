@@ -10,56 +10,43 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --cream: #FAF8F4;
-      --cream-dark: #F2EFE9;
-      --ink: #1A1814;
-      --ink-light: #6B6560;
-      --ink-faint: #B8B3AE;
-      --indigo: #5B5BD6;
-      --rose: #E8756A;
-      --serif: 'Cormorant Garamond', Georgia, serif;
-      --sans: 'DM Sans', sans-serif;
+      --cream: #FAF8F4; --cream-dark: #F2EFE9; --ink: #1A1814;
+      --ink-light: #6B6560; --ink-faint: #B8B3AE;
+      --indigo: #5B5BD6; --rose: #E8756A;
+      --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'DM Sans', sans-serif;
     }
     html { scroll-behavior: smooth; }
     body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; overflow-x: hidden; cursor: none; }
     a, button { cursor: none; }
-
-    #cursor { position: fixed; width: 10px; height: 10px; background: var(--indigo); border-radius: 50%; pointer-events: none; z-index: 99999; left: -100px; top: -100px; transform: translate(-50%,-50%); will-change: transform; }
-    #cursor-ring { position: fixed; width: 36px; height: 36px; border: 1.5px solid rgba(91,91,214,0.5); border-radius: 50%; pointer-events: none; z-index: 99998; left: -100px; top: -100px; transform: translate(-50%,-50%); transition: width 0.2s ease, height 0.2s ease; will-change: transform; }
-
+    #cur { position: fixed; width: 10px; height: 10px; background: #5B5BD6; border-radius: 50%; pointer-events: none; z-index: 99999; top: 0; left: 0; }
+    #cur-ring { position: fixed; width: 36px; height: 36px; border: 1.5px solid rgba(91,91,214,0.55); border-radius: 50%; pointer-events: none; z-index: 99998; top: 0; left: 0; transition: width 0.2s, height 0.2s; }
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 24px 0; background: rgba(250,248,244,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,24,20,0.06); }
     .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 48px; display: flex; justify-content: space-between; align-items: center; }
     .nav-name { font-family: var(--serif); font-size: 18px; font-weight: 500; letter-spacing: 0.02em; text-decoration: none; color: var(--ink); }
     .nav-links { display: flex; gap: 40px; list-style: none; }
-    .nav-links a { font-family: var(--sans); font-size: 12px; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; transition: color 0.2s ease; position: relative; }
-    .nav-links a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: var(--ink); transition: width 0.3s ease; }
+    .nav-links a { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; transition: color 0.2s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: var(--ink); transition: width 0.3s; }
     .nav-links a:hover, .nav-links a.active { color: var(--ink); }
     .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
-
     .page { max-width: 1100px; margin: 0 auto; padding: 88px 48px 80px; display: grid; grid-template-columns: 320px 1fr; gap: 80px; align-items: start; }
-
     .left-col { position: sticky; top: 100px; display: flex; flex-direction: column; gap: 32px; }
     .photo-container { width: 100%; aspect-ratio: 3/4; border-radius: 4px; overflow: hidden; background: var(--cream-dark); }
     .photo-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; background: linear-gradient(135deg, var(--cream-dark) 0%, rgba(91,91,214,0.06) 100%); }
     .photo-placeholder-icon { font-size: 48px; color: var(--ink-faint); opacity: 0.4; }
     .photo-placeholder-text { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); }
     .quick-links { display: flex; flex-direction: column; }
-    .quick-link { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid rgba(26,24,20,0.08); text-decoration: none; color: var(--ink-light); font-size: 13px; font-weight: 400; letter-spacing: 0.04em; transition: color 0.2s ease, padding-left 0.2s ease; }
+    .quick-link { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid rgba(26,24,20,0.08); text-decoration: none; color: var(--ink-light); font-size: 13px; transition: color 0.2s, padding-left 0.2s; }
     .quick-link:first-child { border-top: 1px solid rgba(26,24,20,0.08); }
     .quick-link:hover { color: var(--ink); padding-left: 6px; }
-    .quick-link svg { transition: transform 0.2s ease; }
-    .quick-link:hover svg { transform: translate(2px, -2px); }
-
+    .quick-link svg { transition: transform 0.2s; }
+    .quick-link:hover svg { transform: translate(2px,-2px); }
     .right-col { display: flex; flex-direction: column; gap: 64px; padding-top: 8px; }
-
-    .hello-name { font-family: var(--serif); font-size: clamp(48px, 6vw, 80px); font-weight: 300; line-height: 1.0; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 24px; }
+    .hello-name { font-family: var(--serif); font-size: clamp(48px,6vw,80px); font-weight: 300; line-height: 1.0; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 24px; }
     .hello-name em { font-style: italic; color: var(--indigo); }
     .hello-bio { font-size: 16px; font-weight: 300; line-height: 1.85; color: var(--ink-light); max-width: 560px; }
     .hello-bio strong { color: var(--ink); font-weight: 500; }
-
-    .section-heading { font-family: var(--sans); font-size: 11px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
+    .section-heading { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
     .section-heading::after { content: ''; flex: 1; height: 1px; background: rgba(26,24,20,0.08); }
-
     .timeline { display: flex; flex-direction: column; }
     .timeline-item { display: grid; grid-template-columns: 110px 1fr; gap: 24px; padding: 20px 0; border-bottom: 1px solid rgba(26,24,20,0.06); }
     .timeline-item:first-child { padding-top: 0; }
@@ -67,22 +54,18 @@
     .timeline-role { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
     .timeline-company { font-family: var(--serif); font-size: 14px; font-style: italic; color: var(--ink-light); margin-bottom: 4px; }
     .timeline-location { font-size: 11px; color: var(--ink-faint); letter-spacing: 0.08em; text-transform: uppercase; }
-
     .fun-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .fun-card { background: var(--cream-dark); border-radius: 8px; padding: 20px 24px; border: 1px solid rgba(26,24,20,0.06); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .fun-card { background: var(--cream-dark); border-radius: 8px; padding: 20px 24px; border: 1px solid rgba(26,24,20,0.06); transition: transform 0.3s, box-shadow 0.3s; }
     .fun-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,24,20,0.06); }
     .fun-card-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px; }
-    .fun-card-value { font-family: var(--serif); font-size: 18px; font-weight: 400; color: var(--ink); line-height: 1.3; }
+    .fun-card-value { font-family: var(--serif); font-size: 18px; color: var(--ink); line-height: 1.3; }
     .fun-card-wide { grid-column: 1 / -1; }
-
     footer { background: var(--cream-dark); border-top: 1px solid rgba(26,24,20,0.06); padding: 24px 0; margin-top: 80px; }
     .footer-inner { max-width: 1100px; margin: 0 auto; padding: 0 48px; display: flex; justify-content: space-between; align-items: center; }
     .footer-name { font-family: var(--serif); font-size: 13px; color: var(--ink-faint); }
     .footer-copy { font-size: 11px; color: var(--ink-faint); }
-
-    .reveal { transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal { transition: opacity 0.8s, transform 0.8s; }
     .reveal.hidden { opacity: 0; transform: translateY(20px); }
-
     @media (max-width: 900px) {
       .nav-inner { padding: 0 24px; }
       .page { grid-template-columns: 1fr; padding: 88px 24px 60px; gap: 48px; }
@@ -91,14 +74,15 @@
       .fun-grid { grid-template-columns: 1fr; }
       .fun-card-wide { grid-column: 1; }
       footer { padding: 20px 0; }
+      .footer-inner { padding: 0 24px; }
       body { cursor: auto; }
-      #cursor, #cursor-ring { display: none; }
+      #cur, #cur-ring { display: none; }
     }
   </style>
 </head>
 <body>
-  <div id="cursor"></div>
-  <div id="cursor-ring"></div>
+  <div id="cur"></div>
+  <div id="cur-ring"></div>
 
   <nav>
     <div class="nav-inner">
@@ -120,15 +104,9 @@
         </div>
       </div>
       <div class="quick-links">
-        <a href="mailto:dddina7788@gmail.com" class="quick-link">
-          Email <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-        </a>
-        <a href="https://www.linkedin.com/in/yujie-da-710b94198" target="_blank" class="quick-link">
-          LinkedIn <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-        </a>
-        <a href="https://drive.google.com/file/d/1Pleb017FTgLfcyri5vlpK7WvynVu3IEl/view" target="_blank" class="quick-link">
-          Resume <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-        </a>
+        <a href="mailto:dddina7788@gmail.com" class="quick-link">Email <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+        <a href="https://www.linkedin.com/in/yujie-da-710b94198" target="_blank" class="quick-link">LinkedIn <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+        <a href="https://drive.google.com/file/d/1Pleb017FTgLfcyri5vlpK7WvynVu3IEl/view" target="_blank" class="quick-link">Resume <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
       </div>
     </div>
 
@@ -137,82 +115,44 @@
         <h1 class="hello-name">Hello,<br>I'm <em>Dina.</em></h1>
         <p class="hello-bio">I'm a UX Designer focused on creating <strong>empathetic, accessible experiences</strong> that make people's lives a little easier. Currently based in <strong>Boston</strong>, open to relocate.<br><br>What drives me to design is the belief that great products start with truly understanding people — their needs, their frustrations, and the small moments that matter most.</p>
       </div>
-
       <div class="reveal">
         <p class="section-heading">Experience</p>
         <div class="timeline">
           <div class="timeline-item">
             <span class="timeline-year">Jun–Sep<br>2025</span>
-            <div>
-              <p class="timeline-role">Product Designer</p>
-              <p class="timeline-company">VortexNet LLC</p>
-              <p class="timeline-location">EdTech · Covina, CA</p>
-            </div>
+            <div><p class="timeline-role">Product Designer</p><p class="timeline-company">VortexNet LLC</p><p class="timeline-location">EdTech · Covina, CA</p></div>
           </div>
           <div class="timeline-item">
             <span class="timeline-year">2022–2024</span>
-            <div>
-              <p class="timeline-role">Brand Experience Designer</p>
-              <p class="timeline-company">GaoFu Foods</p>
-              <p class="timeline-location">Food E-commerce · Shanghai</p>
-            </div>
+            <div><p class="timeline-role">Brand Experience Designer</p><p class="timeline-company">GaoFu Foods</p><p class="timeline-location">Food E-commerce · Shanghai</p></div>
           </div>
           <div class="timeline-item">
             <span class="timeline-year">2020–2021</span>
-            <div>
-              <p class="timeline-role">Graphic Designer & Content Creator</p>
-              <p class="timeline-company">1 Point 3 Acres LLC</p>
-              <p class="timeline-location">Tech Forum · Seattle, WA</p>
-            </div>
+            <div><p class="timeline-role">Graphic Designer & Content Creator</p><p class="timeline-company">1 Point 3 Acres LLC</p><p class="timeline-location">Tech Forum · Seattle, WA</p></div>
           </div>
         </div>
       </div>
-
       <div class="reveal">
         <p class="section-heading">Education</p>
         <div class="timeline">
           <div class="timeline-item">
             <span class="timeline-year">2024–2026</span>
-            <div>
-              <p class="timeline-role">Northeastern University</p>
-              <p class="timeline-company">Master of Digital Media</p>
-              <p class="timeline-location">Concentration: Interactive Design</p>
-            </div>
+            <div><p class="timeline-role">Northeastern University</p><p class="timeline-company">Master of Digital Media</p><p class="timeline-location">Concentration: Interactive Design</p></div>
           </div>
           <div class="timeline-item">
             <span class="timeline-year">2016–2020</span>
-            <div>
-              <p class="timeline-role">Duquesne University</p>
-              <p class="timeline-company">B.A. Multiplatform Journalism</p>
-              <p class="timeline-location">Minor: Public Relations & Advertising</p>
-            </div>
+            <div><p class="timeline-role">Duquesne University</p><p class="timeline-company">B.A. Multiplatform Journalism</p><p class="timeline-location">Minor: Public Relations & Advertising</p></div>
           </div>
         </div>
       </div>
-
       <div class="reveal">
         <p class="section-heading">Other little things</p>
         <div class="fun-grid">
-          <div class="fun-card">
-            <p class="fun-card-label">Based in</p>
-            <p class="fun-card-value">Boston, MA 🫐</p>
-          </div>
-          <div class="fun-card">
-            <p class="fun-card-label">Favorite colors</p>
-            <p class="fun-card-value">Blue & Green 💚</p>
-          </div>
-          <div class="fun-card">
-            <p class="fun-card-label">Hobbies</p>
-            <p class="fun-card-value">Cooking & Drawing 🎨</p>
-          </div>
-          <div class="fun-card">
-            <p class="fun-card-label">Open to</p>
-            <p class="fun-card-value">Relocation ✈️</p>
-          </div>
-          <div class="fun-card fun-card-wide">
-            <p class="fun-card-label">Fun fact</p>
-            <p class="fun-card-value">Journalism major turned UX designer — I still think in stories. 📰 → 🎨</p>
-          </div>
+          <div class="fun-card"><p class="fun-card-label">Based in</p><p class="fun-card-value">Boston, MA 🫐</p></div>
+          <div class="fun-card"><p class="fun-card-label">Favorite colors</p><p class="fun-card-value">Blue & Green 💚</p></div>
+          <div class="fun-card"><p class="fun-card-label">Hobbies</p><p class="fun-card-value">Cooking & Drawing 🎨</p></div>
+          <div class="fun-card"><p class="fun-card-label">Open to</p><p class="fun-card-value">Relocation ✈️</p></div>
+          <div class="fun-card fun-card-wide"><p class="fun-card-label">Fun fact</p><p class="fun-card-value">Journalism major turned UX designer — I still think in stories. 📰 → 🎨</p></div>
         </div>
       </div>
     </div>
@@ -226,39 +166,43 @@
   </footer>
 
   <script>
-    var cur = document.getElementById('cursor');
-    var ring = document.getElementById('cursor-ring');
-    var mx = 0, my = 0, rx = 0, ry = 0;
+    (function() {
+      var cur = document.getElementById('cur');
+      var ring = document.getElementById('cur-ring');
+      var mx = 0, my = 0, rx = 0, ry = 0;
 
-    document.addEventListener('mousemove', function(e) {
-      mx = e.clientX; my = e.clientY;
-      cur.style.transform = 'translate(calc(' + mx + 'px - 50%), calc(' + my + 'px - 50%))';
-    });
-
-    function tick() {
-      rx = rx + (mx - rx) * 0.15;
-      ry = ry + (my - ry) * 0.15;
-      ring.style.transform = 'translate(calc(' + rx + 'px - 50%), calc(' + ry + 'px - 50%))';
-      requestAnimationFrame(tick);
-    }
-    tick();
-
-    document.querySelectorAll('a, button').forEach(function(el) {
-      el.addEventListener('mouseenter', function() { ring.style.width='52px'; ring.style.height='52px'; });
-      el.addEventListener('mouseleave', function() { ring.style.width='36px'; ring.style.height='36px'; });
-    });
-
-    var reveals = document.querySelectorAll('.reveal');
-    reveals.forEach(function(el) { el.classList.add('hidden'); });
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry, i) {
-        if (entry.isIntersecting) {
-          setTimeout(function() { entry.target.classList.remove('hidden'); }, i * 100);
-          observer.unobserve(entry.target);
-        }
+      window.addEventListener('mousemove', function(e) {
+        mx = e.clientX;
+        my = e.clientY;
+        cur.style.left = (mx - 5) + 'px';
+        cur.style.top  = (my - 5) + 'px';
       });
-    }, { threshold: 0.1 });
-    reveals.forEach(function(el) { observer.observe(el); });
+
+      (function tick() {
+        rx += (mx - rx) * 0.15;
+        ry += (my - ry) * 0.15;
+        ring.style.left = (rx - 18) + 'px';
+        ring.style.top  = (ry - 18) + 'px';
+        requestAnimationFrame(tick);
+      })();
+
+      document.querySelectorAll('a, button').forEach(function(el) {
+        el.addEventListener('mouseenter', function() { ring.style.width='52px'; ring.style.height='52px'; });
+        el.addEventListener('mouseleave', function() { ring.style.width='36px'; ring.style.height='36px'; });
+      });
+
+      var reveals = document.querySelectorAll('.reveal');
+      reveals.forEach(function(el) { el.classList.add('hidden'); });
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry, i) {
+          if (entry.isIntersecting) {
+            setTimeout(function() { entry.target.classList.remove('hidden'); }, i * 100);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      reveals.forEach(function(el) { observer.observe(el); });
+    })();
   </script>
 </body>
 </html>
