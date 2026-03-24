@@ -53,7 +53,10 @@
     .timeline-year { font-family: var(--serif); font-size: 12px; color: var(--ink-faint); letter-spacing: 0.06em; padding-top: 3px; line-height: 1.6; }
     .timeline-role { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
     .timeline-company { font-family: var(--serif); font-size: 14px; font-style: italic; color: var(--ink-light); margin-bottom: 4px; }
-    .timeline-location { font-size: 11px; color: var(--ink-faint); letter-spacing: 0.08em; text-transform: uppercase; }
+    .timeline-location { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; } .timeline-location.highlight { background: linear-gradient(90deg, var(--ink-light) 0%, var(--ink-light) 30%, #a8d8ea 45%, #8b8be8 55%, var(--ink-light) 70%, var(--ink-light) 100%); background-size: 250% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: shimmer 4s linear infinite; font-weight: 500; } @keyframes shimmer { 0% { background-position: 200% center; } 100% { background-position: -200% center; } }
+   .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.skill-pill { font-size: 11px; padding: 6px 14px; border-radius: 20px; border: 1px solid rgba(26,24,20,0.15); color: var(--ink-light); transition: background 0.2s, color 0.2s, border-color 0.2s; }
+.skill-pill:hover { background: var(--indigo); color: white; border-color: var(--indigo); }
     .fun-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .fun-card { background: var(--cream-dark); border-radius: 8px; padding: 20px 24px; border: 1px solid rgba(26,24,20,0.06); transition: transform 0.3s, box-shadow 0.3s; }
     .fun-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,24,20,0.06); }
@@ -143,6 +146,21 @@
             <span class="timeline-year">2016–2020</span>
             <div><p class="timeline-role">Duquesne University</p><p class="timeline-company">B.A. Multiplatform Journalism</p><p class="timeline-location">Minor: Public Relations & Advertising</p></div>
           </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="section-heading">Skills</p>
+        <div class="skills-grid">
+          <span class="skill-pill">UX Research</span>
+          <span class="skill-pill">Interaction Design</span>
+          <span class="skill-pill">Wireframing</span>
+          <span class="skill-pill">Prototyping</span>
+          <span class="skill-pill">Usability Testing</span>
+          <span class="skill-pill">Figma</span>
+          <span class="skill-pill">Design Systems</span>
+          <span class="skill-pill">Information Architecture</span>
+          <span class="skill-pill">Accessibility</span>
+          <span class="skill-pill">HTML / CSS</span>
         </div>
       </div>
       <div class="reveal">
