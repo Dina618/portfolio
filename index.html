@@ -32,37 +32,78 @@
     .hero-inner { max-width: 1100px; margin: 0 auto; padding: 0 48px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 64px; }
     .hero-content { opacity: 0; transform: translateY(24px); animation: fadeUp 1.2s cubic-bezier(0.16,1,0.3,1) 0.2s forwards; }
     .hero-eyebrow {
-  font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 28px;
-  background: linear-gradient(90deg, var(--ink-light) 0%, var(--ink-light) 35%, var(--amber) 50%, var(--indigo) 60%, var(--ink-light) 75%, var(--ink-light) 100%);
-  background-size: 250% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmer 4s linear infinite;
-}
-@keyframes shimmer {
-  0% { background-position: 200% center; }
-  100% { background-position: -200% center; }
-}
+      font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 28px;
+      background: linear-gradient(90deg, var(--ink-light) 0%, var(--ink-light) 35%, var(--amber) 50%, var(--indigo) 60%, var(--ink-light) 75%, var(--ink-light) 100%);
+      background-size: 250% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s linear infinite;
+    }
+    @keyframes shimmer {
+      0% { background-position: 200% center; }
+      100% { background-position: -200% center; }
+    }
     .hero-name { font-family: var(--serif); font-size: clamp(52px,7vw,88px); font-weight: 300; line-height: 1.0; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 28px; }
-    .hero-name em { font-style: italic; color: var(--indigo); transition: color 0.3s; } .hero-name em:hover { color: var(--amber); cursor: none; }}
+    .hero-name em { font-style: italic; color: var(--indigo); transition: color 0.3s; }
+    .hero-name em:hover { color: var(--amber); cursor: none; }
     .hero-desc { font-size: 16px; font-weight: 300; line-height: 1.8; color: var(--ink-light); max-width: 440px; margin-bottom: 32px; }
     .word-hover { font-family: var(--serif); font-style: italic; font-size: 1.15em; font-weight: 500; cursor: none; transition: color 0.3s; display: inline-block; }
     .word-hover.indigo { color: var(--indigo); }
     .word-hover.rose { color: var(--rose); }
     .word-hover.indigo:hover { color: var(--amber); }
     .word-hover.rose:hover { color: var(--indigo); }
-    .hero-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 20px;margin-bottom: 36px; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 20px; margin-bottom: 36px; }
     .hero-tag { font-size: 11px; padding: 5px 13px; border-radius: 20px; border: 1px solid rgba(26,24,20,0.15); color: var(--ink-light); }
     .hero-cta { display: inline-flex; align-items: center; gap: 12px; padding: 14px 32px; background: var(--ink); color: var(--cream); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border-radius: 100px; transition: background 0.3s, transform 0.3s, box-shadow 0.3s; cursor: none; }
     .hero-cta:hover { background: var(--indigo); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(91,91,214,0.25); }
     .hero-cta svg { transition: transform 0.3s; }
     .hero-cta:hover svg { transform: translateX(4px); }
+
+    /* ── Hero Visual: phone + bot split ── */
     .hero-visual { opacity: 0; animation: fadeUp 1.4s cubic-bezier(0.16,1,0.3,1) 0.5s forwards; position: relative; height: 480px; display: flex; align-items: center; justify-content: center; }
-    .hero-img { width: 60%; max-width: 340px; object-fit: contain; animation: blobFloat 6s ease-in-out infinite; position: relative; z-index: 1;margin-top: 380px; margin-left: 320px; }
     .blob-dot { position: absolute; width: 44px; height: 44px; top: 60px; left: 10px; background: var(--rose); border-radius: 50%; opacity: 0.22; animation: blobFloat3 5s ease-in-out infinite 1s; }
     .blob-dot2 { position: absolute; width: 20px; height: 20px; bottom: 100px; left: 24px; background: var(--amber); border-radius: 50%; opacity: 0.32; animation: blobFloat3 7s ease-in-out infinite 2s; }
     .blob-dot3 { position: absolute; width: 30px; height: 30px; top: 40%; right: 8px; background: var(--indigo); border-radius: 50%; opacity: 0.15; animation: blobFloat2 8s ease-in-out infinite 0.5s; }
+
+    .hero-phone {
+      position: absolute;
+      width: 52%;
+      max-width: 300px;
+      object-fit: contain;
+      top: 50%;
+      left: 50%;
+      transform: translate(-30%, -48%);
+      animation: phoneFloat 6s ease-in-out infinite;
+      z-index: 1;
+    }
+    .hero-bot {
+      position: absolute;
+      width: 28%;
+      max-width: 160px;
+      object-fit: contain;
+      bottom: 60px;
+      right: 20px;
+      animation: botWobble 3s ease-in-out infinite;
+      z-index: 2;
+    }
+
+    /* 手机：原来的上下浮动 */
+    @keyframes phoneFloat {
+      0%, 100% { transform: translate(-30%, -48%); }
+      50%       { transform: translate(-30%, -53%); }
+    }
+
+    /* Bot：弹跳 + 轻微左右摇摆 */
+    @keyframes botWobble {
+      0%   { transform: translateY(0px) rotate(0deg); }
+      20%  { transform: translateY(-10px) rotate(-2deg); }
+      40%  { transform: translateY(-14px) rotate(2deg); }
+      60%  { transform: translateY(-8px) rotate(-1deg); }
+      80%  { transform: translateY(-4px) rotate(1deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+
     .scroll-indicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: 0; animation: fadeUp 1s ease 1.8s forwards; }
     .scroll-line { width: 1px; height: 48px; background: var(--ink-faint); position: relative; overflow: hidden; }
     .scroll-line::after { content: ''; position: absolute; left: 0; top: -100%; width: 100%; height: 100%; background: var(--ink); animation: scrollAnim 2s ease-in-out infinite; }
@@ -105,7 +146,6 @@
     .footer-name { font-family: var(--serif); font-size: 13px; color: rgba(250,248,244,0.3); }
     .footer-copy { font-size: 11px; color: rgba(250,248,244,0.2); }
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-    @keyframes blobFloat { 0%,100% { transform: translate(-40%,-50%); } 50% { transform: translate(-40%,-55%); } }
     @keyframes blobFloat2 { 0%,100% { transform: none; } 50% { transform: translateY(-12px); } }
     @keyframes blobFloat3 { 0%,100% { transform: none; } 50% { transform: translateY(-8px); } }
     @keyframes scrollAnim { 0% { top: -100%; } 100% { top: 100%; } }
@@ -147,7 +187,7 @@
       <div class="hero-content">
         <p class="hero-eyebrow">UX Designer</p>
         <h1 class="hero-name">Hi, I'm<br><em>Dina.</em></h1>
-        <p class="hero-desc">Focused on creating <span class="word-hover indigo">empathetic</span>, <span class="word-hover rose">accessible</span>digital experiences that make daily interactions a little easier.</p>
+        <p class="hero-desc">Focused on creating <span class="word-hover indigo">empathetic</span>, <span class="word-hover rose">accessible</span> experiences that make people's lives a little easier.</p>
         <div class="hero-tags">
           <span class="hero-tag">User Research</span>
           <span class="hero-tag">Interaction Design</span>
@@ -161,7 +201,8 @@
         <div class="blob-dot"></div>
         <div class="blob-dot2"></div>
         <div class="blob-dot3"></div>
-        <img class="hero-img" src="hero-illustration.png" alt="UX Designer illustration" />
+        <img class="hero-phone" src="heroPhone.png" alt="Phone illustration" />
+        <img class="hero-bot" src="heroBot.png" alt="Bot illustration" />
       </div>
     </div>
     <div class="scroll-indicator">
