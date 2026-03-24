@@ -136,7 +136,7 @@
     .contact-heading { font-family: var(--serif); font-size: clamp(48px,7vw,88px); font-weight: 300; line-height: 1.05; letter-spacing: -0.02em; color: var(--cream); max-width: 600px; }
     .contact-heading em { font-style: italic; color: var(--indigo-light); }
     .contact-right { display: flex; flex-direction: column; align-items: flex-end; gap: 24px; }
-    .contact-email { font-family: var(--serif); font-size: 22px; font-weight: 300; color: rgba(250,248,244,0.9); text-decoration: none; transition: color 0.3s; cursor: none; position: relative; }
+    .contact-email { font-family: var(--serif); font-size: 22px; font-weight: 300; text-decoration: none; cursor: none; position: relative; background: linear-gradient(90deg, rgba(250,248,244,0.9) 0%, rgba(250,248,244,0.9) 30%, #a8d8ea 45%, #8b8be8 55%, rgba(250,248,244,0.9) 70%, rgba(250,248,244,0.9) 100%); background-size: 250% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: shimmer 5s linear infinite; }
 .contact-email::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: var(--cream); transition: width 0.3s; }
 .contact-email:hover { color: var(--cream); }
 .contact-email:hover::after { width: 100%; }
