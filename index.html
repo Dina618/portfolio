@@ -31,7 +31,19 @@
     .hero-section { min-height: 100vh; display: flex; align-items: center; padding: 88px 0 80px; position: relative; }
     .hero-inner { max-width: 1100px; margin: 0 auto; padding: 0 48px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 64px; }
     .hero-content { opacity: 0; transform: translateY(24px); animation: fadeUp 1.2s cubic-bezier(0.16,1,0.3,1) 0.2s forwards; }
-    .hero-eyebrow { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 28px; }
+    .hero-eyebrow {
+  font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 28px;
+  background: linear-gradient(90deg, var(--ink-light) 0%, var(--ink-light) 35%, var(--amber) 50%, var(--indigo) 60%, var(--ink-light) 75%, var(--ink-light) 100%);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+@keyframes shimmer {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
     .hero-name { font-family: var(--serif); font-size: clamp(52px,7vw,88px); font-weight: 300; line-height: 1.0; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 28px; }
     .hero-name em { font-style: italic; color: var(--indigo); transition: color 0.3s; } .hero-name em:hover { color: var(--amber); cursor: none; }}
     .hero-desc { font-size: 16px; font-weight: 300; line-height: 1.8; color: var(--ink-light); max-width: 440px; margin-bottom: 32px; }
