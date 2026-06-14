@@ -57,10 +57,10 @@
     .hm-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 5px; }
     .hm-value { font-family: var(--serif); font-size: 14px; color: rgba(255,255,255,0.72); line-height: 1.4; }
     /* Hero right — core image showcase */
-    .hero-right { position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .hero-screen { width: 100%; max-height: 50vh; width: auto; border-radius: 28px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.1); position: relative; z-index: 2; }
-    .hero-screen img { height: 100%; width: auto; display: block; }
-    .hero-screen-placeholder { width: 100%; aspect-ratio: 9/19; background: rgba(255,255,255,0.04); border: 1px dashed rgba(255,255,255,0.12); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
+    .hero-right { position: relative; display: flex; align-items: center; justify-content: center; overflow: visible; }
+    .hero-screen { width: 100%; border-radius: 16px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.08); position: relative; z-index: 2; }
+    .hero-screen img { width: 100%; height: auto; display: block; }
+    .hero-screen-placeholder { width: 100%; aspect-ratio: 16/9; background: rgba(255,255,255,0.04); border: 1px dashed rgba(255,255,255,0.12); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; border-radius: 16px; }
     .hero-screen-placeholder span { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.2); text-align: center; padding: 0 20px; }
     .hero-glow { position: absolute; width: 280px; height: 280px; border-radius: 50%; background: radial-gradient(circle, rgba(169,143,208,0.3) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; }
     .hero-dot-1 { position: absolute; width: 100px; height: 100px; border-radius: 50%; background: rgba(169,143,208,0.12); top: 5%; right: 0; animation: hfloat 7s ease-in-out infinite; }
@@ -310,12 +310,9 @@
         </div>
       </div>
       <div class="hero-right">
-        <div class="hero-glow"></div>
-        <div class="hero-dot-1"></div>
-        <div class="hero-dot-2"></div>
         <div class="hero-screen">
           <img src="images/projects/colour/colour-hero-screen.png" alt="COLOUR App"
-            onerror="this.parentElement.innerHTML='<div class=\'hero-screen-placeholder\'><span>Core Screen — add image:<br>images/projects/colour/<br>colour-hero-screen.png</span></div>'">
+            onerror="this.parentElement.innerHTML='<div class=\'hero-screen-placeholder\'><span>Hero Image — colour-hero-screen.png</span></div>'">
         </div>
       </div>
     </div>
