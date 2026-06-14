@@ -43,7 +43,7 @@
     .progress-item.active .progress-label { opacity: 1; transform: translateX(0); color: var(--cp); }
 
     /* ── HERO ── */
-    .hero { min-height: 50vh; position: relative; overflow: hidden; width: 100%; display: flex; align-items: center; }
+    .hero { min-height: 100vh; position: relative; overflow: hidden; width: 100%; display: flex; align-items: center; }
     .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #1A0A2E 0%, #2D1B4E 45%, #4A2870 75%, #7B5EA7 100%); }
     .hero-bg::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 65% 35%, rgba(169,143,208,0.25) 0%, transparent 55%), radial-gradient(ellipse at 15% 75%, rgba(232,117,106,0.12) 0%, transparent 45%); }
     .hero-inner { position: relative; z-index: 1; max-width: 1280px; margin: 0 auto; padding: 120px 48px 80px; width: 100%; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 64px; align-items: center; overflow: hidden; }
@@ -58,7 +58,7 @@
     .hm-value { font-family: var(--serif); font-size: 14px; color: rgba(255,255,255,0.72); line-height: 1.4; }
     /* Hero right — core image showcase */
     .hero-right { position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .hero-screen { height: 45vh; max-height: 400px; width: auto; border-radius: 28px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.1); position: relative; z-index: 2; }
+    .hero-screen { width: 100%; max-height: 50vh; width: auto; border-radius: 28px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.1); position: relative; z-index: 2; }
     .hero-screen img { height: 100%; width: auto; display: block; }
     .hero-screen-placeholder { width: 100%; aspect-ratio: 9/19; background: rgba(255,255,255,0.04); border: 1px dashed rgba(255,255,255,0.12); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
     .hero-screen-placeholder span { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.2); text-align: center; padding: 0 20px; }
@@ -152,6 +152,18 @@
     .egg-img img { width: 100%; display: block; }
     .egg-img .img-ph { aspect-ratio: 3/4; }
     .egg-lbl { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); }
+
+    /* ── USER FLOW TAGS ── */
+    .userflow-tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 40px; }
+    .uf-tag { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cp); border: 1px solid rgba(123,94,167,0.3); padding: 6px 14px; border-radius: 100px; background: rgba(123,94,167,0.05); }
+
+    /* ── JOURNEY STAGES ── */
+    .journey-stages { display: flex; align-items: flex-start; gap: 0; margin-top: 40px; overflow-x: auto; padding-bottom: 8px; }
+    .journey-stage { flex: 0 0 auto; width: 140px; display: flex; flex-direction: column; gap: 8px; }
+    .js-num { font-family: var(--serif); font-size: 11px; color: var(--cp); letter-spacing: 0.1em; }
+    .js-name { font-size: 13px; font-weight: 500; color: var(--ink); line-height: 1.3; }
+    .js-desc { font-size: 11px; font-weight: 300; color: var(--ink-light); line-height: 1.5; }
+    .journey-arrow { flex: 0 0 24px; text-align: center; color: var(--ink-faint); font-size: 16px; padding-top: 20px; }
 
     /* ── ENGINEER COLLAB ── */
     .collab-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-top: 40px; }
@@ -370,6 +382,86 @@
         <div class="insight-card"><p class="i-num">Insight 02</p><p class="i-text">Identity matters more than content.</p><p class="i-sub">The desire to express who you are — aesthetically, culturally, creatively — drives community attachment more than content quality.</p></div>
         <div class="insight-card"><p class="i-num">Insight 03</p><p class="i-text">Users want low-pressure social interactions.</p><p class="i-sub">The anxiety of cold social spaces is a major barrier. Users need gentler, more contextual entry points into community.</p></div>
       </div>
+
+      <!-- PERSONA -->
+      <p class="s-tag reveal" style="margin-top:80px;">User Personas</p>
+      <h2 class="s-title reveal">Who We're <em>Designing For</em></h2>
+      <p class="s-body reveal">Based on research synthesis, we identified two primary user archetypes that represent the core needs of COLOUR's target audience — niche culture enthusiasts who are underserved by mainstream social platforms.</p>
+      <div class="img-two reveal" style="margin-top:40px;">
+        <div class="img-item">
+          <img src="images/projects/colour/colour-persona-01.png" alt="Persona 1 — Creative Student"
+            onerror="this.parentElement.innerHTML='<div class=\'img-ph\' style=\'aspect-ratio:4/3;\'><span>Persona 01 — Creative Student<br>colour-persona-01.png</span></div>'">
+        </div>
+        <div class="img-item">
+          <img src="images/projects/colour/colour-persona-02.png" alt="Persona 2 — International Student"
+            onerror="this.parentElement.innerHTML='<div class=\'img-ph\' style=\'aspect-ratio:4/3;\'><span>Persona 02 — International Student<br>colour-persona-02.png</span></div>'">
+        </div>
+      </div>
+
+      <!-- USER FLOW -->
+      <p class="s-tag reveal" style="margin-top:80px;">User Flow</p>
+      <h2 class="s-title reveal">Mapping the <em>Product Paths</em></h2>
+      <p class="s-body reveal">We mapped seven core user flows to ensure every interaction path was intentional — from new user onboarding and content discovery, to community joining, post creation, and account management. Edge cases and error states were defined at each decision point.</p>
+      <div class="userflow-tags reveal">
+        <span class="uf-tag">New User Registration</span>
+        <span class="uf-tag">Browse & Explore</span>
+        <span class="uf-tag">Join Community</span>
+        <span class="uf-tag">Create Post</span>
+        <span class="uf-tag">Notifications</span>
+        <span class="uf-tag">Profile & Settings</span>
+        <span class="uf-tag">Error States</span>
+      </div>
+      <div class="img-full reveal">
+        <img src="images/projects/colour/colour-userflow.png" alt="User Flow"
+          onerror="this.parentElement.innerHTML='<div class=\'img-ph\' style=\'aspect-ratio:16/9;\'><span>User Flow Diagram — colour-userflow.png</span></div>'">
+      </div>
+
+      <!-- JOURNEY MAP -->
+      <p class="s-tag reveal" style="margin-top:80px;">User Journey Map</p>
+      <h2 class="s-title reveal">Understanding the <em>Full Experience</em></h2>
+      <p class="s-body reveal">The journey map traces the emotional arc of a new user across six stages — from discovering COLOUR to becoming an active community member. It surfaces pain points at each touchpoint and identifies key design opportunities that directly shaped our product decisions.</p>
+      <div class="journey-stages reveal">
+        <div class="journey-stage">
+          <div class="js-num">01</div>
+          <div class="js-name">Discover & Enter</div>
+          <div class="js-desc">User learns about COLOUR and decides to try it</div>
+        </div>
+        <div class="journey-arrow">→</div>
+        <div class="journey-stage">
+          <div class="js-num">02</div>
+          <div class="js-name">Register & Personalise</div>
+          <div class="js-desc">Create identity, select interests and Digital Family</div>
+        </div>
+        <div class="journey-arrow">→</div>
+        <div class="journey-stage">
+          <div class="js-num">03</div>
+          <div class="js-name">Browse & Explore</div>
+          <div class="js-desc">Discover relevant content and communities</div>
+        </div>
+        <div class="journey-arrow">→</div>
+        <div class="journey-stage">
+          <div class="js-num">04</div>
+          <div class="js-name">Interact & Engage</div>
+          <div class="js-desc">Connect socially, join communities, build relationships</div>
+        </div>
+        <div class="journey-arrow">→</div>
+        <div class="journey-stage">
+          <div class="js-num">05</div>
+          <div class="js-name">Create & Share</div>
+          <div class="js-desc">Express identity, publish content, receive feedback</div>
+        </div>
+        <div class="journey-arrow">→</div>
+        <div class="journey-stage">
+          <div class="js-num">06</div>
+          <div class="js-name">Grow & Manage</div>
+          <div class="js-desc">Deepen belonging, manage personal space</div>
+        </div>
+      </div>
+      <div class="img-scroll-wrap reveal" style="margin-top:32px;">
+        <img src="images/projects/colour/colour-journey.png" alt="User Journey Map"
+          onerror="this.style.cssText='height:460px;width:1400px;background:var(--cream-dark);border-radius:4px;display:block;'">
+      </div>
+      <p class="img-caption reveal">User Journey Map — 6 stages from discovery to long-term engagement</p>
     </div>
 
     <!-- 03 STRATEGY -->
@@ -404,18 +496,18 @@
       <h2 class="s-title reveal">12 Digital <em>Families</em></h2>
       <p class="s-body reveal">The core of COLOUR's differentiation is the <strong>Digital Family system</strong> — 12 distinct cultural worlds, each with its own visual language, identity artefacts, and community culture. Users belong to a Family, not just a category.</p>
       <div class="family-grid reveal">
-        <div class="fam-card"><p class="fam-num">01</p><p class="fam-name">茶话会</p><p class="fam-desc">Eastern warmth, afternoon tea aesthetics, gentle conversations</p><span class="fam-tag">Cozy Culture</span></div>
-        <div class="fam-card"><p class="fam-num">02</p><p class="fam-name">Free</p><p class="fam-desc">Plush textures, healing aesthetics, soft and comforting energy</p><span class="fam-tag">Comfort Core</span></div>
-        <div class="fam-card"><p class="fam-num">03</p><p class="fam-name">绒绒</p><p class="fam-desc">Dolls, cloud valleys, wrapped-in-softness feeling</p><span class="fam-tag">Soft World</span></div>
-        <div class="fam-card"><p class="fam-num">04</p><p class="fam-name">繁星</p><p class="fam-desc">Stickers, starscapes, dreamy girl aesthetic</p><span class="fam-tag">Star Energy</span></div>
-        <div class="fam-card"><p class="fam-num">05</p><p class="fam-name">秘仪</p><p class="fam-desc">Astrology, mysticism, ritual and ceremony</p><span class="fam-tag">Mystic Arts</span></div>
-        <div class="fam-card"><p class="fam-num">06</p><p class="fam-name">HERO·ZONE</p><p class="fam-desc">Transformation, tokusatsu, hero culture</p><span class="fam-tag">Hero Culture</span></div>
-        <div class="fam-card"><p class="fam-num">07</p><p class="fam-name">装甲工坊</p><p class="fam-desc">Gundam, model kits, mechanical aesthetics</p><span class="fam-tag">Mech World</span></div>
-        <div class="fam-card"><p class="fam-num">08</p><p class="fam-name">柜中宇宙</p><p class="fam-desc">Collecting, display culture, museum sensibility</p><span class="fam-tag">Collector's Den</span></div>
-        <div class="fam-card"><p class="fam-num">09</p><p class="fam-name">午夜档案</p><p class="fam-desc">Dark aesthetics, mystery, nocturnal street culture</p><span class="fam-tag">Night Files</span></div>
-        <div class="fam-card"><p class="fam-num">10</p><p class="fam-name">蛋壳广场</p><p class="fam-desc">Public square, cross-family exchange</p><span class="fam-tag">Commons</span></div>
-        <div class="fam-card"><p class="fam-num">11</p><p class="fam-name">Velvet Club</p><p class="fam-desc">Vintage aesthetics, vinyl records, jazz bar dark luxury</p><span class="fam-tag">Retro Luxe</span></div>
-        <div class="fam-card"><p class="fam-num">12</p><p class="fam-name">Glitch Kids</p><p class="fam-desc">Cyberpunk, pixel art, Z-gen creator culture</p><span class="fam-tag">Cyber Art</span></div>
+        <div class="fam-card"><p class="fam-num">01</p><p class="fam-name">Tea Party</p><p class="fam-desc">Elegance, ritual, and collecting — inspired by Lolita culture</p><span class="fam-tag">Soft Pink</span></div>
+        <div class="fam-card"><p class="fam-num">02</p><p class="fam-name">Free Family</p><p class="fam-desc">Freedom, self-expression, and creation — inspired by Furry culture</p><span class="fam-tag">Cyan Blue</span></div>
+        <div class="fam-card"><p class="fam-num">03</p><p class="fam-name">Heart Overload</p><p class="fam-desc">Emotion, intensity, and vulnerability — inspired by Jirai Kei / Yami Kawaii</p><span class="fam-tag">Pink + Black</span></div>
+        <div class="fam-card"><p class="fam-num">04</p><p class="fam-name">Fluffy Family</p><p class="fam-desc">Comfort, healing, and warmth — inspired by Plush & Comfort culture</p><span class="fam-tag">Cream Beige</span></div>
+        <div class="fam-card"><p class="fam-num">05</p><p class="fam-name">Star Family</p><p class="fam-desc">Decoration, playfulness, and creativity — inspired by Decora culture</p><span class="fam-tag">Rainbow Pastels</span></div>
+        <div class="fam-card"><p class="fam-num">06</p><p class="fam-name">Arcane Family</p><p class="fam-desc">Mystery, wisdom, and intuition — inspired by Tarot & Mysticism</p><span class="fam-tag">Deep Violet</span></div>
+        <div class="fam-card"><p class="fam-num">07</p><p class="fam-name">Cheer Family</p><p class="fam-desc">Support, passion, and energy — inspired by Idol Support culture</p><span class="fam-tag">Bright Pink</span></div>
+        <div class="fam-card"><p class="fam-num">08</p><p class="fam-name">HERO·ZONE</p><p class="fam-desc">Courage, justice, and transformation — inspired by Tokusatsu culture</p><span class="fam-tag">Red + Silver</span></div>
+        <div class="fam-card"><p class="fam-num">09</p><p class="fam-name">Heart Choice</p><p class="fam-desc">Romance, connection, and storytelling — inspired by Otome culture</p><span class="fam-tag">Rose Gold</span></div>
+        <div class="fam-card"><p class="fam-num">10</p><p class="fam-name">Dimension Switch</p><p class="fam-desc">Expression, performance, and dual identity — inspired by VTuber culture</p><span class="fam-tag">Neon Purple</span></div>
+        <div class="fam-card"><p class="fam-num">11</p><p class="fam-name">Dream Makers</p><p class="fam-desc">Imagination, creation, and inspiration — inspired by Creative communities</p><span class="fam-tag">Sky Blue</span></div>
+        <div class="fam-card"><p class="fam-num">12</p><p class="fam-name">Cabinet Universe</p><p class="fam-desc">Collecting, curation, and nostalgia — inspired by Collectibles & Hobby culture</p><span class="fam-tag">Indigo Purple</span></div>
       </div>
       <div class="img-full reveal" style="margin-top:64px;">
         <img src="images/projects/colour/colour-families.png" alt="Family Ecosystem" onerror="this.parentElement.innerHTML='<div class=\'img-ph\'><span>Family Ecosystem Visual — coming soon</span></div>'">
