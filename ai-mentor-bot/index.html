@@ -19,27 +19,49 @@
   <body>
     <header class="site-header">
       <a class="brand" href="https://dinada.design/index.html" aria-label="Back to Dina Da portfolio">Dina Da</a>
-      <nav class="nav" aria-label="Case study sections">
-        <a href="#overview">Overview</a>
-        <a href="#research">Research</a>
-        <a href="#design">Design</a>
-        <a href="#validation">Validation</a>
-        <a href="#impact">Impact</a>
+      <nav class="nav" aria-label="Portfolio navigation">
+        <a href="https://dinada.design/index.html">&larr; All Work</a>
       </nav>
     </header>
 
     <main>
       <section class="hero" aria-labelledby="case-title">
         <div class="hero-copy">
-          <p class="eyebrow">AI-powered interview coaching platform</p>
+          <p class="eyebrow">Case Study</p>
           <h1 id="case-title">AI Mentor Bot</h1>
           <p class="hero-lede">
-            A career companion that blends video interview analysis with encouragement-first coaching and
-            human mentor support when users need more than another AI suggestion.
+            Designing an AI-powered interview coaching platform that blends video analysis,
+            encouragement-first feedback, and human mentor support for job seekers.
           </p>
+          <div class="hero-meta" aria-label="Project summary">
+            <div>
+              <span>Role</span>
+              <strong>Sole UX Designer</strong>
+            </div>
+            <div>
+              <span>Timeline</span>
+              <strong>10-week internship</strong>
+            </div>
+            <div>
+              <span>Team</span>
+              <strong>1 PM + 4 Engineers</strong>
+            </div>
+            <div>
+              <span>Tools</span>
+              <strong>Figma, Jira, research docs</strong>
+            </div>
+            <div>
+              <span>Scope</span>
+              <strong>Research, product strategy, core flows</strong>
+            </div>
+            <div>
+              <span>Output</span>
+              <strong>High-fidelity mobile screens delivered to client</strong>
+            </div>
+          </div>
         </div>
         <div class="hero-art">
-          <img src="assets/image.jpg" alt="AI Mentor Bot mobile app hero screens">
+          <img src="../images/covers/project1.png" alt="AI Mentor Bot mobile app preview screens">
         </div>
       </section>
 
@@ -76,6 +98,16 @@
               left unmet needs around empathetic failure handling, comprehensive video feedback, and a
               smooth AI-to-human support funnel.
             </p>
+            <p>
+              To validate the gap, I combined 5 semi-structured user interviews with 32 survey responses,
+              then used 20 valid responses for analysis. The strongest pattern was not a lack of motivation:
+              users were practicing repeatedly, but did not know when their problem required human judgment.
+            </p>
+            <p>
+              One career changer described the problem clearly: "I kept doing mock interviews with AI for
+              weeks. I thought I just needed more practice, but actually I had a completely wrong strategy
+              the whole time."
+            </p>
           </div>
         </div>
         <div class="needs-grid" aria-label="Market gap needs analysis">
@@ -93,7 +125,7 @@
               <li>Empathetic failure handling</li>
               <li>AI plus human dual-track coaching</li>
               <li>Comprehensive video analysis across 6+ dimensions</li>
-              <li>Low-score user conversion funnel</li>
+              <li>Path from low scores to human mentor support</li>
             </ul>
           </article>
           <article class="needs-callout">
@@ -117,6 +149,11 @@
             <p>
               The design centers on recent graduates who feel behind before their first role, and career
               changers who need both tactical advice and emotional safety while repositioning themselves.
+            </p>
+            <p>
+              These two groups shaped different product requirements: recent graduates needed confidence and
+              affordable guidance, while career changers needed strategy diagnosis, reassurance, and a way to
+              understand whether repeated rejection pointed to a deeper positioning problem.
             </p>
           </div>
         </div>
@@ -151,21 +188,50 @@
             <span>01</span>
             <h3>Adaptive interview practice</h3>
             <p>Job links become tailored interview questions and realistic prompts.</p>
+            <p>Design decision: use role-specific keywords from the job link so the experience feels targeted rather than generic.</p>
           </article>
           <article>
             <span>02</span>
             <h3>Empathetic coaching</h3>
             <p>Feedback is framed as progress, not failure, so users keep moving.</p>
+            <p>Design decision: replace harsh fail states with directional copy that tells users what to improve next.</p>
           </article>
           <article>
             <span>03</span>
             <h3>Mentor matching</h3>
             <p>Low-score moments create a natural bridge to paid human support.</p>
+            <p>Design decision: surface mentor support after repeated low-score sessions, so it reads as help rather than an upsell.</p>
           </article>
           <article>
             <span>04</span>
             <h3>Progress tracking</h3>
             <p>Users can review trends, history, and improvement suggestions.</p>
+            <p>Design decision: show progress over time instead of only a single score, so small improvements remain visible.</p>
+          </article>
+        </div>
+        <div class="content-grid">
+          <div>
+            <h2>Three principles guided the product decisions.</h2>
+          </div>
+          <div class="copy-block">
+            <p>
+              The team had to balance technical accuracy, emotional safety, and business goals. These
+              principles kept the experience grounded when feature ideas pulled in different directions.
+            </p>
+          </div>
+        </div>
+        <div class="learning-list" aria-label="Design principles">
+          <article>
+            <h3>Honesty over comfort</h3>
+            <p>Feedback should be specific and realistic. A low score should explain what lowered the score, not simply tell users to keep trying.</p>
+          </article>
+          <article>
+            <h3>Progress, not performance</h3>
+            <p>Result screens frame feedback as a next step forward, reducing shame while preserving useful critique.</p>
+          </article>
+          <article>
+            <h3>Human when it matters</h3>
+            <p>AI supports repeated practice, while mentors step in when patterns suggest a strategy gap rather than a skill gap.</p>
           </article>
         </div>
         <img class="wide-shot tall" src="assets/image-8.jpg" alt="Information architecture flow for the AI Mentor Bot app">
@@ -184,7 +250,26 @@
               treated text mode as an avoidance mechanism, while direct video practice felt more realistic
               and useful.
             </p>
+            <p>
+              In a 24-participant validation test, the direct video flow reached a 67% completion rate,
+              compared with 48% for the text warm-up flow. The key insight was that comfort can become
+              avoidance when users are anxious about speaking on camera.
+            </p>
           </div>
+        </div>
+        <div class="learning-list" aria-label="A/B test summary">
+          <article>
+            <h3>Variant A: text warm-up</h3>
+            <p>Users could practice with text prompts before recording. Many used it to delay the harder video task.</p>
+          </article>
+          <article>
+            <h3>Variant B: direct video</h3>
+            <p>Users entered a recorded mock interview immediately. This felt more realistic and reduced time to first attempt.</p>
+          </article>
+          <article>
+            <h3>Selected direction</h3>
+            <p>The direct video path became the primary onboarding flow because it better matched the real interview behavior we needed users to practice.</p>
+          </article>
         </div>
         <div class="image-stack">
           <img src="assets/image-10.jpg" alt="A/B test design with hypotheses, screens, insights, and results">
@@ -199,7 +284,7 @@
         <div class="metrics">
           <div><strong>67%</strong><span>Completion rate</span></div>
           <div><strong>31%</strong><span>Reduction in user anxiety scores</span></div>
-          <div><strong>23%</strong><span>Increase in mentor conversion</span></div>
+          <div><strong>23%</strong><span>Mentor CTA click-through</span></div>
           <div><strong>4.5/5</strong><span>User satisfaction</span></div>
         </div>
         <div class="content-grid">
@@ -226,6 +311,31 @@
             <h3>Emotional design drives retention</h3>
             <p>Compassion as a feature helped reduce abandonment by making stressful feedback feel actionable.</p>
           </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-kicker">07 / Reflection</div>
+        <div class="content-grid">
+          <div>
+            <h2>Designing emotional safety required the same rigor as usability.</h2>
+          </div>
+          <div class="copy-block">
+            <p>
+              This was my first project as the sole designer on a real product team. Working with a PM and
+              engineers taught me to communicate design rationale not only through visuals, but through
+              logic, constraints, and measurable product behavior.
+            </p>
+            <p>
+              My biggest learning was that "gentle" is not always helpful. Users did not want vague
+              reassurance; they wanted precise feedback delivered in a way that respected how stressful
+              interviews can feel.
+            </p>
+            <p>
+              If the product continued, I would build out verified mentor profiles, test peer coaching for
+              accountability, and run a larger study to validate the anxiety reduction finding.
+            </p>
+          </div>
         </div>
       </section>
 
