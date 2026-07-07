@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Boston Cares Website Redesign | Dina Da Portfolio</title>
+    <meta
+      name="description"
+      content="Boston Cares website redesign case study focused on navigation, volunteer discovery, donation conversion, corporate pages, and mobile accessibility."
+    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="boston-cares.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="https://dinada.design/index.html" aria-label="Back to Dina Da portfolio">Dina Da</a>
+      <nav class="nav" aria-label="Portfolio navigation">
+        <a href="https://dinada.design/index.html">&larr; All Work</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="case-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Case Study</p>
+          <h1 id="case-title">Boston Cares</h1>
+          <p class="hero-lede">
+            Redesigning New England's largest volunteer platform to serve individual volunteers,
+            nonprofit partners, and corporate teams without losing any of them.
+          </p>
+          <ul class="hero-checklist" aria-label="Project highlights">
+            <li>Desktop & mobile screens</li>
+            <li>Made with auto layout</li>
+            <li>Styles & components based</li>
+            <li>Simplifying volunteer coordination for three audiences</li>
+          </ul>
+        </div>
+        <div class="hero-art">
+          <img src="assets/hero.png" alt="Boston Cares redesigned desktop and mobile screens">
+        </div>
+        <div class="hero-meta" aria-label="Project summary">
+          <div>
+            <span>Role</span>
+            <strong>Solo UX Designer — research, IA, interaction design, visual design, WCAG audit</strong>
+          </div>
+          <div>
+            <span>Team</span>
+            <strong>Individual project — all work completed independently</strong>
+          </div>
+          <div>
+            <span>Timeline</span>
+            <strong>April – June 2025 · 2 months</strong>
+          </div>
+          <div>
+            <span>Type</span>
+            <strong>Academic / Coursework project</strong>
+          </div>
+          <div>
+            <span>Tools</span>
+            <strong>Figma</strong>
+          </div>
+          <div>
+            <span>Scope</span>
+            <strong>Homepage · Navigation · Volunteer discovery · Donation · Corporate pages · Mobile responsive</strong>
+          </div>
+        </div>
+        <div class="hero-context">
+          <div>
+            <span>Project Context</span>
+            <p>
+              Boston Cares is New England's largest volunteer agency, connecting individuals,
+              companies, and nonprofits through meaningful service opportunities.
+            </p>
+          </div>
+          <dl>
+            <div>
+              <dt>10,000+</dt>
+              <dd>Annual volunteers</dd>
+            </div>
+            <div>
+              <dt>150+</dt>
+              <dd>Partner organizations</dd>
+            </div>
+            <div>
+              <dt>1.3M</dt>
+              <dd>Hours served</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="section intro" id="overview">
+        <div class="section-kicker">01 / Overview</div>
+        <div class="content-grid">
+          <div>
+            <h2>A good mission, buried under a website that worked against its own users.</h2>
+          </div>
+          <div class="copy-block">
+            <p>
+              Boston Cares connects 10,000+ annual volunteers with 150+ partner organizations,
+              representing 1.3M hours of service. The mission was clear. The website was not.
+            </p>
+            <p>
+              The original site used one structure for three very different audiences: individual
+              volunteers, corporate partners, and nonprofit organizations. Navigation was crowded,
+              donation was buried, and volunteer listings were hard to search or scan.
+            </p>
+          </div>
+        </div>
+        <div class="insight-grid">
+          <article>
+            <span>01</span>
+            <h3>No audience-specific entry points</h3>
+            <p>All visitors landed on the same homepage with no clear direction for their role.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Donation CTA hidden</h3>
+            <p>The donate action appeared inside a dropdown, invisible to top-level scanning.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Overloaded dropdowns</h3>
+            <p>Some navigation menus held 9+ sub-items with overlapping labels.</p>
+          </article>
+        </div>
+        <img class="wide-shot" src="assets/problem-organization.png" alt="Problem organization slide showing original website issues and Fogg behavior model analysis">
+      </section>
+
+      <section class="section" id="research">
+        <div class="section-kicker">02 / Research</div>
+        <div class="content-grid">
+          <div>
+            <h2>Comparable platforms had already solved parts of the problem.</h2>
+          </div>
+          <div class="copy-block">
+            <p>
+              I compared Boston Cares with New York Cares, Chicago Cares, and VolunteerMatch across
+              user segmentation, donation CTA visibility, mobile optimization, and visual hierarchy.
+            </p>
+            <p>
+              The gap was not Boston Cares' mission or content. It was the structural decisions that
+              made action harder than intention.
+            </p>
+          </div>
+        </div>
+        <img class="wide-shot" src="assets/competitive-analysis.png" alt="Competitive analysis matrix comparing Boston Cares with peer volunteer platforms">
+        <div class="content-grid section-spacer">
+          <div>
+            <h2>Three audiences had three different reasons to leave without acting.</h2>
+          </div>
+          <div class="copy-block">
+            <p>
+              Research methods included heuristic evaluation, competitive analysis of 3 platforms,
+              and user interviews with active Boston-area volunteers.
+            </p>
+          </div>
+        </div>
+        <img class="wide-shot" src="assets/personas.png" alt="Persona cards for individual volunteer, corporate partner, and nonprofit organization">
+      </section>
+
+      <section class="section" id="define">
+        <div class="section-kicker">03 / Define</div>
+        <div class="content-grid">
+          <div>
+            <h2>The original navigation served the organization. The redesign serves the user.</h2>
+          </div>
+          <div class="copy-block">
+            <p>
+              The new IA reduces 5 competing top-level menu areas into 4 clearer categories:
+              About Us, Take Action, Support Us, and Resources.
+            </p>
+            <p>
+              "Take Action" becomes the unified hub for all participation types, reducing decision
+              paralysis while still supporting individual, nonprofit, and corporate pathways.
+            </p>
+          </div>
+        </div>
+        <div class="principles-grid">
+          <article>
+            <h3>Hybrid organization</h3>
+            <p>Task-based top level, audience-based second level.</p>
+          </article>
+          <article>
+            <h3>Progressive disclosure</h3>
+            <p>Information appears when relevant, not all at once.</p>
+          </article>
+          <article>
+            <h3>Consistent labeling</h3>
+            <p>"For Individuals", "For Nonprofits", and "For Companies" appear throughout.</p>
+          </article>
+          <article>
+            <h3>Focused entry point</h3>
+            <p>One participation hub keeps the site easier to understand.</p>
+          </article>
+        </div>
+        <div class="image-stack">
+          <img src="assets/information-architecture.png" alt="Information architecture before and after comparison">
+          <img src="assets/navigation-before-after.png" alt="Navigation before and after comparison">
+          <img src="assets/user-flows.png" alt="User flows for individual volunteers, nonprofit partners, and corporate partners">
+        </div>
+      </section>
+
+      <section class="section" id="wireframe">
+        <div class="section-kicker">04 / Wireframe</div>
+        <div class="content-grid">
+          <div>
+            <h2>Three wireframe versions in five days, testing structure before pixels.</h2>
+          </div>
+          <div class="copy-block">
+            <p>
+              I used rapid prototyping to validate layout decisions early. The goal was to test
+              information hierarchy with users before investing in high-fidelity visual design.
+            </p>
+          </div>
+        </div>
+        <div class="timeline-grid">
+          <article>
+            <span>Week 1</span>
+            <h3>Paper sketches</h3>
+            <p>Explored where audience segmentation should appear.</p>
+          </article>
+          <article>
+            <span>Week 2</span>
+            <h3>Figma wireframes</h3>
+            <p>Tested with 9 volunteers and added opportunity cards to the homepage.</p>
+          </article>
+          <article>
+            <span>Week 3</span>
+            <h3>Hi-fi direction</h3>
+            <p>Validated navigation, card layout, and donation flow with stakeholders.</p>
+          </article>
+        </div>
+        <img class="wide-shot" src="assets/wireframes.png" alt="Lo-fi wireframes and rapid prototyping approach">
+      </section>
+
+      <section class="section" id="design">
+        <div class="section-kicker">05 / Design</div>
+        <div class="content-grid">
+          <div>
+            <h2>One homepage. Three clear paths forward.</h2>
+          </div>
+          <div class="copy-block">
+            <p>
+              The homepage had one job: help each audience find the right starting point within
+              seconds. Audience cards, persistent Donate CTA, and visible impact numbers create
+              clear direction without making users read the whole page first.
+            </p>
+          </div>
+        </div>
+        <div class="metrics">
+          <div><strong>67%</strong><span>found Donate immediately</span></div>
+          <div><strong>85%</strong><span>agreed with "Take Action"</span></div>
+          <div><strong>73%</strong><span>identified all three user types</span></div>
+          <div><strong>89%</strong><span>preferred card layout</span></div>
+        </div>
+        <div class="image-stack">
+          <img src="assets/homepage-design.png" alt="Homepage desktop design decisions">
+          <img src="assets/volunteer-discovery.png" alt="Volunteer discovery page with filters and event cards">
+          <img src="assets/corporate-pages.png" alt="Corporate and nonprofit partnership pages">
+          <img src="assets/donation-page.png" alt="Donation page simplified flow and design decisions">
+          <img src="assets/footer-before-after.png" alt="Footer optimized layout before and after">
+          <img src="assets/mobile-design.png" alt="Mobile responsive design screens for Boston Cares">
+        </div>
+      </section>
+
+      <section class="section" id="system">
+        <div class="section-kicker">06 / Design System</div>
+        <div class="content-grid">
+          <div>
+            <h2>A visual language built for accessibility and trust.</h2>
+          </div>
+          <div class="copy-block">
+            <p>
+              Blue supports credibility and accessibility for a platform asking people to give
+              time and money. Magenta is reserved for donation CTAs so the highest-value action
+              remains consistent and easy to locate.
+            </p>
+            <p>
+              Components were built in Figma with reusable states and auto layout: cards, buttons,
+              form fields, filter chips, and tags.
+            </p>
+          </div>
+        </div>
+        <div class="image-stack">
+          <img src="assets/design-system-color-scheme.png" alt="Boston Cares redesign color scheme and accessibility rationale">
+          <img src="assets/typography.png" alt="Typography system for Boston Cares redesign">
+          <img src="assets/design-language-components.png" alt="Boston Cares component specifications, buttons, cards, and spacing rules">
+        </div>
+      </section>
+
+      <section class="section impact" id="impact">
+        <div class="section-kicker">07 / Impact & Reflection</div>
+        <div class="content-grid">
+          <div>
+            <h2>What the numbers say, and what the numbers cannot.</h2>
+          </div>
+          <div class="copy-block">
+            <p>
+              This was an academic redesign project. Testing was conducted through prototype
+              walkthroughs and informal sessions, not live site analytics. The numbers reflect
+              usability study findings, not production data.
+            </p>
+            <p>
+              The biggest shift was realizing this was not primarily a visual problem. When a
+              volunteer gives up and searches Google instead, and an HR manager cannot tell
+              whether the site is relevant to her company, the core issue is structure.
+            </p>
+          </div>
+        </div>
+        <div class="learning-list" aria-label="Key learnings">
+          <article>
+            <h3>Structure before style</h3>
+            <p>The redesign became stronger once the focus moved from visual polish to navigation and decision paths.</p>
+          </article>
+          <article>
+            <h3>One brand, three journeys</h3>
+            <p>Individual, nonprofit, and corporate users needed separate flows without fragmenting the experience.</p>
+          </article>
+          <article>
+            <h3>Trust belongs near commitment</h3>
+            <p>Donation and partnership pages needed proof, process, and reassurance at the moment users decide.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <a href="https://dinada.design/index.html">Back to portfolio</a>
+      <span>Boston Cares case study</span>
+    </footer>
+  </body>
+</html>
