@@ -94,7 +94,9 @@
       object-fit: contain;
       bottom: 60px;
       right: 20px;
-      animation: botWobble 3s ease-in-out infinite;
+      transform-origin: 52% 38%;
+      will-change: transform;
+      filter: drop-shadow(0 14px 26px rgba(91,91,214,0.12));
       z-index: 2;
     }
 
@@ -112,6 +114,16 @@
       60%  { transform: translateY(-8px) rotate(-1deg); }
       80%  { transform: translateY(-4px) rotate(1deg); }
       100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-bot,
+      .hero-phone,
+      .blob-dot,
+      .blob-dot2,
+      .blob-dot3 {
+        animation: none !important;
+      }
     }
 
     .scroll-indicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: 0; animation: fadeUp 1s ease 1.8s forwards; }
@@ -294,19 +306,52 @@
       var cur = document.getElementById('cur');
       var ring = document.getElementById('cur-ring');
       var mx = 0, my = 0, rx = 0, ry = 0;
+      var heroVisual = document.querySelector('.hero-visual');
+      var heroBot = document.querySelector('.hero-bot');
+      var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var botTargetX = 0, botTargetY = 0, botX = 0, botY = 0;
 
       window.addEventListener('mousemove', function(e) {
         mx = e.clientX;
         my = e.clientY;
         cur.style.left = (mx - 5) + 'px';
         cur.style.top  = (my - 5) + 'px';
+
+        if (heroVisual && heroBot && !prefersReducedMotion) {
+          var rect = heroVisual.getBoundingClientRect();
+          var inHero = rect.top < window.innerHeight && rect.bottom > 0;
+          if (inHero) {
+            botTargetX = Math.max(-1, Math.min(1, (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2)));
+            botTargetY = Math.max(-1, Math.min(1, (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2)));
+          }
+        }
       });
+
+      if (heroVisual) {
+        heroVisual.addEventListener('mouseleave', function() {
+          botTargetX = 0;
+          botTargetY = 0;
+        });
+      }
 
       (function tick() {
         rx += (mx - rx) * 0.15;
         ry += (my - ry) * 0.15;
         ring.style.left = (rx - 18) + 'px';
         ring.style.top  = (ry - 18) + 'px';
+
+        if (heroBot && !prefersReducedMotion) {
+          botX += (botTargetX - botX) * 0.08;
+          botY += (botTargetY - botY) * 0.08;
+          var idle = Math.sin(Date.now() / 620) * 4;
+          var lift = Math.sin(Date.now() / 900) * 2;
+          var moveX = botX * 16;
+          var moveY = botY * 10 + idle;
+          var rotate = botX * 9;
+          var scale = 1 + Math.abs(botX) * 0.025;
+          heroBot.style.transform = 'translate3d(' + moveX.toFixed(2) + 'px, ' + (moveY + lift).toFixed(2) + 'px, 0) rotate(' + rotate.toFixed(2) + 'deg) scale(' + scale.toFixed(3) + ')';
+        }
+
         requestAnimationFrame(tick);
       })();
 
