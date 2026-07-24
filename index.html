@@ -242,6 +242,7 @@
     .section-inner { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
     .section-label { font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 64px; display: flex; align-items: center; gap: 16px; }
     #projects .section-label { margin-bottom: 20px; }
+    #believe .section-label { margin-bottom: 28px; }
     .section-label::after { content: ''; flex: 1; max-width: 48px; height: 1px; background: var(--ink-faint); }
     .projects-list { display: flex; flex-direction: column; }
     .project-card { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid rgba(26,24,20,0.08); padding: 48px 0; text-decoration: none; color: inherit; position: relative; transition: padding 0.4s; align-items: center; cursor: none; }
@@ -262,17 +263,25 @@
     .project-card:hover .project-image { transform: scale(1.02) translateY(-4px); box-shadow: 0 24px 64px rgba(26,24,20,0.12); }
     .project-arrow { position: absolute; top: 48px; right: 0; width: 40px; height: 40px; border: 1px solid rgba(26,24,20,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--ink-light); transition: all 0.3s; z-index: 1; }
     .project-card:hover .project-arrow { background: var(--indigo); border-color: var(--indigo); color: white; transform: rotate(45deg); }
+    #believe { padding-top: 40px; }
+    .believe-inner { display: grid; grid-template-columns: 1fr 220px; gap: 64px; align-items: start; }
+    .believe-about-link { display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: none; padding-top: 4px; }
+    .believe-about-arrow { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(26,24,20,0.15); display: flex; align-items: center; justify-content: center; color: var(--ink-light); flex-shrink: 0; transition: all 0.3s; }
+    .believe-about-link:hover .believe-about-arrow { background: var(--indigo); border-color: var(--indigo); color: white; transform: rotate(45deg); }
+    .believe-about-text { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); transition: color 0.3s; }
+    .believe-about-link:hover .believe-about-text { color: var(--indigo); }
+    .belief-title { font-family: var(--serif); font-size: clamp(24px,3vw,32px); font-weight: 400; line-height: 1.3; color: var(--ink); margin-bottom: 32px; max-width: 520px; }
+    .belief-title em { font-style: italic; color: var(--indigo); }
+    .belief-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .belief-card { display: flex; flex-direction: column; gap: 12px; }
+    .belief-icon { color: var(--ink); }
+    .belief-card-title { font-size: 14px; font-weight: 500; color: var(--ink); }
+    .belief-card-text { font-size: 12.5px; line-height: 1.7; color: var(--ink-light); }
     #contact { background: var(--ink); color: var(--cream); }
-    .contact-inner { max-width: 1100px; margin: 0 auto; padding: 0 48px; display: flex; justify-content: space-between; align-items: flex-start; }
+    .contact-inner { max-width: 1100px; margin: 0 auto; padding: 0 48px; display: flex; justify-content: space-between; align-items: flex-end; }
     .contact-heading { font-family: var(--serif); font-size: clamp(36px,5vw,64px); font-weight: 300; line-height: 1.15; letter-spacing: -0.02em; color: var(--cream); max-width: 560px; }
 .contact-heading em { font-style: italic; color: var(--indigo-light); font-size: 0.75em; display: block; margin-top: 8px; opacity: 0.85; }
-    .contact-right { display: flex; flex-direction: column; align-items: flex-end; margin-top: 14px; }
-    .contact-details { display: flex; flex-direction: column; align-items: flex-end; gap: 16px; margin-top: clamp(70px, 9vw, 110px); }
-    .contact-about-link { display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: none; }
-    .contact-about-arrow { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(250,248,244,0.25); display: flex; align-items: center; justify-content: center; color: rgba(250,248,244,0.7); flex-shrink: 0; transition: all 0.3s; }
-    .contact-about-link:hover .contact-about-arrow { background: var(--indigo); border-color: var(--indigo); color: var(--cream); transform: rotate(45deg); }
-    .contact-about-text { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(250,248,244,0.7); transition: color 0.3s; }
-    .contact-about-link:hover .contact-about-text { color: var(--cream); }
+    .contact-right { display: flex; flex-direction: column; align-items: flex-end; gap: 24px; }
     .contact-email { display: inline-flex; align-items: center; gap: 10px; font-family: var(--serif); font-size: 22px; font-weight: 300; text-decoration: none; cursor: none; position: relative; background: linear-gradient(90deg, rgba(250,248,244,0.9) 0%, rgba(250,248,244,0.9) 30%, #a8d8ea 45%, #8b8be8 55%, rgba(250,248,244,0.9) 70%, rgba(250,248,244,0.9) 100%); background-size: 250% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: shimmer 5s linear infinite; }
 .contact-email::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: var(--cream); transition: width 0.3s; }
 .contact-email:hover { color: var(--cream); }
@@ -317,9 +326,10 @@
       .project-card::before { left: -24px; right: -24px; }
       .project-card:hover { padding: 48px 0; }
       .project-right { justify-content: flex-start; }
+      .believe-inner { grid-template-columns: 1fr; gap: 24px; }
+      .belief-cards { grid-template-columns: 1fr; }
       .contact-inner { flex-direction: column; align-items: flex-start; gap: 48px; }
-      .contact-right { align-items: flex-start; margin-top: 0; }
-      .contact-details { align-items: flex-start; margin-top: 32px; }
+      .contact-right { align-items: flex-start; }
       .contact-links { flex-wrap: wrap; }
       body { cursor: auto; }
       #cur, #cur-ring { display: none; }
@@ -420,20 +430,46 @@
     </div>
   </section>
 
+  <section id="believe">
+    <div class="section-inner believe-inner reveal">
+      <div class="believe-right">
+        <p class="section-label">I Believe</p>
+        <h2 class="belief-title">Good design isn't just seen.<br>It's <em>felt</em>.</h2>
+        <div class="belief-cards">
+          <div class="belief-card">
+            <div class="belief-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17.5" cy="8" r="2.3" opacity="0.5"/><path d="M16 13.2c2.3.4 4 2.4 4 4.8" opacity="0.5"/></svg></div>
+            <p class="belief-card-title">Empathy first</p>
+            <p class="belief-card-text">I start with people — understanding their needs, behaviors, and challenges.</p>
+          </div>
+          <div class="belief-card">
+            <div class="belief-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="11" height="11" rx="1.5"/><rect x="10" y="10" width="11" height="11" rx="1.5"/></svg></div>
+            <p class="belief-card-title">Intentional &amp; simple</p>
+            <p class="belief-card-text">I remove complexity and design with clarity, purpose, and attention to detail.</p>
+          </div>
+          <div class="belief-card">
+            <div class="belief-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-9"/><path d="M15 6h6v6"/></svg></div>
+            <p class="belief-card-title">Impact driven</p>
+            <p class="belief-card-text">I validate with data and iteration to deliver meaningful outcomes for users and business.</p>
+          </div>
+        </div>
+      </div>
+      <div class="believe-left">
+        <a href="about.html" class="believe-about-link">
+          <span class="believe-about-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H4M13 1v9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+          <span class="believe-about-text">More About Me</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <section id="contact">
     <div class="contact-inner reveal">
       <h2 class="contact-heading">Open to new opportunities.<br><em>Let's build something meaningful.</em></h2>
       <div class="contact-right">
-        <a href="about.html" class="contact-about-link">
-          <span class="contact-about-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H4M13 1v9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
-          <span class="contact-about-text">More About Me</span>
-        </a>
-        <div class="contact-details">
-          <a href="mailto:dddina7788@gmail.com" class="contact-email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3.5 6.5l8.5 7 8.5-7"/></svg>dddina7788@gmail.com</a>
-          <div class="contact-links">
-            <a href="https://www.linkedin.com/in/dina-da/" target="_blank" class="contact-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="3"/><line x1="7.5" y1="10" x2="7.5" y2="17"/><circle cx="7.5" cy="6.7" r="0.6" fill="currentColor"/><path d="M11.5 17v-4.2c0-1.6 1-2.8 2.5-2.8s2.5 1.2 2.5 2.8V17"/><line x1="11.5" y1="10" x2="11.5" y2="17"/></svg>LinkedIn</a>
-            <a href="https://drive.google.com/file/d/1seuoZxWrWPdVoeJk1x11_MFywn38fnJx/view?usp=drive_link" target="_blank" class="contact-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2.5h9l4 4V21a1 1 0 01-1 1H6a1 1 0 01-1-1V3.5a1 1 0 011-1z"/><path d="M15 2.5V7h4"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="15.5" x2="16" y2="15.5"/><line x1="8" y1="19" x2="13" y2="19"/></svg>Resume</a>
-          </div>
+        <a href="mailto:dddina7788@gmail.com" class="contact-email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3.5 6.5l8.5 7 8.5-7"/></svg>dddina7788@gmail.com</a>
+        <div class="contact-links">
+          <a href="https://www.linkedin.com/in/dina-da/" target="_blank" class="contact-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="3"/><line x1="7.5" y1="10" x2="7.5" y2="17"/><circle cx="7.5" cy="6.7" r="0.6" fill="currentColor"/><path d="M11.5 17v-4.2c0-1.6 1-2.8 2.5-2.8s2.5 1.2 2.5 2.8V17"/><line x1="11.5" y1="10" x2="11.5" y2="17"/></svg>LinkedIn</a>
+          <a href="https://drive.google.com/file/d/1seuoZxWrWPdVoeJk1x11_MFywn38fnJx/view?usp=drive_link" target="_blank" class="contact-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2.5h9l4 4V21a1 1 0 01-1 1H6a1 1 0 01-1-1V3.5a1 1 0 011-1z"/><path d="M15 2.5V7h4"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="15.5" x2="16" y2="15.5"/><line x1="8" y1="19" x2="13" y2="19"/></svg>Resume</a>
         </div>
       </div>
     </div>
