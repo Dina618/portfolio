@@ -55,7 +55,22 @@
     .hello-name { font-family: var(--serif); font-size: clamp(48px,6vw,80px); font-weight: 300; line-height: 1.0; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 24px; }
     .hello-name em { font-style: italic; color: var(--indigo); }
     .hello-bio { font-size: 16px; font-weight: 300; line-height: 1.85; color: var(--ink-light); max-width: 560px; }
-    .hello-bio strong { color: var(--ink); font-weight: 500; }
+    .hello-bio strong { color: var(--ink); font-weight: 500; } 
+    .hello-quote {
+  display: block;
+  margin: 24px 0;
+  padding-left: 20px;
+
+  border-left: 2px solid var(--indigo);
+
+  font-family: var(--serif);
+  font-size: 30px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.35;
+
+  color: var(--ink);
+}
     .section-heading { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
     .section-heading::after { content: ''; flex: 1; height: 1px; background: rgba(26,24,20,0.08); }
     .timeline { display: flex; flex-direction: column; }
@@ -124,7 +139,7 @@
     <div class="right-col">
       <div class="reveal">
         <h1 class="hello-name">Hello,<br>I'm <em>Dina.</em></h1>
-        <p class="hello-bio">I enjoy turning messy ideas into experiences that feel simple, thoughtful, and surprisingly human.<br><br>Whether I'm designing an AI conversation, improving a sign-up flow, or obsessing over the tiniest interaction, I'm always asking myself:<br><br><strong>"Will this make someone's day a little easier?"</strong><br><br> Outside of design, you'll probably find me sketching, reading about psychology, experimenting with new AI tools, or occasionally going down an astrology rabbit hole—just for fun. I believe curiosity fuels creativity, and the more I learn about people, the better designer I become.<br><br>Today, <strong>product design</strong>is where all of those interests come together.</p>
+        <p class="hello-bio">I enjoy turning messy ideas into experiences that feel simple, thoughtful, and surprisingly human.<br><br>Whether I'm designing an AI conversation, improving a sign-up flow, or obsessing over the tiniest interaction, I'm always asking myself:<br><br><span class="hello-quote"> "Will this make someone's day a little easier?" </span><br><br> Outside of design, you'll probably find me sketching, reading about psychology, experimenting with new AI tools, or occasionally going down an astrology rabbit hole—just for fun. I believe curiosity fuels creativity, and the more I learn about people, the better designer I become.<br><br>Today, <strong>product design</strong>is where all of those interests come together.</p>
       </div>
       <div class="reveal">
         <p class="section-heading">Experience</p>
