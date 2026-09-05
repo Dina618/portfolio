@@ -16,77 +16,107 @@
 </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --cream: #FAF8F4; --cream-dark: #F2EFE9; --ink: #1A1814;
-      --ink-light: #6B6560; --ink-faint: #B8B3AE;
+      --cream: #E3E1DC; --cream-dark: #D7D4CD; --footer-wash: #D1CEC7; --ink: #1A1814;
+      --ink-light: #6B6560; --ink-faint: #A9A49E;
       --indigo: #5B5BD6; --indigo-light: #8B8BE8; --rose: #E8756A; --amber: #D4A847;
-      --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'DM Sans', sans-serif;
+      --toy-ink: #191817; --toy-muted: #716D66; --toy-dina: #6F6A60;
+      --serif: 'Instrument Serif', Georgia, serif; --sans: 'Outfit', sans-serif;
     }
     html { scroll-behavior: smooth; }
     body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; overflow-x: hidden; cursor: none; }
     a, button { cursor: none; }
     #cur { position: fixed; width: 10px; height: 10px; background: #5B5BD6; border-radius: 50%; pointer-events: none; z-index: 99999; top: 0; left: 0; }
     #cur-ring { position: fixed; width: 36px; height: 36px; border: 1.5px solid rgba(91,91,214,0.55); border-radius: 50%; pointer-events: none; z-index: 99998; top: 0; left: 0; transition: width 0.2s, height 0.2s; }
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 24px 0; background: rgba(250,248,244,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,24,20,0.06); }
-    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 48px; display: flex; justify-content: space-between; align-items: center; }
-    .nav-name { font-family: var(--serif); font-size: 18px; font-weight: 500; letter-spacing: 0.02em; text-decoration: none; color: var(--ink); }
-    .nav-links { display: flex; gap: 40px; list-style: none; }
-    .nav-links a { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; transition: color 0.2s; position: relative; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 22px 0; background: rgba(227,225,220,0.5); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(26,24,20,0.05); }
+    .nav-inner { max-width: none; margin: 0 auto; padding: 0 clamp(24px,3.2vw,52px); display: grid; grid-template-columns: auto 1fr auto; gap: clamp(30px,6vw,96px); align-items: center; }
+    .nav-name { font-family: var(--serif); font-size: 32px; font-style: italic; font-weight: 400; line-height: 1; text-decoration: none; color: #17151b; }
+    .nav-links { display: flex; gap: clamp(28px,4.8vw,72px); list-style: none; justify-self: start; }
+    .nav-links a { font-size: 15px; font-weight: 400; letter-spacing: 0; text-transform: none; color: #17151b; text-decoration: none; transition: color 0.2s; position: relative; }
     .nav-links a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: var(--ink); transition: width 0.3s; }
     .nav-links a:hover, .nav-links a.active { color: var(--ink); }
     .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
-    .page { max-width: 1100px; margin: 0 auto; padding: 88px 48px 80px; display: grid; grid-template-columns: 320px 1fr; gap: 80px; align-items: start; }
-    .left-col { position: sticky; top: 100px; display: flex; flex-direction: column; gap: 32px; }
-    .photo-container { width: 100%; max-width: 220px; aspect-ratio: 3/4; border-radius: 4px; overflow: hidden; background: var(--cream-dark); }
-    .about-photo { width: 100%; height: 100%; object-fit: cover; object-position: 68% center; display: block; }
+    .nav-connect { display: inline-flex; align-items: center; gap: 14px; justify-self: end; padding: 15px 24px; min-width: 178px; justify-content: center; border-radius: 999px; background: #111; color: #fff; font-size: 15px; font-weight: 500; text-decoration: none; box-shadow: 0 14px 34px rgba(17,17,17,0.16); transition: transform 0.22s, background 0.22s; }
+    .nav-connect:hover { transform: translateY(-1px); background: #000; }
+    .page { max-width: 1200px; margin: 0 auto; padding: 142px clamp(28px,4.6vw,58px) 96px; display: grid; grid-template-columns: minmax(240px, 330px) 1fr; gap: clamp(48px,7vw,96px); align-items: start; }
+    .left-col { position: sticky; top: 112px; display: flex; flex-direction: column; gap: 22px; }
+    .photo-container { position: relative; width: 100%; max-width: 280px; padding: 12px 12px 42px; border-radius: 10px; background: linear-gradient(180deg, rgba(238,236,230,0.82), rgba(215,212,205,0.74)); border: 1px solid rgba(26,24,20,0.14); box-shadow: inset 0 1px 0 rgba(255,255,255,0.34), 0 22px 56px rgba(26,24,20,0.1); }
+    .photo-container::before { content: 'ABOUT / DINA DA'; position: absolute; left: 14px; bottom: 15px; font-size: 9px; font-weight: 700; letter-spacing: 0.24em; color: rgba(26,24,20,0.36); }
+    .photo-container::after { content: '01'; position: absolute; right: 14px; bottom: 13px; width: 24px; height: 24px; display: grid; place-items: center; border-radius: 50%; border: 1px solid rgba(26,24,20,0.16); font-size: 9px; font-weight: 700; color: rgba(26,24,20,0.42); background: rgba(227,225,220,0.58); }
+    .about-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: 68% center; display: block; border-radius: 7px; border: 1px solid rgba(26,24,20,0.1); }
     .photo-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; background: linear-gradient(135deg, var(--cream-dark) 0%, rgba(91,91,214,0.06) 100%); }
     .photo-placeholder-icon { font-size: 48px; color: var(--ink-faint); opacity: 0.4; }
     .photo-placeholder-text { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); }
-    .quick-links { display: flex; flex-direction: column; }
-    .quick-link { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid rgba(26,24,20,0.08); text-decoration: none; color: var(--ink-light); font-size: 13px; transition: color 0.2s, padding-left 0.2s; }
-    .quick-link:first-child { border-top: 1px solid rgba(26,24,20,0.08); }
-    .quick-link:hover { color: var(--ink); padding-left: 6px; }
+    .quick-links { display: flex; flex-direction: column; gap: 10px; max-width: 280px; }
+    .quick-link { display: flex; align-items: center; justify-content: space-between; padding: 13px 15px; border: 1px solid rgba(26,24,20,0.14); border-radius: 999px; background: rgba(238,236,230,0.52); text-decoration: none; color: rgba(28,27,25,0.68); font-size: 13px; font-weight: 600; transition: color 0.2s, transform 0.2s, background 0.2s, border-color 0.2s; }
+    .quick-link:first-child { border-top: 1px solid rgba(26,24,20,0.14); }
+    .quick-link:hover { color: #fff; background: #111; border-color: #111; transform: translateY(-1px); }
     .quick-link svg { transition: transform 0.2s; }
     .quick-link:hover svg { transform: translate(2px,-2px); }
-    .right-col { display: flex; flex-direction: column; gap: 64px; padding-top: 8px; }
-    .hello-name { font-family: var(--serif); font-size: clamp(48px,6vw,80px); font-weight: 300; line-height: 1.0; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 24px; }
-    .hello-name em { font-style: italic; color: var(--indigo); }
-    .hello-bio { font-size: 16px; font-weight: 300; line-height: 1.85; color: var(--ink-light); max-width: 560px; }
-    .hello-bio strong { color: var(--ink); font-weight: 500; } 
-    .section-heading { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
-    .section-heading::after { content: ''; flex: 1; height: 1px; background: rgba(26,24,20,0.08); }
+    .right-col { display: flex; flex-direction: column; gap: 34px; padding-top: 2px; }
+    .right-col > .reveal { border: 1px solid rgba(26,24,20,0.12); border-radius: 10px; padding: clamp(24px,3vw,34px); background: rgba(238,236,230,0.48); box-shadow: inset 0 1px 0 rgba(255,255,255,0.26); }
+    .right-col > .reveal:first-child { padding: 0; border: 0; background: transparent; box-shadow: none; }
+    .hello-name { font-family: var(--sans); font-size: clamp(58px,7.2vw,104px); font-weight: 900; line-height: 0.96; letter-spacing: 0; color: rgba(28,27,25,0.78); margin-bottom: 22px; max-width: 720px; }
+    .hello-name em { display: inline-block; font-family: inherit; font-style: normal; color: rgba(111,106,96,0.82); transition: color 0.3s, text-shadow 0.3s; }
+    .hello-name em:hover { color: var(--indigo); text-shadow: 0 16px 46px rgba(91,91,214,0.22); }
+    .hello-bio { font-size: 16px; font-weight: 400; line-height: 1.75; color: rgba(58,56,52,0.72); max-width: 640px; }
+    .hello-bio strong { color: rgba(28,27,25,0.84); font-weight: 700; }
+    .story-card { overflow: hidden; }
+    .story-toggle { width: 100%; border: 0; background: transparent; color: inherit; font-family: inherit; display: flex; align-items: center; gap: 18px; margin-bottom: 20px; }
+    .story-toggle .section-heading { flex: 1; margin-bottom: 0; }
+    .story-toggle-icon { width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid rgba(26,24,20,0.16); color: rgba(28,27,25,0.62); background: rgba(227,225,220,0.5); transition: transform 0.22s, color 0.22s, background 0.22s, border-color 0.22s; }
+    .story-toggle-icon svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 1.8; fill: none; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.22s; }
+    .story-toggle:hover .story-toggle-icon { color: #fff; background: var(--indigo); border-color: var(--indigo); transform: translateY(-1px); }
+    .story-card.is-collapsed .story-toggle-icon svg { transform: rotate(-90deg); }
+    .story-content { max-height: 860px; opacity: 1; overflow: hidden; transition: max-height 0.34s ease, opacity 0.24s ease; }
+    .story-card.is-collapsed .story-content { max-height: 92px; opacity: 0.72; }
+    .section-heading { font-size: 11px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(26,24,20,0.42); margin-bottom: 24px; display: flex; align-items: center; gap: 18px; }
+    .section-heading::after { content: ''; flex: 1; height: 1px; background: rgba(26,24,20,0.14); }
     .timeline { display: flex; flex-direction: column; }
-    .timeline-item { display: grid; grid-template-columns: 110px 1fr; gap: 24px; padding: 20px 0; border-bottom: 1px solid rgba(26,24,20,0.06); }
+    .timeline-item { display: grid; grid-template-columns: 118px 1fr; gap: 24px; padding: 22px 0; border-bottom: 1px solid rgba(26,24,20,0.1); }
     .timeline-item:first-child { padding-top: 0; }
-    .timeline-year { font-family: var(--serif); font-size: 12px; color: var(--ink-faint); letter-spacing: 0.06em; padding-top: 3px; line-height: 1.6; }
-    .timeline-role { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
-    .timeline-company { font-family: var(--serif); font-size: 14px; font-style: italic; color: var(--ink-light); margin-bottom: 4px; }
-    .timeline-location { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; } .highlight { background: linear-gradient(90deg, var(--ink-light) 0%, var(--ink-light) 35%, var(--indigo) 50%, var(--indigo-light) 60%, var(--ink-light) 75%, var(--ink-light) 100%); background-size: 250% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: shimmer 6s linear infinite; font-weight: 500; } @keyframes shimmer { 0% { background-position: 200% center; } 100% { background-position: -200% center; } }
+    .timeline-year { width: auto; min-width: 118px; font-family: var(--sans); font-size: 11px; font-weight: 700; color: rgba(26,24,20,0.5); letter-spacing: 0.12em; padding: 2px 0; line-height: 1.5; text-transform: uppercase; }
+    .timeline-role { font-size: 15px; font-weight: 700; color: rgba(28,27,25,0.82); margin-bottom: 5px; }
+    .timeline-company { font-family: var(--sans); font-size: 14px; font-weight: 500; color: rgba(58,56,52,0.7); margin-bottom: 5px; }
+    .timeline-location { font-size: 11px; font-weight: 600; color: rgba(58,56,52,0.58); letter-spacing: 0.12em; text-transform: uppercase; } .highlight { color: var(--indigo); font-weight: 700; } @keyframes shimmer { 0% { background-position: 200% center; } 100% { background-position: -200% center; } }
    .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
-.skill-pill { font-size: 11px; padding: 6px 14px; border-radius: 20px; border: 1px solid rgba(26,24,20,0.15); color: var(--ink-light); transition: background 0.2s, color 0.2s, border-color 0.2s; }
-.skill-pill:hover { background: var(--indigo); color: white; border-color: var(--indigo); }
-    .fun-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .fun-card { background: var(--cream-dark); border-radius: 8px; padding: 20px 24px; border: 1px solid rgba(26,24,20,0.06); transition: transform 0.3s, box-shadow 0.3s; }
-    .fun-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,24,20,0.06); }
-    .fun-card-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px; }
-    .fun-card-value { font-family: var(--serif); font-size: 18px; color: var(--ink); line-height: 1.3; }
-    .fun-card-wide { grid-column: 1 / -1; }
-    footer { background: var(--cream-dark); border-top: 1px solid rgba(26,24,20,0.06); padding: 24px 0; margin-top: 80px; }
-    .footer-inner { max-width: 1100px; margin: 0 auto; padding: 0 48px; display: flex; justify-content: space-between; align-items: center; }
-    .footer-name { font-family: var(--serif); font-size: 13px; color: var(--ink-faint); }
-    .footer-copy { font-size: 11px; color: var(--ink-faint); }
+ .skill-pill { font-size: 11px; font-weight: 600; padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(26,24,20,0.14); background: rgba(227,225,220,0.48); color: rgba(28,27,25,0.62); transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s; }
+.skill-pill:hover { background: var(--indigo); color: white; border-color: var(--indigo); transform: translateY(-1px); }
+    .journey-image { width: 100%; border-radius: 10px; border: 1px solid rgba(26,24,20,0.12); display: block; box-shadow: 0 18px 48px rgba(26,24,20,0.08); }
+    .design-principles { display: flex; flex-direction: column; }
+    .design-principle { display: flex; align-items: center; gap: 16px; padding: 16px 0; border-bottom: 1px solid rgba(26,24,20,0.1); font-family: var(--sans); font-size: 17px; font-weight: 700; color: rgba(28,27,25,0.78); transition: color 0.22s, transform 0.22s; }
+    .design-principle:first-child { padding-top: 0; }
+    .design-principle:last-child { border-bottom: none; }
+    .design-principle-icon { flex-shrink: 0; width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid rgba(26,24,20,0.16); border-radius: 50%; color: rgba(28,27,25,0.64); background: rgba(227,225,220,0.42); }
+    .design-principle-icon svg { width: 17px; height: 17px; stroke: currentColor; stroke-width: 1.7; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .design-principle:hover { color: var(--indigo); transform: translateX(4px); }
+    .design-principle:hover .design-principle-icon { color: #fff; background: var(--indigo); border-color: var(--indigo); }
+    footer { background: var(--footer-wash); border-top: 1px solid rgba(26,24,20,0.1); padding: 22px 0 28px; margin-top: 0; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 clamp(28px,4.6vw,58px); display: flex; justify-content: space-between; align-items: center; }
+    .footer-name { font-family: var(--serif); font-style: italic; font-size: 20px; color: rgba(28,27,25,0.52); }
+    .footer-copy { font-size: 11px; color: rgba(28,27,25,0.42); }
     .reveal { transition: opacity 0.8s, transform 0.8s; }
     .reveal.hidden { opacity: 0; transform: translateY(20px); }
     @media (max-width: 900px) {
-      .nav-inner { padding: 0 24px; }
-      .page { grid-template-columns: 1fr; padding: 88px 24px 60px; gap: 48px; }
+      nav { padding: 18px 0; }
+      .nav-inner { padding: 0 22px; display: flex; justify-content: space-between; gap: 18px; }
+      .nav-name { font-size: 28px; }
+      .nav-links { display: none; }
+      .nav-connect { min-width: 0; padding: 12px 16px; font-size: 13px; }
+      .page { grid-template-columns: 1fr; padding: 112px 24px 68px; gap: 42px; }
       .left-col { position: static; }
-      .photo-container { max-width: 180px; }
-      .fun-grid { grid-template-columns: 1fr; }
-      .fun-card-wide { grid-column: 1; }
+      .photo-container { max-width: 220px; }
+      .quick-links { max-width: none; }
+      .right-col { gap: 24px; }
+      .right-col > .reveal { padding: 22px; }
+      .hello-name { font-size: clamp(58px,18vw,88px); }
+      .hello-bio { font-size: 15px; line-height: 1.72; }
+      .timeline-item { grid-template-columns: 1fr; gap: 10px; }
+      .timeline-year { margin-bottom: 2px; }
+      .design-principle { font-size: 15px; }
       footer { padding: 20px 0; }
       .footer-inner { padding: 0 24px; }
       body { cursor: auto; }
@@ -100,12 +130,14 @@
 
   <nav>
     <div class="nav-inner">
-      <a href="index.html" class="nav-name">Dina Da</a>
+      <a href="index.html" class="nav-name">Dina.</a>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#projects">Work</a></li>
         <li><a href="about.html" class="active">About</a></li>
+        <li><a href="https://drive.google.com/file/d/1seuoZxWrWPdVoeJk1x11_MFywn38fnJx/view?usp=drive_link" target="_blank">Resume</a></li>
         <li><a href="index.html#contact">Contact</a></li>
       </ul>
+      <a href="mailto:dddina7788@gmail.com" class="nav-connect">Let's Connect <svg width="16" height="16" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H4M13 1v9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
     </div>
   </nav>
 
@@ -117,14 +149,37 @@
       <div class="quick-links">
         <a href="mailto:dddina7788@gmail.com" class="quick-link">Email <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
         <a href="https://www.linkedin.com/in/dina-da/" target="_blank" class="quick-link">LinkedIn <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
-        <a href="https://drive.google.com/file/d/10085O7HcPDRbbVvB2gu00LjhxMf7chLG/view?usp=drive_link" target="_blank" class="quick-link">Resume <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+        <a href="https://drive.google.com/file/d/1seuoZxWrWPdVoeJk1x11_MFywn38fnJx/view?usp=drive_link" target="_blank" class="quick-link">Resume <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
       </div>
     </div>
 
     <div class="right-col">
       <div class="reveal">
-        <h1 class="hello-name">Hello,<br>I'm <em>Dina.</em></h1>
-        <p class="hello-bio">I enjoy turning messy ideas into experiences that feel simple, thoughtful, and surprisingly human.<br><br>Whether I'm designing an AI conversation, improving a sign-up flow, or obsessing over the tiniest interaction, I'm always asking myself:<br><br><strong>"Will this make someone's day a little easier?"</strong><br><br> Outside of design, you'll probably find me sketching, reading about psychology, experimenting with new AI tools, or occasionally going down an astrology rabbit hole—just for fun. I believe curiosity fuels creativity, and the more I learn about people, the better designer I become.<br><br>Today, product design is where all of those interests come together.</p>
+        <h1 class="hello-name">Curious by nature.<br><em>Designed for people.</em></h1>
+        <p class="hello-bio">Product Designer creating thoughtful digital experiences through curiosity, empathy, and research.</p>
+      </div>
+      <div class="reveal story-card" id="story-card">
+        <button class="story-toggle" type="button" aria-expanded="true" aria-controls="story-content">
+          <span class="section-heading">Story</span>
+          <span class="story-toggle-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
+        </button>
+        <div class="story-content" id="story-content">
+          <p class="hello-bio">Curiosity has always been the thread connecting everything I love.<br><br>It started with drawing — as a kid, I loved sketching the characters on tea tins at home, and before long, classmates were asking for one of my own.<br><br>That same curiosity led me to study Multiplatform Journalism, where I learned to tell stories, understand people, and communicate ideas clearly.<br><br>After graduating, I worked in brand and content design, shaping how products and stories showed up visually — and found myself asking not just how something looked, but how people actually experienced it.<br><br>That question is what pulled me toward product design, and later, a Master's in Interactive Design at Northeastern University.<br><br>Somewhere along the way, that curiosity found its home in <strong>product design</strong>.</p>
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="section-heading">Journey</p>
+        <img class="journey-image" src="images/about/career-journey.png" alt="My journey of curiosity — a timeline from childhood drawing through journalism, design, a master's in Interactive Design, and turning curiosity into user insight.">
+      </div>
+      <div class="reveal">
+        <p class="section-heading">How I Design</p>
+        <div class="design-principles">
+          <div class="design-principle"><span class="design-principle-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M16 16l4 4"/><path d="M8.5 11h5"/></svg></span>Research before assumptions.</div>
+          <div class="design-principle"><span class="design-principle-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 12h8"/><path d="M12 8v8"/><circle cx="12" cy="12" r="7"/></svg></span>Collaboration over perfection.</div>
+          <div class="design-principle"><span class="design-principle-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="3"/><path d="M9 12h6"/></svg></span>Simplicity over complexity.</div>
+          <div class="design-principle"><span class="design-principle-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V8"/><path d="M8 12l4-4 4 4"/><path d="M6 19h12"/></svg></span>Always learning.</div>
+          <div class="design-principle"><span class="design-principle-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></span>Designing for people first.</div>
+        </div>
       </div>
       <div class="reveal">
         <p class="section-heading">Experience</p>
@@ -143,7 +198,7 @@
           </div>
           <div class="timeline-item">
             <span class="timeline-year">2020–2021</span>
-            <div><p class="timeline-role">Digital Experience Designer</p><p class="timeline-company">1 Point 3 Acres LLC</p><p class="timeline-location">Tech Forum · Seattle, WA</p></div>
+            <div><p class="timeline-role">Graphic Designer & Content Creator</p><p class="timeline-company">1 Point 3 Acres LLC</p><p class="timeline-location">Tech Forum · Seattle, WA</p></div>
           </div>
         </div>
       </div>
@@ -161,28 +216,14 @@
         </div>
       </div>
       <div class="reveal">
-        <p class="section-heading">Skills</p>
+        <p class="section-heading">Beyond Design</p>
         <div class="skills-grid">
-          <span class="skill-pill">UX Research</span>
-          <span class="skill-pill">Interaction Design</span>
-          <span class="skill-pill">Wireframing</span>
-          <span class="skill-pill">Prototyping</span>
-          <span class="skill-pill">Usability Testing</span>
-          <span class="skill-pill">Figma</span>
-          <span class="skill-pill">Design Systems</span>
-          <span class="skill-pill">Information Architecture</span>
-          <span class="skill-pill">Accessibility</span>
-          <span class="skill-pill">HTML / CSS</span>
-        </div>
-      </div>
-      <div class="reveal">
-        <p class="section-heading">Other little things</p>
-        <div class="fun-grid">
-          <div class="fun-card"><p class="fun-card-label">Based in</p><p class="fun-card-value">Boston, MA 🏠</p></div>
-          <div class="fun-card"><p class="fun-card-label">Open to</p><p class="fun-card-value">Relocation ✈️</p></div>
-          <div class="fun-card"><p class="fun-card-label">Favorite colors</p><p class="fun-card-value">Blue & Green 💚</p></div>
-          <div class="fun-card"><p class="fun-card-label">Hobbies</p><p class="fun-card-value">Cooking & Drawing 🎨</p></div>
-          <div class="fun-card fun-card-wide"><p class="fun-card-label">Fun fact</p><p class="fun-card-value">Journalism major turned UX designer — I still think in stories. 📰 → 🎨</p></div>
+          <span class="skill-pill">Boston</span>
+          <span class="skill-pill">Drawing</span>
+          <span class="skill-pill">Psychology</span>
+          <span class="skill-pill">Coffee</span>
+          <span class="skill-pill">AI</span>
+          <span class="skill-pill">Pixel Art</span>
         </div>
       </div>
     </div>
@@ -220,6 +261,15 @@
         el.addEventListener('mouseenter', function() { ring.style.width='52px'; ring.style.height='52px'; });
         el.addEventListener('mouseleave', function() { ring.style.width='36px'; ring.style.height='36px'; });
       });
+
+      var storyCard = document.getElementById('story-card');
+      var storyToggle = storyCard ? storyCard.querySelector('.story-toggle') : null;
+      if (storyCard && storyToggle) {
+        storyToggle.addEventListener('click', function() {
+          var isCollapsed = storyCard.classList.toggle('is-collapsed');
+          storyToggle.setAttribute('aria-expanded', String(!isCollapsed));
+        });
+      }
 
       var reveals = document.querySelectorAll('.reveal');
       reveals.forEach(function(el) { el.classList.add('hidden'); });
