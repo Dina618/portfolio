@@ -330,9 +330,9 @@
     <div class="hero-visual" aria-hidden="true">
       <figure class="hero-art-shell">
         <img class="hero-layer hero-scene-image" src="images/hero/background_clean.png" alt="" fetchpriority="high" decoding="async" />
-        <img class="hero-character-layer girl-layer" data-hero-sprite="girl" src="images/hero/girl_front.png" alt="" decoding="async" />
-        <img class="hero-character-layer dog-layer" data-hero-sprite="dog" src="images/hero/dog_idle_01.png" alt="" decoding="async" />
-        <img class="hero-character-layer cat-layer" data-hero-sprite="cat" src="images/hero/cat_idle_01.png" alt="" decoding="async" />
+        <img class="hero-character-layer girl-layer" data-hero-sprite="girl" src="images/hero/girl_front.png" alt="" decoding="sync" />
+        <img class="hero-character-layer dog-layer" data-hero-sprite="dog" src="images/hero/dog_idle_01.png" alt="" decoding="sync" />
+        <img class="hero-character-layer cat-layer" data-hero-sprite="cat" src="images/hero/cat_idle_01.png" alt="" decoding="sync" />
         <img class="hero-layer hero-light-layer" src="images/hero/light_shadow_overlay.png" alt="" decoding="async" />
       </figure>
     </div>
@@ -447,6 +447,7 @@
       var hoverTimers = {};
       var heroSprites = {};
       var heroCooldowns = {};
+      var heroFrameCache = {};
 
       window.addEventListener('mousemove', function(e) {
         mx = e.clientX;
@@ -495,10 +496,21 @@
       }
 
       function preloadHeroFrames(groups) {
-        groups.flat().forEach(function(src) {
+        var uniqueFrames = Array.from(new Set(groups.flat()));
+        return Promise.all(uniqueFrames.map(function(src) {
           var img = new Image();
+          img.decoding = 'sync';
           img.src = src;
-        });
+          heroFrameCache[src] = img;
+          if (img.decode) {
+            return img.decode().catch(function() { return null; });
+          }
+          if (img.complete) return Promise.resolve();
+          return new Promise(function(resolve) {
+            img.onload = resolve;
+            img.onerror = resolve;
+          });
+        }));
       }
 
       function createHeroSprite(name, config) {
@@ -512,24 +524,32 @@
           actionMs: config.actionMs,
           holdMs: config.holdMs,
           actionTimer: null,
+          ready: false,
           busy: false
+        };
+
+        sprite.setFrame = function(src) {
+          var cached = heroFrameCache[src];
+          if (cached && cached.complete && cached.naturalWidth > 0) {
+            sprite.img.src = cached.src;
+          }
         };
 
         sprite.reset = function() {
           window.clearTimeout(sprite.actionTimer);
           sprite.busy = false;
-          sprite.img.src = sprite.staticFrame;
+          sprite.setFrame(sprite.staticFrame);
         };
 
         sprite.playAction = function(done) {
-          if (sprite.busy) return;
+          if (!sprite.ready || sprite.busy) return false;
           sprite.busy = true;
           window.clearTimeout(sprite.actionTimer);
           var sequence = sprite.actionFrames.concat(sprite.actionFrames.slice(0, -1).reverse());
           var index = 0;
 
           function step() {
-            sprite.img.src = sequence[index];
+            sprite.setFrame(sequence[index]);
             index += 1;
             if (index >= sequence.length) {
               sprite.actionTimer = window.setTimeout(function() {
@@ -542,13 +562,14 @@
           }
 
           step();
+          return true;
         };
 
         sprite.reset();
         return sprite;
       }
 
-      preloadHeroFrames([
+      var heroFrameReady = preloadHeroFrames([
         ['images/hero/girl_front.png', 'images/hero/girl_idle_01.png', 'images/hero/girl_idle_02.png', 'images/hero/girl_idle_03.png'],
         ['images/hero/dog_idle_01.png'],
         ['images/hero/dog_sniff_01.png', 'images/hero/dog_sniff_02.png', 'images/hero/dog_sniff_03.png'],
@@ -577,6 +598,15 @@
         holdMs: 150
       });
 
+      heroFrameReady.then(function() {
+        Object.keys(heroSprites).forEach(function(key) {
+          if (heroSprites[key]) {
+            heroSprites[key].ready = true;
+            heroSprites[key].reset();
+          }
+        });
+      });
+
       function scrollToProjects() {
         if (projectsSection) {
           projectsSection.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
@@ -596,11 +626,13 @@
             var sprite = heroSprites[action];
             var now = Date.now();
             if (!sprite || sprite.busy || heroCooldowns[action] && now - heroCooldowns[action] < 1400) return;
-            heroCooldowns[action] = now;
-            heroArt.classList.add('is-' + action + '-active');
-            sprite.playAction(function() {
+            var didPlay = sprite.playAction(function() {
               heroArt.classList.remove('is-' + action + '-active');
             });
+            if (didPlay) {
+              heroCooldowns[action] = now;
+              heroArt.classList.add('is-' + action + '-active');
+            }
           }, 180);
         });
 
