@@ -43,11 +43,24 @@
     .nav-name { font-family: var(--serif); font-size: 32px; font-style: italic; font-weight: 400; line-height: 1; text-decoration: none; color: #17151b; cursor: none; }
     .nav-links { display: flex; gap: clamp(28px,4.8vw,72px); list-style: none; justify-self: start; }
     .nav-links a { font-family: var(--sans); font-size: 15px; font-weight: 400; letter-spacing: 0; text-transform: none; color: #17151b; text-decoration: none; transition: color 0.2s; position: relative; cursor: none; }
+    .nav-links button { font-family: var(--sans); font-size: 15px; font-weight: 400; letter-spacing: 0; color: #17151b; border: 0; background: transparent; cursor: none; }
     .nav-links a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: var(--ink); transition: width 0.3s; }
     .nav-links a:hover { color: var(--ink); }
     .nav-links a:hover::after { width: 100%; }
-    .nav-connect { display: inline-flex; align-items: center; gap: 14px; justify-self: end; padding: 15px 24px; min-width: 178px; justify-content: center; border-radius: 999px; background: #111; color: #fff; font-size: 15px; font-weight: 500; text-decoration: none; box-shadow: 0 14px 34px rgba(17,17,17,0.16); transition: transform 0.22s, background 0.22s; cursor: none; }
-    .nav-connect:hover { transform: translateY(-1px); background: #000; }
+    .nav-work { position: relative; }
+    .nav-work-toggle { display: inline-flex; align-items: center; gap: 7px; padding: 0; transition: color 0.2s; }
+    .nav-work-toggle::after { content: ''; width: 5px; height: 5px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-2px) rotate(45deg); transition: transform 0.22s; }
+    .nav-work.is-open .nav-work-toggle,
+    .nav-work-toggle:hover { color: var(--indigo); }
+    .nav-work.is-open .nav-work-toggle::after { transform: translateY(1px) rotate(225deg); }
+    .work-menu { position: absolute; left: -18px; top: calc(100% + 16px); min-width: 178px; padding: 10px; border: 1px solid rgba(26,24,20,0.12); border-radius: 14px; background: rgba(238,236,230,0.84); backdrop-filter: blur(18px); box-shadow: 0 20px 48px rgba(26,24,20,0.12); opacity: 0; transform: translateY(-6px); pointer-events: none; transition: opacity 0.22s, transform 0.22s; }
+    .nav-work.is-open .work-menu { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .work-menu a { display: flex; align-items: center; justify-content: space-between; padding: 10px 11px; border-radius: 10px; color: rgba(28,27,25,0.72); font-size: 13px; font-weight: 500; white-space: nowrap; }
+    .work-menu a::after { content: ''; position: static; width: 6px; height: 6px; border-right: 1.4px solid currentColor; border-top: 1.4px solid currentColor; background: transparent; transform: rotate(45deg); opacity: 0.45; transition: opacity 0.2s, transform 0.2s; }
+    .work-menu a:hover { color: var(--indigo); background: rgba(91,91,214,0.08); }
+    .work-menu a:hover::after { width: 6px; opacity: 1; transform: translateX(2px) rotate(45deg); }
+    .nav-connect { display: inline-flex; align-items: center; gap: 14px; justify-self: end; padding: 15px 24px; min-width: 178px; justify-content: center; border-radius: 999px; background: #111; color: #fff; font-size: 15px; font-weight: 500; text-decoration: none; box-shadow: 0 14px 34px rgba(17,17,17,0.16); transition: transform 0.22s, background 0.22s, box-shadow 0.22s; cursor: none; }
+    .nav-connect:hover { transform: translateY(-1px); background: var(--indigo); box-shadow: 0 16px 38px rgba(91,91,214,0.24); }
     .nav-connect:active { transform: scale(0.98); }
     .hero-section {
       min-height: 100svh;
@@ -85,8 +98,9 @@
       0% { background-position: 200% center; }
       100% { background-position: -200% center; }
     }
-    .hero-name { font-family: var(--sans); font-size: clamp(90px,9vw,162px); font-weight: 900; line-height: 0.82; letter-spacing: 0; color: rgba(28,27,25,0.76); margin-bottom: 18px; max-width: 500px; text-transform: none; }
-    .hero-name em { display: block; font-family: inherit; font-style: normal; color: rgba(111,106,96,0.82); transition: color 0.3s, text-shadow 0.3s; text-transform: uppercase; }
+    .hero-name { font-family: var(--sans); font-size: clamp(90px,9vw,162px); font-weight: 900; line-height: 0.86; letter-spacing: 0.01em; color: rgba(28,27,25,0.76); margin-bottom: 18px; max-width: 500px; text-transform: none; }
+    .hero-name-line { display: inline-flex; align-items: baseline; gap: 0.14em; }
+    .hero-name em { display: block; font-family: inherit; font-style: normal; color: rgba(111,106,96,0.82); letter-spacing: 0.025em; transition: color 0.3s, text-shadow 0.3s; text-transform: uppercase; }
     .hero-name em:hover { color: var(--indigo); text-shadow: 0 16px 46px rgba(91,91,214,0.22); cursor: none; }
     .hero-desc { display: inline-block; font-size: clamp(17px,1.25vw,21px); font-weight: 400; line-height: 1.25; color: rgba(58,56,52,0.66); max-width: 330px; margin-bottom: 24px; padding: 2px 8px 4px 0; text-shadow: 0 1px 16px rgba(227,225,220,0.72); animation: fadeUp 0.55s cubic-bezier(0.16,1,0.3,1) 0.18s both; }
     .word-hover { font-family: var(--serif); font-style: italic; font-size: 1.15em; font-weight: 500; cursor: none; transition: color 0.3s; display: inline-block; }
@@ -103,7 +117,7 @@
     .hero-cta svg { transition: transform 0.2s; }
     .hero-cta:hover svg { transform: translateX(3px); }
     .hero-cta-outline { display: inline-flex; align-items: center; gap: 12px; padding: 15px 25px; background: rgba(238,236,230,0.86); color: #171717; border: 1px solid rgba(17,17,17,0.28); font-size: 15px; font-weight: 600; letter-spacing: 0; text-transform: none; text-decoration: none; border-radius: 100px; backdrop-filter: blur(12px); box-shadow: 0 14px 34px rgba(17,17,17,0.1); transition: border-color 0.22s, color 0.22s, transform 0.22s, background 0.22s, box-shadow 0.22s; cursor: none; }
-    .hero-cta-outline:hover { border-color: rgba(17,17,17,0.44); color: #000; background: rgba(246,244,238,0.94); box-shadow: 0 18px 40px rgba(17,17,17,0.14); transform: translateY(-1px); }
+    .hero-cta-outline:hover { border-color: rgba(91,91,214,0.72); color: var(--indigo); background: rgba(246,244,238,0.94); box-shadow: 0 18px 40px rgba(91,91,214,0.14); transform: translateY(-1px); }
     .hero-cta-outline:active { transform: scale(0.98); }
 
     .hero-visual { opacity: 0; transform: scale(1.03); animation: heroSceneIn 0.85s cubic-bezier(0.16,1,0.3,1) 0.2s forwards; position: absolute; inset: 0; display: block; z-index: 0; }
@@ -116,7 +130,9 @@
       transform: scale(1.03);
       will-change: transform;
     }
-    .hero-scene-image {
+    .hero-layer {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       display: block;
@@ -124,6 +140,40 @@
       object-position: center center;
       transform: translateZ(0);
     }
+    .hero-scene-image {
+      z-index: 0;
+    }
+    .hero-character-layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center center;
+      z-index: 1;
+      pointer-events: none;
+      transform: translate3d(0,0,0);
+      filter: drop-shadow(0 18px 22px rgba(26,24,20,0.1)) saturate(0.98) contrast(0.98);
+      transition: opacity 0.34s cubic-bezier(0.16,1,0.3,1), transform 0.42s cubic-bezier(0.16,1,0.3,1), filter 0.34s;
+    }
+    .hero-character-layer.girl-layer { opacity: 1; }
+    .hero-character-layer.dog-layer { filter: drop-shadow(0 12px 16px rgba(26,24,20,0.1)) saturate(0.98) contrast(0.98); }
+    .hero-character-layer.cat-layer { filter: drop-shadow(0 12px 16px rgba(26,24,20,0.1)) saturate(0.98) contrast(0.98); }
+    .hero-character-layer.cat-layer { transform: translate3d(62px,8px,0); }
+    .hero-art-shell.is-girl-active .girl-layer { transform: translate3d(0,-1px,0) scale(1.001); filter: drop-shadow(0 18px 22px rgba(26,24,20,0.1)) saturate(1) contrast(0.99); }
+    .hero-art-shell.is-dog-active .dog-layer { transform: translate3d(2px,0,0) scale(1.001); filter: drop-shadow(0 12px 16px rgba(26,24,20,0.1)) saturate(1) contrast(0.99); }
+    .hero-art-shell.is-cat-active .cat-layer { transform: translate3d(60px,6px,0) scale(1.001); filter: drop-shadow(0 12px 16px rgba(26,24,20,0.1)) saturate(1) contrast(0.99); }
+    .hero-light-layer { z-index: 2; opacity: 0.62; mix-blend-mode: screen; pointer-events: none; }
+    .hero-motion-zone {
+      position: absolute;
+      z-index: 4;
+      background: transparent;
+      cursor: none;
+    }
+    .zone-dog { left: 8%; top: 58%; width: 23%; height: 30%; }
+    .zone-cat { left: 58%; top: 58%; width: 23%; height: 30%; }
+    .zone-girl { left: 37%; top: 8%; width: 24%; height: 78%; }
     .scroll-indicator { position: absolute; left: 50%; bottom: 28px; min-width: 156px; height: 58px; padding: 0 18px 0 52px; transform: translateX(-50%); display: inline-flex; align-items: center; justify-content: center; z-index: 3; border: 2px solid rgba(17,17,17,0.56); border-radius: 999px; background: rgba(227,225,220,0.58); backdrop-filter: blur(12px); box-shadow: 0 16px 42px rgba(17,17,17,0.16); cursor: none; transition: transform 0.22s, background 0.22s, border-color 0.22s; }
     .scroll-indicator:hover { transform: translateX(-50%) translateY(-2px); background: rgba(238,236,230,0.78); border-color: rgba(91,91,214,0.62); }
     .scroll-indicator::before { content: ''; position: absolute; left: 18px; top: 50%; width: 24px; height: 34px; border: 2px solid rgba(17,17,17,0.64); border-radius: 999px; transform: translateY(-50%); }
@@ -134,18 +184,20 @@
     @keyframes heroSceneIn {
       to { opacity: 1; transform: scale(1); }
     }
-
     @media (prefers-reduced-motion: reduce) {
       .hero-content,
       .hero-desc,
       .hero-cta-row,
       .hero-visual,
       .hero-art-shell,
+      .hero-character-layer,
+      .hero-light-layer,
       .hero-eyebrow {
         animation: none !important;
         opacity: 1 !important;
         transform: none !important;
       }
+      .hero-motion-zone { display: none; }
     }
 
     @keyframes scrollCue { 0% { opacity: 0; transform: translate(-50%, -7px); } 22% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%, 12px); } }
@@ -159,7 +211,7 @@
     .project-card { min-height: 620px; display: grid; grid-template-rows: auto 1fr; border: 1px solid rgba(26,24,20,0.14); border-radius: 10px; padding: 22px; text-decoration: none; color: inherit; position: relative; overflow: hidden; background: linear-gradient(180deg, rgba(238,236,230,0.82), rgba(215,212,205,0.74)); box-shadow: inset 0 1px 0 rgba(255,255,255,0.34), 0 18px 48px rgba(26,24,20,0.08); transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s, border-color 0.35s; align-items: start; cursor: none; }
     .project-card::before { content: ''; position: absolute; left: 22px; right: 22px; top: 54%; height: 1px; background: rgba(26,24,20,0.18); z-index: 0; }
     .project-card::after { content: 'Collectible case study'; position: absolute; left: 22px; bottom: 18px; font-size: 9px; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(26,24,20,0.36); }
-    .project-card:hover { transform: translateY(-8px); border-color: rgba(26,24,20,0.28); box-shadow: inset 0 1px 0 rgba(255,255,255,0.42), 0 28px 72px rgba(26,24,20,0.14); }
+    .project-card:hover { transform: translateY(-8px); border-color: rgba(91,91,214,0.34); box-shadow: inset 0 1px 0 rgba(255,255,255,0.42), 0 28px 72px rgba(26,24,20,0.14); }
     .project-left { position: relative; z-index: 2; padding-right: 0; }
     .project-number { width: fit-content; font-family: var(--sans); font-size: 11px; color: rgba(26,24,20,0.56); letter-spacing: 0.08em; margin-bottom: 22px; padding: 7px 10px; border: 1px solid rgba(26,24,20,0.16); border-radius: 999px; background: rgba(227,225,220,0.62); }
     .project-title { font-family: var(--sans); font-size: clamp(32px,3.6vw,50px); font-weight: 800; line-height: 0.95; letter-spacing: 0; color: rgba(28,27,25,0.82); margin-bottom: 18px; transition: color 0.3s; }
@@ -167,13 +219,13 @@
     .project-desc { font-size: 14px; font-weight: 400; line-height: 1.55; color: rgba(58,56,52,0.68); max-width: 360px; margin-bottom: 22px; }
     .project-tags { display: flex; gap: 8px; flex-wrap: wrap; }
     .tag { font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(26,24,20,0.58); border: 1px solid rgba(26,24,20,0.14); padding: 7px 12px; border-radius: 100px; background: rgba(227,225,220,0.44); transition: background 0.3s, color 0.3s, border-color 0.3s; }
-    .project-card:hover .tag { background: rgba(17,17,17,0.86); color: white; border-color: rgba(17,17,17,0.86); }
+    .project-card:hover .tag { background: rgba(91,91,214,0.1); color: var(--indigo); border-color: rgba(91,91,214,0.34); }
     .project-right { position: relative; z-index: 1; display: flex; justify-content: center; align-items: end; min-height: 300px; padding: 34px 0 34px; }
     .project-image { width: 100%; max-width: 340px; aspect-ratio: 4/5; border-radius: 8px; overflow: visible; transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), filter 0.5s; filter: drop-shadow(0 28px 32px rgba(26,24,20,0.16)); }
     .project-image img { border-radius: 8px; }
     .project-card:hover .project-image { transform: scale(1.035) translateY(-8px) rotate(-1deg); filter: drop-shadow(0 36px 42px rgba(26,24,20,0.2)); }
     .project-arrow { position: absolute; top: 20px; right: 20px; width: 46px; height: 46px; border: 1px solid rgba(26,24,20,0.18); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: rgba(26,24,20,0.66); transition: all 0.3s; z-index: 3; background: rgba(238,236,230,0.7); backdrop-filter: blur(8px); }
-    .project-card:hover .project-arrow { background: #111; border-color: #111; color: white; transform: rotate(45deg); }
+    .project-card:hover .project-arrow { background: var(--indigo); border-color: var(--indigo); color: white; transform: rotate(45deg); }
     #contact { background: linear-gradient(180deg, var(--cream) 0%, var(--footer-wash) 100%); color: var(--ink); padding: 86px 0 54px; border-top: 1px solid rgba(26,24,20,0.12); position: relative; }
     .contact-inner { max-width: 1200px; margin: 0 auto; padding: 0 clamp(28px,4.6vw,58px); display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 42px; justify-content: space-between; align-items: end; }
     .contact-copy { display: flex; flex-direction: column; gap: 18px; }
@@ -259,7 +311,14 @@
     <div class="nav-inner">
       <a href="index.html" class="nav-name">Dina.</a>
       <ul class="nav-links">
-        <li><a href="#projects">Work</a></li>
+        <li class="nav-work">
+          <button class="nav-work-toggle" type="button" aria-expanded="false" aria-controls="work-menu">Work</button>
+          <div class="work-menu" id="work-menu">
+            <a href="ai-mentor-bot/">AI Mentor Bot</a>
+            <a href="boston-cares/">Boston Cares</a>
+            <a href="colour.html">COLOUR</a>
+          </div>
+        </li>
         <li><a href="about.html">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -270,13 +329,20 @@
   <div class="hero-section" id="home">
     <div class="hero-visual" aria-hidden="true">
       <figure class="hero-art-shell">
-        <img class="hero-scene-image" src="images/hero-approved-master.png" alt="" fetchpriority="high" decoding="async" />
+        <img class="hero-layer hero-scene-image" src="images/hero/background_clean.png" alt="" fetchpriority="high" decoding="async" />
+        <img class="hero-character-layer girl-layer" data-hero-sprite="girl" src="images/hero/girl_front.png" alt="" decoding="async" />
+        <img class="hero-character-layer dog-layer" data-hero-sprite="dog" src="images/hero/dog_idle_01.png" alt="" decoding="async" />
+        <img class="hero-character-layer cat-layer" data-hero-sprite="cat" src="images/hero/cat_idle_01.png" alt="" decoding="async" />
+        <img class="hero-layer hero-light-layer" src="images/hero/light_shadow_overlay.png" alt="" decoding="async" />
       </figure>
     </div>
+    <span class="hero-motion-zone zone-dog" data-hero-action="dog" aria-hidden="true"></span>
+    <span class="hero-motion-zone zone-cat" data-hero-action="cat" aria-hidden="true"></span>
+    <span class="hero-motion-zone zone-girl" data-hero-action="girl" aria-hidden="true"></span>
     <div class="hero-inner">
       <div class="hero-content">
         <p class="hero-eyebrow">UX Designer</p>
-        <h1 class="hero-name">Hi, I&rsquo;m<br><em>DINA.</em></h1>
+        <h1 class="hero-name"><span class="hero-name-line">Hi,<span>I&rsquo;m</span></span><br><em>DINA.</em></h1>
         <p class="hero-desc">Turn complex problems into simple, human-centered experiences.</p>
         <div class="hero-tags">
           <span class="hero-tag">User Research</span>
@@ -371,57 +437,144 @@
       var cur = document.getElementById('cur');
       var ring = document.getElementById('cur-ring');
       var mx = 0, my = 0, rx = 0, ry = 0;
-      var heroVisual = document.querySelector('.hero-visual');
       var heroArt = document.querySelector('.hero-art-shell');
       var heroSection = document.getElementById('home');
       var projectsSection = document.getElementById('projects');
       var scrollIndicator = document.querySelector('.scroll-indicator');
+      var workDropdown = document.querySelector('.nav-work');
+      var workToggle = workDropdown ? workDropdown.querySelector('.nav-work-toggle') : null;
       var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var artTargetX = 0, artTargetY = 0, artX = 0, artY = 0;
+      var hoverTimers = {};
+      var heroSprites = {};
+      var heroCooldowns = {};
 
       window.addEventListener('mousemove', function(e) {
         mx = e.clientX;
         my = e.clientY;
         cur.style.left = (mx - 5) + 'px';
         cur.style.top  = (my - 5) + 'px';
-
-        if (heroVisual && heroArt && !prefersReducedMotion) {
-          var rect = heroVisual.getBoundingClientRect();
-          var inHero = rect.top < window.innerHeight && rect.bottom > 0;
-          if (inHero) {
-            artTargetX = Math.max(-1, Math.min(1, (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2)));
-            artTargetY = Math.max(-1, Math.min(1, (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2)));
-          }
-        }
       });
-
-      if (heroVisual) {
-        heroVisual.addEventListener('mouseleave', function() {
-          artTargetX = 0;
-          artTargetY = 0;
-        });
-      }
 
       (function tick() {
         rx += (mx - rx) * 0.15;
         ry += (my - ry) * 0.15;
         ring.style.left = (rx - 18) + 'px';
         ring.style.top  = (ry - 18) + 'px';
-
-        if (heroArt && !prefersReducedMotion && window.innerWidth > 900) {
-          artX += (artTargetX - artX) * 0.08;
-          artY += (artTargetY - artY) * 0.08;
-          var moveX = artX * 2;
-          var moveY = artY * 2;
-          heroArt.style.transform = 'scale(1.03) translate3d(' + moveX.toFixed(2) + 'px, ' + moveY.toFixed(2) + 'px, 0)';
-        }
-
         requestAnimationFrame(tick);
       })();
 
       document.querySelectorAll('a, button').forEach(function(el) {
         el.addEventListener('mouseenter', function() { ring.style.width='52px'; ring.style.height='52px'; });
         el.addEventListener('mouseleave', function() { ring.style.width='36px'; ring.style.height='36px'; });
+      });
+
+      function closeWorkMenu() {
+        if (!workDropdown || !workToggle) return;
+        workDropdown.classList.remove('is-open');
+        workToggle.setAttribute('aria-expanded', 'false');
+      }
+
+      if (workDropdown && workToggle) {
+        workToggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var isOpen = workDropdown.classList.toggle('is-open');
+          workToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        workDropdown.querySelectorAll('.work-menu a').forEach(function(link) {
+          link.addEventListener('click', closeWorkMenu);
+        });
+
+        document.addEventListener('click', function(e) {
+          if (!workDropdown.contains(e.target)) closeWorkMenu();
+        });
+
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') closeWorkMenu();
+        });
+      }
+
+      function preloadHeroFrames(groups) {
+        groups.flat().forEach(function(src) {
+          var img = new Image();
+          img.src = src;
+        });
+      }
+
+      function createHeroSprite(name, config) {
+        var img = document.querySelector('[data-hero-sprite="' + name + '"]');
+        if (!img || prefersReducedMotion) return null;
+
+        var sprite = {
+          img: img,
+          staticFrame: config.staticFrame,
+          actionFrames: config.actionFrames,
+          actionMs: config.actionMs,
+          holdMs: config.holdMs,
+          actionTimer: null,
+          busy: false
+        };
+
+        sprite.reset = function() {
+          window.clearTimeout(sprite.actionTimer);
+          sprite.busy = false;
+          sprite.img.src = sprite.staticFrame;
+        };
+
+        sprite.playAction = function(done) {
+          if (sprite.busy) return;
+          sprite.busy = true;
+          window.clearTimeout(sprite.actionTimer);
+          var sequence = sprite.actionFrames.concat(sprite.actionFrames.slice(0, -1).reverse());
+          var index = 0;
+
+          function step() {
+            sprite.img.src = sequence[index];
+            index += 1;
+            if (index >= sequence.length) {
+              sprite.actionTimer = window.setTimeout(function() {
+                sprite.reset();
+                if (done) done();
+              }, sprite.holdMs);
+              return;
+            }
+            sprite.actionTimer = window.setTimeout(step, sprite.actionMs);
+          }
+
+          step();
+        };
+
+        sprite.reset();
+        return sprite;
+      }
+
+      preloadHeroFrames([
+        ['images/hero/girl_front.png', 'images/hero/girl_idle_01.png', 'images/hero/girl_idle_02.png', 'images/hero/girl_idle_03.png'],
+        ['images/hero/dog_idle_01.png'],
+        ['images/hero/dog_sniff_01.png', 'images/hero/dog_sniff_02.png', 'images/hero/dog_sniff_03.png'],
+        ['images/hero/cat_idle_01.png'],
+        ['images/hero/cat_reach_01.png', 'images/hero/cat_reach_02.png', 'images/hero/cat_reach_03.png', 'images/hero/cat_reach_04.png']
+      ]);
+
+      heroSprites.girl = createHeroSprite('girl', {
+        staticFrame: 'images/hero/girl_front.png',
+        actionFrames: ['images/hero/girl_idle_01.png', 'images/hero/girl_idle_02.png', 'images/hero/girl_idle_03.png'],
+        actionMs: 180,
+        holdMs: 80
+      });
+
+      heroSprites.dog = createHeroSprite('dog', {
+        staticFrame: 'images/hero/dog_idle_01.png',
+        actionFrames: ['images/hero/dog_sniff_01.png', 'images/hero/dog_sniff_02.png', 'images/hero/dog_sniff_03.png'],
+        actionMs: 175,
+        holdMs: 160
+      });
+
+      heroSprites.cat = createHeroSprite('cat', {
+        staticFrame: 'images/hero/cat_idle_01.png',
+        actionFrames: ['images/hero/cat_reach_01.png', 'images/hero/cat_reach_02.png', 'images/hero/cat_reach_03.png', 'images/hero/cat_reach_04.png'],
+        actionMs: 165,
+        holdMs: 150
       });
 
       function scrollToProjects() {
@@ -433,6 +586,30 @@
       if (scrollIndicator) {
         scrollIndicator.addEventListener('click', scrollToProjects);
       }
+
+      document.querySelectorAll('[data-hero-action]').forEach(function(zone) {
+        zone.addEventListener('pointerenter', function() {
+          if (!heroArt || prefersReducedMotion) return;
+          var action = zone.getAttribute('data-hero-action');
+          window.clearTimeout(hoverTimers[action]);
+          hoverTimers[action] = window.setTimeout(function() {
+            var sprite = heroSprites[action];
+            var now = Date.now();
+            if (!sprite || sprite.busy || heroCooldowns[action] && now - heroCooldowns[action] < 1400) return;
+            heroCooldowns[action] = now;
+            heroArt.classList.add('is-' + action + '-active');
+            sprite.playAction(function() {
+              heroArt.classList.remove('is-' + action + '-active');
+            });
+          }, 180);
+        });
+
+        zone.addEventListener('pointerleave', function() {
+          if (!heroArt) return;
+          var action = zone.getAttribute('data-hero-action');
+          window.clearTimeout(hoverTimers[action]);
+        });
+      });
 
       if (heroSection) {
         heroSection.addEventListener('click', function(e) {
