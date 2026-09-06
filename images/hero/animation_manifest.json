@@ -1,0 +1,117 @@
+{
+  "canvas": {
+    "width": 1536,
+    "height": 1024
+  },
+  "material_lock": "handcrafted needle-felt / fine-wool stop-motion miniature; matte short fibers",
+  "layers": [
+    "background_clean.png",
+    "characters",
+    "light_shadow_overlay.png"
+  ],
+  "sequences": {
+    "girl_idle": {
+      "frames": [
+        "girl_idle_01.png",
+        "girl_idle_02.png",
+        "girl_idle_03.png"
+      ],
+      "frame_ms": 700,
+      "mode": "ping-pong"
+    },
+    "girl_look_left": {
+      "frames": [
+        "girl_look_left_01.png",
+        "girl_look_left_02.png",
+        "girl_look_left_03.png",
+        "girl_look_left_04.png"
+      ],
+      "frame_ms": 90,
+      "return": "reverse"
+    },
+    "girl_look_right": {
+      "frames": [
+        "girl_look_right_01.png",
+        "girl_look_right_02.png",
+        "girl_look_right_03.png",
+        "girl_look_right_04.png"
+      ],
+      "frame_ms": 90,
+      "return": "reverse"
+    },
+    "dog_idle": {
+      "frames": [
+        "dog_idle_01.png",
+        "dog_idle_02.png",
+        "dog_idle_03.png"
+      ],
+      "frame_ms": 650,
+      "mode": "ping-pong"
+    },
+    "dog_run": {
+      "frames": [
+        "dog_run_01.png",
+        "dog_run_02.png",
+        "dog_run_03.png",
+        "dog_run_04.png",
+        "dog_run_05.png"
+      ],
+      "frame_ms": 95,
+      "return_to": "dog_idle_01.png"
+    },
+    "dog_sniff": {
+      "frames": [
+        "dog_sniff_01.png",
+        "dog_sniff_02.png",
+        "dog_sniff_03.png",
+        "dog_sniff_04.png",
+        "dog_sniff_05.png"
+      ],
+      "frame_ms": 105,
+      "hold_ms": 380,
+      "return": "reverse"
+    },
+    "cat_idle": {
+      "frames": [
+        "cat_idle_01.png",
+        "cat_idle_02.png",
+        "cat_idle_03.png"
+      ],
+      "frame_ms": 800,
+      "mode": "ping-pong"
+    },
+    "cat_stretch": {
+      "frames": [
+        "cat_stretch_01.png",
+        "cat_stretch_02.png",
+        "cat_stretch_03.png",
+        "cat_stretch_04.png",
+        "cat_stretch_05.png"
+      ],
+      "frame_ms": 120,
+      "hold_ms": 300,
+      "return": "reverse"
+    },
+    "cat_reach": {
+      "frames": [
+        "cat_reach_01.png",
+        "cat_reach_02.png",
+        "cat_reach_03.png",
+        "cat_reach_04.png",
+        "cat_reach_05.png"
+      ],
+      "frame_ms": 105,
+      "hold_ms": 260,
+      "return": "reverse"
+    }
+  },
+  "interaction": {
+    "crossfade_ms": 200,
+    "proximity_enter_ms": 200,
+    "pointer_leave_delay_ms": 500,
+    "cooldown_ms": 2000,
+    "girl_direction_dwell_ms": 400,
+    "mobile": "welcome-on-load only; no hover",
+    "reduced_motion": "static idle frame only"
+  }
+}
