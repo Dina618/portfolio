@@ -70,8 +70,9 @@
     .quick-link svg { transition: transform 0.2s; }
     .quick-link:hover svg { transform: translate(2px,-2px); }
     .right-col { display: flex; flex-direction: column; gap: 34px; padding-top: 2px; }
-    .right-col > .reveal { border: 1px solid rgba(26,24,20,0.12); border-radius: 10px; padding: clamp(24px,3vw,34px); background: rgba(238,236,230,0.48); box-shadow: inset 0 1px 0 rgba(255,255,255,0.26); }
+    .right-col > .reveal { border: 1px solid rgba(26,24,20,0.12); border-radius: 10px; padding: clamp(24px,3vw,34px); background: rgba(238,236,230,0.48); box-shadow: inset 0 1px 0 rgba(255,255,255,0.26), 0 16px 42px rgba(26,24,20,0.05); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1), border-color 0.28s, background 0.28s, box-shadow 0.28s; }
     .right-col > .reveal:first-child { padding: 0; border: 0; background: transparent; box-shadow: none; }
+    .right-col > .reveal:not(:first-child):hover { transform: translateY(-4px); border-color: rgba(91,91,214,0.26); background: rgba(238,236,230,0.58); box-shadow: inset 0 1px 0 rgba(255,255,255,0.32), 0 22px 54px rgba(26,24,20,0.08); }
     .hello-name { font-family: var(--sans); font-size: clamp(58px,7.2vw,104px); font-weight: 900; line-height: 0.9; letter-spacing: 0.01em; color: rgba(28,27,25,0.78); margin-bottom: 18px; max-width: 720px; }
     .hello-name em { display: block; font-family: inherit; font-style: normal; color: rgba(111,106,96,0.82); letter-spacing: 0.01em; transition: color 0.3s, text-shadow 0.3s; }
     .hello-name em:hover { color: var(--indigo); text-shadow: 0 16px 46px rgba(91,91,214,0.22); }
@@ -84,8 +85,12 @@
     .story-toggle-icon svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 1.8; fill: none; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.22s; }
     .story-toggle:hover .story-toggle-icon { color: #fff; background: var(--indigo); border-color: var(--indigo); transform: translateY(-1px); }
     .story-card.is-collapsed .story-toggle-icon svg { transform: rotate(-90deg); }
-    .story-content { max-height: 860px; opacity: 1; overflow: hidden; transition: max-height 0.34s ease, opacity 0.24s ease; }
-    .story-card.is-collapsed .story-content { max-height: 92px; opacity: 0.72; }
+    .story-content { max-height: 980px; opacity: 1; overflow: hidden; transition: max-height 0.34s ease, opacity 0.24s ease; }
+    .story-card.is-collapsed .story-content { max-height: 162px; opacity: 0.72; }
+    .story-journey-layout { display: flex; flex-direction: column; gap: clamp(24px,3vw,34px); }
+    .story-text { min-width: 0; }
+    .journey-panel { min-width: 0; padding: 12px 12px 42px; border-radius: 10px; border: 1px solid rgba(26,24,20,0.12); background: linear-gradient(180deg, rgba(238,236,230,0.74), rgba(215,212,205,0.6)); box-shadow: inset 0 1px 0 rgba(255,255,255,0.32), 0 18px 46px rgba(26,24,20,0.08); position: relative; }
+    .journey-panel::after { content: 'CAREER JOURNEY'; position: absolute; left: 16px; bottom: 16px; font-size: 9px; font-weight: 700; letter-spacing: 0.24em; color: rgba(26,24,20,0.36); }
     .section-heading { font-size: 11px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(26,24,20,0.42); margin-bottom: 24px; display: flex; align-items: center; gap: 18px; }
     .section-heading::after { content: ''; flex: 1; height: 1px; background: rgba(26,24,20,0.14); }
     .timeline { display: flex; flex-direction: column; }
@@ -98,7 +103,7 @@
    .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
  .skill-pill { font-size: 11px; font-weight: 600; padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(26,24,20,0.14); background: rgba(227,225,220,0.48); color: rgba(28,27,25,0.62); transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s; }
 .skill-pill:hover { background: var(--indigo); color: white; border-color: var(--indigo); transform: translateY(-1px); }
-    .journey-image { width: 100%; border-radius: 10px; border: 1px solid rgba(26,24,20,0.12); display: block; box-shadow: 0 18px 48px rgba(26,24,20,0.08); }
+    .journey-image { width: 100%; border-radius: 7px; border: 1px solid rgba(26,24,20,0.1); display: block; box-shadow: 0 16px 36px rgba(26,24,20,0.08); }
     .design-principles { display: flex; flex-direction: column; }
     .design-principle { display: flex; align-items: center; gap: 16px; padding: 16px 0; border-bottom: 1px solid rgba(26,24,20,0.1); font-family: var(--sans); font-size: 17px; font-weight: 700; color: rgba(28,27,25,0.78); transition: color 0.22s, transform 0.22s; }
     .design-principle:first-child { padding-top: 0; }
@@ -111,8 +116,8 @@
     .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 clamp(28px,4.6vw,58px); display: flex; justify-content: space-between; align-items: center; }
     .footer-name { font-family: var(--serif); font-style: italic; font-size: 20px; color: rgba(28,27,25,0.52); }
     .footer-copy { font-size: 11px; color: rgba(28,27,25,0.42); }
-    .reveal { transition: opacity 0.8s, transform 0.8s; }
-    .reveal.hidden { opacity: 0; transform: translateY(20px); }
+    .reveal { will-change: opacity, transform; }
+    .reveal.hidden { opacity: 0; transform: translateY(26px) scale(0.985); }
     @media (max-width: 900px) {
       nav { padding: 18px 0; }
       .nav-inner { padding: 0 22px; display: flex; justify-content: space-between; gap: 18px; }
@@ -125,8 +130,10 @@
       .quick-links { max-width: none; }
       .right-col { gap: 24px; }
       .right-col > .reveal { padding: 22px; }
+      .right-col > .reveal:not(:first-child):hover { transform: none; }
       .hello-name { font-size: clamp(58px,18vw,88px); line-height: 0.9; margin-bottom: 18px; }
       .hello-bio { font-size: 15px; line-height: 1.72; }
+      .story-card.is-collapsed .story-content { max-height: 260px; }
       .timeline-item { grid-template-columns: 1fr; gap: 10px; }
       .timeline-year { margin-bottom: 2px; }
       .design-principle { font-size: 15px; }
@@ -168,14 +175,14 @@
       <div class="quick-links">
         <a href="mailto:dddina7788@gmail.com" class="quick-link">Email <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
         <a href="https://www.linkedin.com/in/dina-da/" target="_blank" class="quick-link">LinkedIn <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
-        <a href="https://drive.google.com/file/d/10085O7HcPDRbbVvB2gu00LjhxMf7chLG/view?usp=drive_link" target="_blank" class="quick-link">Resume <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
+        <a href="https://drive.google.com/drive/u/1/folders/1YFv4prYsSkQwNeF-4PekLJOi9kKxnCks" target="_blank" class="quick-link">Resume <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></a>
       </div>
     </div>
 
     <div class="right-col">
       <div class="reveal">
-        <h1 class="hello-name">Stay curious. <br><em>Design with care.</em></h1>
-        <p class="hello-bio">Since 2020, I’ve been creating thoughtful digital experiences across consumer products, e-commerce, and AI. I work closely with founders and cross-functional teams to turn user insights into intuitive interactions—from early ideas to launched products.</p>
+        <h1 class="hello-name">Stay curious.<br><em>Design with care.</em></h1>
+        <p class="hello-bio">Since 2020, I&rsquo;ve been creating thoughtful digital experiences across consumer products, e-commerce, and AI. I work closely with founders and cross-functional teams to turn user insights into intuitive interactions—from early ideas to launched products.</p>
       </div>
       <div class="reveal story-card" id="story-card">
         <button class="story-toggle" type="button" aria-expanded="true" aria-controls="story-content">
@@ -183,12 +190,15 @@
           <span class="story-toggle-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
         </button>
         <div class="story-content" id="story-content">
-          <p class="hello-bio">Curiosity has always been the thread connecting everything I love.<br><br>It started with drawing — as a kid, I loved sketching the characters on tea tins at home, and before long, classmates were asking for one of my own.<br><br>That same curiosity led me to study Multiplatform Journalism, where I learned to tell stories, understand people, and communicate ideas clearly.<br><br>After graduating, I worked in brand and content design, shaping how products and stories showed up visually — and found myself asking not just how something looked, but how people actually experienced it.<br><br>That question is what pulled me toward product design, and later, a Master's in Interactive Design at Northeastern University.<br><br>Somewhere along the way, that curiosity found its home in <strong>product design</strong>.</p>
+          <div class="story-journey-layout">
+            <div class="story-text">
+              <p class="hello-bio">Curiosity has always been the thread connecting everything I love.<br><br>It started with drawing — as a kid, I loved sketching the characters on tea tins at home, and before long, classmates were asking for one of my own.<br><br>That same curiosity led me to study Multiplatform Journalism, where I learned to tell stories, understand people, and communicate ideas clearly.<br><br>After graduating, I worked in brand and content design, shaping how products and stories showed up visually — and found myself asking not just how something looked, but how people actually experienced it.<br><br>That question is what pulled me toward product design, and later, a Master's in Interactive Design at Northeastern University.<br><br>Somewhere along the way, that curiosity found its home in <strong>product design</strong>.</p>
+            </div>
+            <figure class="journey-panel">
+              <img class="journey-image" src="images/about/career-journey.png" alt="My journey of curiosity — a timeline from childhood drawing through journalism, design, a master's in Interactive Design, and turning curiosity into user insight.">
+            </figure>
+          </div>
         </div>
-      </div>
-      <div class="reveal">
-        <p class="section-heading">Journey</p>
-        <img class="journey-image" src="images/about/career-journey.png" alt="My journey of curiosity — a timeline from childhood drawing through journalism, design, a master's in Interactive Design, and turning curiosity into user insight.">
       </div>
       <div class="reveal">
         <p class="section-heading">How I Design</p>
