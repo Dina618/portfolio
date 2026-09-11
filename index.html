@@ -201,6 +201,63 @@
       from { opacity: 0; transform: translate(-50%, 12px); }
       to { opacity: 1; transform: translate(-50%, 0); }
     }
+    .tools-strip {
+      position: relative;
+      z-index: 4;
+      overflow: hidden;
+      padding: 16px 0;
+      background: linear-gradient(180deg, rgba(227,225,220,0.96) 0%, var(--cream) 100%);
+      border-top: 1px solid rgba(28,27,25,0.08);
+      border-bottom: 1px solid rgba(28,27,25,0.08);
+      color: rgba(58,56,52,0.58);
+      white-space: nowrap;
+    }
+    .tools-strip::before,
+    .tools-strip::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: min(18vw, 220px);
+      z-index: 2;
+      pointer-events: none;
+    }
+    .tools-strip::before { left: 0; background: linear-gradient(90deg, var(--cream), rgba(227,225,220,0)); }
+    .tools-strip::after { right: 0; background: linear-gradient(270deg, var(--cream), rgba(227,225,220,0)); }
+    .tools-track {
+      display: flex;
+      width: max-content;
+      align-items: center;
+      animation: toolsMarquee 34s linear infinite;
+      will-change: transform;
+    }
+    .tools-group {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding-right: 24px;
+    }
+    .tools-group span {
+      display: inline-flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .tools-group span::after {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(91,91,214,0.44);
+      box-shadow: 0 0 18px rgba(91,91,214,0.2);
+    }
+    @keyframes toolsMarquee {
+      from { transform: translate3d(0,0,0); }
+      to { transform: translate3d(-50%,0,0); }
+    }
     @media (prefers-reduced-motion: reduce) {
       .hero-content,
       .hero-name,
@@ -222,6 +279,7 @@
         opacity: 1 !important;
         transform: translateX(-50%) !important;
       }
+      .tools-track { animation: none !important; }
       .hero-motion-zone { display: none; }
     }
 
@@ -310,6 +368,10 @@
       .hero-scene-image { object-position: 55% center; }
       .scroll-indicator { bottom: 26px; height: 46px; }
       .scroll-text { font-size: 9px; }
+      .tools-strip { padding: 13px 0; }
+      .tools-track { animation-duration: 24s; }
+      .tools-group { gap: 18px; padding-right: 18px; }
+      .tools-group span { gap: 18px; font-size: 10px; letter-spacing: 0.13em; }
       section { padding: 80px 0; }
       #projects { margin-top: 0; padding: 72px 0 84px; }
       #projects .section-label { margin-bottom: 28px; }
@@ -411,6 +473,35 @@
     </div>
   </div>
 
+  <div class="tools-strip" aria-label="Tools Dina works with">
+    <div class="tools-track">
+      <div class="tools-group">
+        <span>Figma</span>
+        <span>FigJam</span>
+        <span>Codex</span>
+        <span>Claude Code</span>
+        <span>HTML/CSS</span>
+        <span>Adobe Creative Suite</span>
+        <span>Miro</span>
+        <span>Jira</span>
+        <span>Qualtrics</span>
+        <span>Tableau</span>
+      </div>
+      <div class="tools-group" aria-hidden="true">
+        <span>Figma</span>
+        <span>FigJam</span>
+        <span>Codex</span>
+        <span>Claude Code</span>
+        <span>HTML/CSS</span>
+        <span>Adobe Creative Suite</span>
+        <span>Miro</span>
+        <span>Jira</span>
+        <span>Qualtrics</span>
+        <span>Tableau</span>
+      </div>
+    </div>
+  </div>
+
   <section id="projects">
     <div class="section-inner">
       <p class="section-label reveal">Selected Work</p>
@@ -475,7 +566,7 @@
   <footer>
     <div class="footer-inner">
       <span class="footer-name">Dina Da</span>
-      <span class="footer-copy">© 2026</span>
+      <span class="footer-copy">© 2025</span>
     </div>
   </footer>
 
