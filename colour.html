@@ -23,14 +23,14 @@
     /* ── NAV ── */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: 20px 48px; display: flex; justify-content: space-between; align-items: center; transition: background 0.4s, border-color 0.4s; background: transparent; border-bottom: 1px solid transparent; }
     nav.scrolled { background: rgba(250,248,244,0.92); backdrop-filter: blur(12px); border-bottom-color: rgba(26,24,20,0.06); }
-    .nav-name { font-family: 'Instrument Serif', Georgia, serif; font-size: 32px; font-style: italic; font-weight: 400; line-height: 1; text-decoration: none; color: #17151b; transition: color 0.4s; }
-    nav.scrolled .nav-name { color: #17151b; }
+    .nav-name { font-family: 'Instrument Serif', Georgia, serif; font-size: 32px; font-style: italic; font-weight: 400; line-height: 1; text-decoration: none; color: #3B2E5A; text-shadow: 0 2px 14px rgba(250,238,250,0.45); transition: color 0.4s; }
+    nav.scrolled .nav-name { color: #3B2E5A; }
     nav.scrolled .nav-back { color: var(--ink-light); }
-    nav.scrolled .nav-back:hover { color: var(--ink); }
+    nav.scrolled .nav-back:hover { color: #2A2044; background: rgba(250,238,250,0.72); border-color: rgba(59,46,90,0.18); }
     .nav-right { display: flex; align-items: center; gap: 40px; }
-    .nav-back { display: flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+    .nav-back { display: flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #3B2E5A; text-decoration: none; transition: color 0.2s, background 0.2s, border-color 0.2s; padding: 8px 12px; border-radius: 999px; background: rgba(250,238,250,0.42); border: 1px solid rgba(59,46,90,0.10); backdrop-filter: blur(8px); }
     .nav-back svg { transition: transform 0.2s; }
-    .nav-back:hover { color: var(--ink); }
+    .nav-back:hover { color: #2A2044; background: rgba(250,238,250,0.72); border-color: rgba(59,46,90,0.18); }
     .nav-back:hover svg { transform: translateX(-3px); }
 
     /* ── LEFT PROGRESS BAR ── */
@@ -44,18 +44,18 @@
 
     /* ── HERO ── */
     .hero { min-height: 50vh; position: relative; overflow: hidden; width: 100%; display: flex; align-items: center; }
-    .hero-bg { position: absolute; inset: 0; background: linear-gradient(100deg, #9C82D6 0%, #A98FD0 30%, #C6AEE6 60%, #E7D9F7 85%, #F6EEFC 100%); }
+    .hero-bg { position: absolute; inset: 0; background: linear-gradient(110deg, #b6a7e2 0%, #c7b8ef 36%, #f0d9f5 68%, #faeefa 100%); }
     .hero-bg::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.25) 0%, transparent 60%); }
     .hero-inner { position: relative; z-index: 1; max-width: 1280px; margin: 0 auto; padding: 120px 48px 80px; width: 100%; display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 64px; align-items: center; overflow: hidden; }
     .hero-left {}
-    .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 28px; }
-    .hero-eyebrow::before { content: ''; width: 20px; height: 1px; background: rgba(255,255,255,0.3); }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(65,48,116,0.46); margin-bottom: 28px; }
+    .hero-eyebrow::before { content: ''; width: 20px; height: 1px; background: rgba(65,48,116,0.26); }
     .hero-title { font-family: var(--serif); font-size: clamp(72px, 9vw, 120px); font-weight: 700; line-height: 0.92; letter-spacing: -0.02em; color: white; margin-bottom: 20px; text-shadow: 0 4px 24px rgba(80,50,140,0.25); }
     .hero-title em { font-style: normal; color: var(--amber); }
-    .hero-sub { font-size: 14px; font-weight: 300; line-height: 1.7; color: rgba(255,255,255,0.5); max-width: 460px; margin-bottom: 48px; }
+    .hero-sub { font-size: 14px; font-weight: 400; line-height: 1.7; color: rgba(65,48,116,0.72); max-width: 460px; margin-bottom: 48px; }
     .hero-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 32px; }
-    .hm-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 5px; }
-    .hm-value { font-family: var(--serif); font-size: 14px; color: rgba(255,255,255,0.72); line-height: 1.4; }
+    .hm-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(65,48,116,0.42); margin-bottom: 5px; }
+    .hm-value { font-family: var(--serif); font-size: 14px; color: rgba(59,46,90,0.82); line-height: 1.4; }
     /* Hero right — core image showcase */
     .hero-right { position: relative; display: flex; align-items: center; justify-content: center; overflow: visible; }
    .hero-screen { width: 120%; border-radius: 0; overflow: visible; box-shadow: none; position: relative; z-index: 2; }
@@ -286,13 +286,13 @@ body::before {
 }
 .hero-bg {
   background:
-    radial-gradient(circle at 72% 24%, rgba(255,255,255,.64) 0 7rem, transparent 16rem),
-    radial-gradient(circle at 82% 72%, rgba(255,218,233,.72) 0 10rem, transparent 22rem),
-    linear-gradient(112deg, #5140b8 0%, #8068cd 42%, #b999df 68%, #fff1e5 100%);
+    radial-gradient(circle at 72% 24%, rgba(255,255,255,.76) 0 7rem, transparent 16rem),
+    radial-gradient(circle at 82% 72%, rgba(250,238,250,.86) 0 10rem, transparent 22rem),
+    linear-gradient(112deg, #b6a7e2 0%, #c7b8ef 38%, #f0d9f5 68%, #faeefa 100%);
 }
 .hero-bg::after {
   background:
-    radial-gradient(ellipse at 28% 52%, rgba(255,255,255,0.22) 0%, transparent 58%),
+    radial-gradient(ellipse at 28% 52%, rgba(255,255,255,0.34) 0%, transparent 58%),
     radial-gradient(circle at 16% 20%, rgba(255,255,255,.38) 0 2px, transparent 3px),
     radial-gradient(circle at 84% 28%, rgba(243,207,107,.62) 0 3px, transparent 5px);
   background-size: auto, 180px 180px, 260px 260px;
@@ -302,8 +302,8 @@ body::before {
     @media (max-width: 900px) {
       .hero-bg {
         background:
-          radial-gradient(circle at 74% 22%, rgba(255,255,255,.44) 0 6rem, transparent 15rem),
-          linear-gradient(112deg, #5140b8 0%, #7560c9 58%, #d7aee0 100%);
+          radial-gradient(circle at 74% 22%, rgba(255,255,255,.58) 0 6rem, transparent 15rem),
+          linear-gradient(112deg, #b6a7e2 0%, #c7b8ef 52%, #f0d9f5 100%);
       }
     }
 
@@ -361,7 +361,7 @@ body::before {
     <div class="hero-bg"></div>
     <div class="hero-inner">
       <div class="hero-left">
-        <div class="hero-eyebrow">Case Study</div>
+        <div class="hero-eyebrow">MVP Product Design</div>
         <h1 class="hero-title">COLOUR</h1>
         <p class="hero-sub">From a founder's vision to a fundable MVP — leading product strategy and identity-driven design for a cross-continental pre-seed startup team.</p>
         <div class="hero-meta">
