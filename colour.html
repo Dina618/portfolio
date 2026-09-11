@@ -124,17 +124,25 @@
     .img-scroll-wrap .img-ph { height: 460px; width: 1300px; border-radius: 20px; aspect-ratio: unset; }
     .img-caption { font-size: 11px; color: var(--ink-faint); letter-spacing: 0.06em; margin-top: -32px; margin-bottom: 48px; }
     .img-five { display: grid; grid-template-columns: repeat(5,1fr); gap: 12px; margin: 48px 0; }
-    .img-five .img-item { border-radius: 16px; overflow: hidden; }
-    .img-five img { width: 100%; display: block; }
-    .img-five .img-ph { aspect-ratio: 9/19; }
+    .img-four { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin: 48px 0; }
+    .img-three { display: grid; grid-template-columns: repeat(5,1fr); gap: 12px; margin: 48px 0; }
+    .img-five .img-item, .img-four .img-item, .img-three .img-item { border-radius: 14px; overflow: hidden; }
+    .img-five img, .img-four img, .img-three img { width: 100%; display: block; }
+    .img-five .img-ph, .img-four .img-ph, .img-three .img-ph { aspect-ratio: 9/19; }
 
     /* ── CAROUSEL ── */
-    .carousel { margin: 48px 0; }
-    .carousel-track { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+    .carousel { margin: 48px 0; position: relative; }
+    .carousel-track { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; scroll-behavior: smooth; }
+    .carousel-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(123,94,167,0.18); background: rgba(255,255,255,0.78); color: var(--cp); display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 28px rgba(123,94,167,0.16); backdrop-filter: blur(10px); cursor: none; z-index: 2; transition: transform 0.2s, background 0.2s; }
+    .carousel-nav:hover { transform: translateY(-50%) scale(1.05); background: rgba(255,255,255,0.94); }
+    .carousel-nav.prev { left: -22px; }
+    .carousel-nav.next { right: -22px; }
+    .carousel-hint { margin-top: 12px; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); text-align: center; }
     .carousel-track::-webkit-scrollbar { display: none; }
-    .c-item { flex: 0 0 calc(33.333% - 10px); scroll-snap-align: start; border-radius: 20px; overflow: hidden; }
+    .c-item { flex: 0 0 calc(20% - 12px); scroll-snap-align: start; border-radius: 18px; overflow: hidden; }
     .c-item img { width: 100%; display: block; }
     .c-item .img-ph { aspect-ratio: 9/19; }
+    .screen-label { margin-top: 10px; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); text-align: center; line-height: 1.4; }
     .carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 18px; }
     .c-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ink-faint); border: none; padding: 0; transition: background 0.2s, transform 0.2s; }
     .c-dot.active { background: var(--cp); transform: scale(1.4); }
@@ -222,6 +230,8 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 1100px) {
       .progress-bar { display: none; }
+      .c-item { flex-basis: calc(33.333% - 10px); }
+      .img-three { grid-template-columns: repeat(3,1fr); }
       .case-wrap { padding: 0 48px; }
       .next-wrap { padding: 0 48px; }
     }
@@ -240,9 +250,11 @@
       .card-grid { grid-template-columns: 1fr; }
       .quad-grid { grid-template-columns: 1fr; }
       .ai-note { flex-direction: column; gap: 8px; }
-      .img-five { grid-template-columns: repeat(3,1fr); }
+      .img-five, .img-four, .img-three { grid-template-columns: repeat(3,1fr); }
       .egg-flow { grid-template-columns: 1fr 1fr; }
       .c-item { flex: 0 0 80%; }
+      .carousel-nav { display: none; }
+      .carousel-hint { display: block; }
       .project-nav-grid { grid-template-columns: 1fr; }
       .project-nav-grid .next-link { min-height: 0; padding: 26px; }
       footer { padding: 20px 24px; }
@@ -371,7 +383,7 @@ body::before {
       </div>
       <div class="hero-right">
         <div class="hero-screen">
-          <img src="images/projects/colour/colour-hero-screen1.png" alt="COLOUR App"
+          <img src="images/projects/colour/colour-hero-screen.png" alt="COLOUR App"
             onerror="this.parentElement.innerHTML='<div class=\'hero-screen-placeholder\'><span>Hero Image — colour-hero-screen.png</span></div>'">
         </div>
       </div>
@@ -789,17 +801,10 @@ body::before {
         <div class="egg-step"><div class="egg-img"><img src="images/projects/colour/colour-egg-03.png" alt="Generation" onerror="this.parentElement.innerHTML='<div class=\'img-ph\' style=\'aspect-ratio:3/4;\'><span>Generation</span></div>'"></div><p class="egg-lbl">Generation</p></div>
         <div class="egg-step"><div class="egg-img"><img src="images/projects/colour/colour-egg-04.png" alt="Digital Persona" onerror="this.parentElement.innerHTML='<div class=\'img-ph\' style=\'aspect-ratio:3/4;\'><span>Digital Persona</span></div>'"></div><p class="egg-lbl">Digital Persona</p></div>
       </div>
-      <div class="video-wrap reveal">
-        <video src="images/projects/colour/colour-prototype.mp4" autoplay muted loop playsinline onerror="this.parentElement.innerHTML='<div class=\'video-ph\'><div class=\'video-ph-btn\'></div><span>Prototype Video — coming soon</span></div>'"></video>
-      </div>
 
       <div class="ai-note reveal">
         <span class="ai-note-tag">AI Acceleration</span>
         <p class="ai-note-text">Once the interaction logic was finalised, I used AI to rapidly explore multiple visual directions before refining the selected concept into production-ready interfaces.</p>
-      </div>
-      <div class="img-two reveal">
-        <div class="img-item"><img src="images/projects/colour/colour-ai-01.png" alt="AI-Generated Family & Persona Concepts" onerror="this.parentElement.innerHTML='<div class=\'img-ph\' style=\'aspect-ratio:4/3;\'><span>AI Concept Exploration — 即梦</span></div>'"></div>
-        <div class="img-item"><img src="images/projects/colour/colour-ai-02.png" alt="AI-Generated Layout Drafts" onerror="this.parentElement.innerHTML='<div class=\'img-ph\' style=\'aspect-ratio:4/3;\'><span>AI Layout Drafts — Stitch</span></div>'"></div>
       </div>
 
       <p class="s-tag reveal" style="margin-top:64px;">Design System</p>
@@ -810,35 +815,49 @@ body::before {
       <p class="s-tag reveal" style="margin-top:64px;">Onboarding Experience</p>
       <p class="s-body reveal">The onboarding flow feels like an <strong>identity ritual</strong> — reducing the anxiety of joining a new social space by making the first experience about discovery and self-expression.</p>
       <div class="carousel reveal">
+        <button class="carousel-nav prev" type="button" data-carousel="ct-onboarding" data-dir="-1" aria-label="Previous onboarding screen">‹</button>
         <div class="carousel-track" id="ct-onboarding">
-          <div class="c-item"><img src="images/projects/colour/colour-onboarding-01.png" alt="Login" onerror="this.parentElement.innerHTML='<div class=\'img-ph\' style=\'aspect-ratio:9/19;\'><span>0.0 Login</span></div>'"></div>
-          <div class="c-item"><img src="images/projects/colour/colour-onboarding-02.png" alt="Interests" onerror="this.parentElement.innerHTML='<div class=\'img-ph\' style=\'aspect-ratio:9/19;\'><span>0.2 Interests</span></div>'"></div>
-          <div class="c-item"><img src="images/projects/colour/colour-onboarding-03.png" alt="Family" onerror="this.parentElement.innerHTML='<div class=\'img-ph\' style=\'aspect-ratio:9/19;\'><span>0.3 Family</span></div>'"></div>
+          <div class="c-item"><img src="images/projects/colour/colour-ai-01.png" alt="Welcome"><p class="screen-label">Welcome</p></div>
+          <div class="c-item"><img src="images/projects/colour/colour-onboarding-01.png" alt="Login"><p class="screen-label">Sign Up / Log In</p></div>
+          <div class="c-item"><img src="images/projects/colour/colour-onboarding-02.png" alt="Interests"><p class="screen-label">Choose Interests</p></div>
+          <div class="c-item"><img src="images/projects/colour/colour-onboarding-03.png" alt="Choose Family"><p class="screen-label">Choose Family</p></div>
+          <div class="c-item"><img src="images/projects/colour/colour-create-05.png" alt="All Families"><p class="screen-label">All Families</p></div>
+          <div class="c-item"><img src="images/projects/colour/colour-ai-02.png" alt="Create Avatar"><p class="screen-label">Create Avatar</p></div>
         </div>
+        <button class="carousel-nav next" type="button" data-carousel="ct-onboarding" data-dir="1" aria-label="Next onboarding screen">›</button>
         <div class="carousel-dots" id="cd-onboarding">
-          <button class="c-dot active"></button><button class="c-dot"></button><button class="c-dot"></button>
+          <button class="c-dot active"></button><button class="c-dot"></button><button class="c-dot"></button><button class="c-dot"></button><button class="c-dot"></button><button class="c-dot"></button>
         </div>
+        <p class="carousel-hint">Swipe or use arrows</p>
       </div>
       <p class="s-tag reveal" style="margin-top:64px;">Home &amp; Community</p>
       <p class="s-body reveal">The home feed is powered by the <strong>Taste Graph</strong> — surfacing content by cultural alignment, not just engagement metrics.</p>
       <div class="carousel reveal">
+        <button class="carousel-nav prev" type="button" data-carousel="ct-home" data-dir="-1" aria-label="Previous community screen">‹</button>
         <div class="carousel-track" id="ct-home">
-          <div class="c-item"><img src="images/projects/colour/colour-home-01.png" alt="Home" onerror="this.parentElement.innerHTML='<div class=\'img-ph\' style=\'aspect-ratio:9/19;\'><span>1.0 Home</span></div>'"></div>
-          <div class="c-item"><img src="images/projects/colour/colour-home-02.png" alt="Community" onerror="this.parentElement.innerHTML='<div class=\'img-ph\' style=\'aspect-ratio:9/19;\'><span>2.0 Community</span></div>'"></div>
-          <div class="c-item"><img src="images/projects/colour/colour-home-03.png" alt="Hot" onerror="this.parentElement.innerHTML='<div class=\'img-ph\' style=\'aspect-ratio:9/19;\'><span>2.0 Hot Circles</span></div>'"></div>
+          <div class="c-item"><img src="images/projects/colour/colour-home-01.png" alt="Home" onerror="this.parentElement.innerHTML='<div class=\'img-ph\' style=\'aspect-ratio:9/19;\'><span>1.0 Home</span></div>'"><p class="screen-label">Home Feed</p></div>
+          <div class="c-item"><img src="images/projects/colour/colour-home-03.png" alt="Hot" onerror="this.parentElement.innerHTML='<div class=\'img-ph\' style=\'aspect-ratio:9/19;\'><span>2.0 Hot Circles</span></div>'"><p class="screen-label">Search / Discover</p></div>
+          <div class="c-item"><img src="images/projects/colour/colour-home-02.png" alt="Community" onerror="this.parentElement.innerHTML='<div class=\'img-ph\' style=\'aspect-ratio:9/19;\'><span>2.0 Community</span></div>'"><p class="screen-label">Circle Detail</p></div>
         </div>
+        <button class="carousel-nav next" type="button" data-carousel="ct-home" data-dir="1" aria-label="Next community screen">›</button>
         <div class="carousel-dots" id="cd-home">
           <button class="c-dot active"></button><button class="c-dot"></button><button class="c-dot"></button>
         </div>
+        <p class="carousel-hint">Swipe or use arrows</p>
       </div>
-      <p class="s-tag reveal" style="margin-top:64px;">Create, Notify &amp; Profile</p>
+      <p class="s-tag reveal" style="margin-top:64px;">Create &amp; Profile</p>
       <p class="s-body reveal">Content creation is a <strong>relationship trigger</strong> — posts, events, and interactions are structured to facilitate real connections within Families and Squads.</p>
-      <div class="img-five reveal">
-        <div class="img-item"><img src="images/projects/colour/colour-create-01.png" alt="Post" onerror="this.parentElement.innerHTML='<div class=\'img-ph\' style=\'aspect-ratio:9/19;\'><span>3.0 Post</span></div>'"></div>
-        <div class="img-item"><img src="images/projects/colour/colour-create-02.png" alt="Notify" onerror="this.parentElement.innerHTML='<div class=\'img-ph\' style=\'aspect-ratio:9/19;\'><span>4.0 Notify</span></div>'"></div>
-        <div class="img-item"><img src="images/projects/colour/colour-create-03.png" alt="Profile" onerror="this.parentElement.innerHTML='<div class=\'img-ph\' style=\'aspect-ratio:9/19;\'><span>5.0 Profile</span></div>'"></div>
-        <div class="img-item"><img src="images/projects/colour/colour-create-04.png" alt="Post Detail" onerror="this.parentElement.innerHTML='<div class=\'img-ph\' style=\'aspect-ratio:9/19;\'><span>3.1 Detail</span></div>'"></div>
-        <div class="img-item"><img src="images/projects/colour/colour-create-05.png" alt="Circle" onerror="this.parentElement.innerHTML='<div class=\'img-ph\' style=\'aspect-ratio:9/19;\'><span>2.1 Circle</span></div>'"></div>
+      <div class="img-three reveal">
+        <div class="img-item"><img src="images/projects/colour/colour-create-01.png" alt="Post"><p class="screen-label">Create Post</p></div>
+        <div class="img-item"><img src="images/projects/colour/colour-create-03.png" alt="Profile"><p class="screen-label">Profile</p></div>
+        <div class="img-item"><img src="images/projects/colour/colour-create-04.png" alt="Post Detail"><p class="screen-label">Post Detail</p></div>
+      </div>
+
+      <p class="s-tag reveal" style="margin-top:64px;">Messages &amp; Notifications</p>
+      <div class="img-three reveal">
+        <div class="img-item"><img src="images/projects/colour/colour-create-02.png" alt="Notifications"><p class="screen-label">Notifications</p></div>
+        <div class="img-item"><img src="images/projects/colour/colour-message-01.png" alt="Chat Messages"><p class="screen-label">Chat / Messages</p></div>
+        <div class="img-item"><img src="images/projects/colour/colour-message-02.png" alt="Swipe to Delete Message"><p class="screen-label">Swipe to Delete</p></div>
       </div>
     </div>
 
@@ -1014,6 +1033,17 @@ body::before {
         });
       });
     }
+
+    document.querySelectorAll('.carousel-nav').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var track = document.getElementById(btn.getAttribute('data-carousel'));
+        if(!track) return;
+        var item = track.querySelector('.c-item');
+        var step = item ? item.getBoundingClientRect().width + 14 : track.clientWidth * 0.8;
+        track.scrollBy({ left: step * Number(btn.getAttribute('data-dir')), behavior: 'smooth' });
+      });
+    });
+
     initCarousel('ct-onboarding','cd-onboarding');
     initCarousel('ct-home','cd-home');
   </script>
