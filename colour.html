@@ -6,7 +6,7 @@
   <title>COLOUR — Dina Da</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Chakra+Petch:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -23,8 +23,8 @@
     /* ── NAV ── */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: 20px 48px; display: flex; justify-content: space-between; align-items: center; transition: background 0.4s, border-color 0.4s; background: transparent; border-bottom: 1px solid transparent; }
     nav.scrolled { background: rgba(250,248,244,0.92); backdrop-filter: blur(12px); border-bottom-color: rgba(26,24,20,0.06); }
-    .nav-name { font-family: var(--serif); font-size: 18px; font-weight: 500; text-decoration: none; color: white; transition: color 0.4s; }
-    nav.scrolled .nav-name { color: var(--ink); }
+    .nav-name { font-family: 'Instrument Serif', Georgia, serif; font-size: 32px; font-style: italic; font-weight: 400; line-height: 1; text-decoration: none; color: #17151b; transition: color 0.4s; }
+    nav.scrolled .nav-name { color: #17151b; }
     nav.scrolled .nav-back { color: var(--ink-light); }
     nav.scrolled .nav-back:hover { color: var(--ink); }
     .nav-right { display: flex; align-items: center; gap: 40px; }
@@ -173,6 +173,8 @@
     .collab-title { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 10px; letter-spacing: 0.02em; }
     .collab-desc { font-size: 13px; font-weight: 300; color: var(--ink-light); line-height: 1.65; }
 
+    .design-system-shot { border-radius: 22px; overflow: hidden; margin: 48px 0; box-shadow: 0 18px 46px rgba(123,94,167,0.10); }
+    .design-system-shot img { width: 100%; height: auto; display: block; }
     /* ── VIDEO ── */
     .video-wrap { width: 100%; border-radius: 20px; overflow: hidden; margin: 48px 0; background: var(--ink); }
     .video-wrap video { width: 100%; display: block; }
@@ -194,7 +196,11 @@
 
     /* ── NEXT PROJECT ── */
     .next-wrap { padding: 0 48px 0 80px; max-width: 1280px; margin: 0 auto; }
-    .next-project { padding: 80px 0 64px; border-top: 1px solid rgba(26,24,20,0.08); display: flex; justify-content: space-between; align-items: center; }
+    .next-project { padding: 80px 0 64px; border-top: 1px solid rgba(26,24,20,0.08); }
+    .project-nav-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
+    .project-nav-grid .next-link { min-height: 190px; justify-content: space-between; padding: 34px; border-radius: 28px; background: rgba(255,255,255,0.48); border: 1px solid rgba(123,94,167,0.12); box-shadow: 0 18px 46px rgba(123,94,167,0.10); backdrop-filter: blur(12px); }
+    .project-nav-grid .prev-link .next-arrow { transform: rotate(180deg); }
+    .project-nav-grid .prev-link:hover .next-arrow { transform: rotate(135deg); }
     .next-left .next-lbl { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 12px; }
     .next-left .next-title { font-family: var(--serif); font-size: clamp(30px,4vw,46px); font-weight: 600; color: var(--ink); transition: color 0.3s; }
     .next-left .next-desc { font-size: 13px; color: var(--ink-faint); margin-top: 8px; max-width: 360px; line-height: 1.5; }
@@ -221,6 +227,7 @@
     }
     @media (max-width: 900px) {
       nav { padding: 18px 24px; }
+      .nav-name { font-size: 28px; }
       .hero-inner { grid-template-columns: 1fr; padding: 100px 24px 60px; gap: 48px; }
       .hero-right { display: none; }
       .case-wrap, .next-wrap { padding: 0 24px; }
@@ -236,7 +243,8 @@
       .img-five { grid-template-columns: repeat(3,1fr); }
       .egg-flow { grid-template-columns: 1fr 1fr; }
       .c-item { flex: 0 0 80%; }
-      .next-project { flex-direction: column; align-items: flex-start; gap: 32px; }
+      .project-nav-grid { grid-template-columns: 1fr; }
+      .project-nav-grid .next-link { min-height: 0; padding: 26px; }
       footer { padding: 20px 24px; }
       body { cursor: auto; }
       #cur, #cur-ring { display: none; }
@@ -293,7 +301,7 @@ body::before {
 
   <!-- NAV -->
   <nav>
-    <a href="index.html" class="nav-name">Dina Da</a>
+    <a href="index.html" class="nav-name">Dina.</a>
     <div class="nav-right">
       <a href="index.html" class="nav-back">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13 7H1M7 1L1 7l6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -794,6 +802,11 @@ body::before {
         <div class="img-item"><img src="images/projects/colour/colour-ai-02.png" alt="AI-Generated Layout Drafts" onerror="this.parentElement.innerHTML='<div class=\'img-ph\' style=\'aspect-ratio:4/3;\'><span>AI Layout Drafts — Stitch</span></div>'"></div>
       </div>
 
+      <p class="s-tag reveal" style="margin-top:64px;">Design System</p>
+      <div class="design-system-shot reveal">
+        <img src="images/projects/colour/colour-design-system.png" alt="COLOUR Design System">
+      </div>
+
       <p class="s-tag reveal" style="margin-top:64px;">Onboarding Experience</p>
       <p class="s-body reveal">The onboarding flow feels like an <strong>identity ritual</strong> — reducing the anxiety of joining a new social space by making the first experience about discovery and self-expression.</p>
       <div class="carousel reveal">
@@ -878,9 +891,9 @@ body::before {
           <p class="collab-desc">Ran weekly design reviews with founders, frontend engineers, and backend engineers to align on scope, surface technical constraints early, and iterate fast.</p>
         </div>
         <div class="collab-card">
-          <div class="collab-num">100%</div>
-          <div class="collab-title">Handoff Coverage</div>
-          <p class="collab-desc">Delivered complete Figma component documentation with spacing, states, and interaction specs — reducing back-and-forth with engineering by eliminating ambiguity.</p>
+          <div class="collab-num">Full Specs</div>
+          <div class="collab-title">Developer Handoff</div>
+          <p class="collab-desc">Delivered Figma component documentation with spacing, states, and interaction specs to make engineering handoff clearer and reduce avoidable ambiguity.</p>
         </div>
         <div class="collab-card">
           <div class="collab-num">3 Rounds</div>
@@ -900,16 +913,28 @@ body::before {
   <!-- NEXT PROJECT -->
   <div class="next-wrap">
     <div class="next-project reveal">
-      <a href="https://dinada.design/boston-cares/" class="next-link">
-        <div class="next-left">
-          <p class="next-lbl">Next Project</p>
-          <p class="next-title">Boston Cares</p>
-          <p class="next-desc">Redesigning a nonprofit platform to make social impact more accessible for everyday people.</p>
-        </div>
-        <div class="next-arrow">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 15L15 1M15 1H4M15 1v11" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-        </div>
-      </a>
+      <div class="project-nav-grid">
+        <a href="https://dinada.design/ai-mentor-bot/" class="next-link prev-link">
+          <div class="next-left">
+            <p class="next-lbl">Previous Project</p>
+            <p class="next-title">AI Mentor Bot</p>
+            <p class="next-desc">An AI-powered interview coach that combines real-time feedback with emotional intelligence to help users build confidence and land their next role.</p>
+          </div>
+          <div class="next-arrow">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 15L15 1M15 1H4M15 1v11" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </div>
+        </a>
+        <a href="https://dinada.design/boston-cares/" class="next-link">
+          <div class="next-left">
+            <p class="next-lbl">Next Project</p>
+            <p class="next-title">Boston Cares</p>
+            <p class="next-desc">Redesigning a nonprofit platform to lower the barrier to volunteering — making social impact more accessible for everyday people.</p>
+          </div>
+          <div class="next-arrow">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 15L15 1M15 1H4M15 1v11" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 
