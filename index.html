@@ -170,11 +170,23 @@
       filter: drop-shadow(0 18px 22px rgba(26,24,20,0.1)) saturate(0.98) contrast(0.98);
       transition: opacity 0.34s cubic-bezier(0.16,1,0.3,1), transform 0.42s cubic-bezier(0.16,1,0.3,1), filter 0.34s;
     }
-    .hero-character-layer.girl-layer { opacity: 1; }
+    .hero-character-layer.girl-layer {
+      inset: auto;
+      left: 49%;
+      bottom: -2px;
+      width: auto;
+      height: min(82svh, 760px);
+      object-fit: contain;
+      object-position: center bottom;
+      opacity: 1;
+      transform: translate3d(-50%,0,0);
+      transform-origin: 50% 88%;
+      filter: drop-shadow(0 18px 22px rgba(26,24,20,0.1)) saturate(0.98) contrast(0.98);
+    }
     .hero-character-layer.dog-layer { filter: drop-shadow(0 12px 16px rgba(26,24,20,0.1)) saturate(0.98) contrast(0.98); }
     .hero-character-layer.cat-layer { filter: drop-shadow(0 12px 16px rgba(26,24,20,0.1)) saturate(0.98) contrast(0.98); }
     .hero-character-layer.cat-layer { transform: translate3d(62px,8px,0); }
-    .hero-art-shell.is-girl-active .girl-layer { transform: translate3d(0,-1px,0) scale(1.001); filter: drop-shadow(0 18px 22px rgba(26,24,20,0.1)) saturate(1) contrast(0.99); }
+    .hero-art-shell.is-girl-active .girl-layer { transform: translate3d(-50%,-2px,0) scale(1.004); filter: drop-shadow(0 18px 22px rgba(26,24,20,0.1)) saturate(1) contrast(0.99); }
     .hero-art-shell.is-dog-active .dog-layer { transform: translate3d(2px,0,0) scale(1.001); filter: drop-shadow(0 12px 16px rgba(26,24,20,0.1)) saturate(1) contrast(0.99); }
     .hero-art-shell.is-cat-active .cat-layer { transform: translate3d(60px,6px,0) scale(1.001); filter: drop-shadow(0 12px 16px rgba(26,24,20,0.1)) saturate(1) contrast(0.99); }
     .hero-light-layer { z-index: 2; opacity: 0.62; mix-blend-mode: screen; pointer-events: none; }
@@ -366,6 +378,7 @@
       .hero-cta-row { gap: 10px; }
       .hero-cta, .hero-cta-outline { gap: 10px; padding: 13px 17px; font-size: 12px; }
       .hero-scene-image { object-position: 55% center; }
+      .hero-character-layer.girl-layer { left: 54%; bottom: 20px; height: min(66svh, 560px); }
       .scroll-indicator { bottom: 26px; height: 46px; }
       .scroll-text { font-size: 9px; }
       .tools-strip { padding: 13px 0; }
@@ -395,6 +408,7 @@
       .hero-inner { padding-top: clamp(118px,14svh,140px); padding-left: clamp(58px,9.5vw,106px); }
       .hero-name { font-size: clamp(82px,8.6vw,124px); max-width: 430px; }
       .hero-scene-image { object-position: 60% center; }
+      .hero-character-layer.girl-layer { left: 51%; height: min(79svh, 700px); }
     }
   </style>
 </head>
@@ -435,7 +449,7 @@
     <div class="hero-visual" aria-hidden="true">
       <figure class="hero-art-shell">
         <img class="hero-layer hero-scene-image" src="images/hero/background_clean.png" alt="" fetchpriority="high" decoding="async" />
-        <img class="hero-character-layer girl-layer" data-hero-sprite="girl" src="images/hero/girl_front.png" alt="" decoding="sync" />
+        <img class="hero-character-layer girl-layer" data-hero-sprite="girl" src="images/hero/girl_pose_01.png" alt="" decoding="sync" />
         <img class="hero-character-layer dog-layer" data-hero-sprite="dog" src="images/hero/dog_idle_01.png" alt="" decoding="sync" />
         <img class="hero-character-layer cat-layer" data-hero-sprite="cat" src="images/hero/cat_idle_01.png" alt="" decoding="sync" />
         <img class="hero-layer hero-light-layer" src="images/hero/light_shadow_overlay.png" alt="" decoding="async" />
@@ -708,11 +722,12 @@
           sprite.setFrame(sprite.staticFrame);
         };
 
-        sprite.playAction = function(done) {
+        sprite.playFrames = function(frames, done) {
           if (!sprite.ready || sprite.busy) return false;
+          if (!frames || !frames.length) return false;
           sprite.busy = true;
           window.clearTimeout(sprite.actionTimer);
-          var sequence = sprite.actionFrames.concat(sprite.actionFrames.slice(0, -1).reverse());
+          var sequence = frames.concat(frames.slice(0, -1).reverse());
           var index = 0;
 
           function step() {
@@ -732,12 +747,16 @@
           return true;
         };
 
+        sprite.playAction = function(done) {
+          return sprite.playFrames(sprite.actionFrames, done);
+        };
+
         sprite.reset();
         return sprite;
       }
 
       var heroFrameReady = preloadHeroFrames([
-        ['images/hero/girl_front.png', 'images/hero/girl_idle_01.png', 'images/hero/girl_idle_02.png', 'images/hero/girl_idle_03.png'],
+        ['images/hero/girl_pose_01.png', 'images/hero/girl_pose_wave.png', 'images/hero/girl_pose_think.png', 'images/hero/girl_pose_smile.png'],
         ['images/hero/dog_idle_01.png'],
         ['images/hero/dog_sniff_01.png', 'images/hero/dog_sniff_02.png', 'images/hero/dog_sniff_03.png'],
         ['images/hero/cat_idle_01.png'],
@@ -745,10 +764,10 @@
       ]);
 
       heroSprites.girl = createHeroSprite('girl', {
-        staticFrame: 'images/hero/girl_front.png',
-        actionFrames: ['images/hero/girl_idle_01.png', 'images/hero/girl_idle_02.png', 'images/hero/girl_idle_03.png'],
-        actionMs: 180,
-        holdMs: 80
+        staticFrame: 'images/hero/girl_pose_01.png',
+        actionFrames: ['images/hero/girl_pose_think.png', 'images/hero/girl_pose_smile.png'],
+        actionMs: 360,
+        holdMs: 420
       });
 
       heroSprites.dog = createHeroSprite('dog', {
@@ -772,6 +791,17 @@
             heroSprites[key].reset();
           }
         });
+        if (heroSprites.girl && !prefersReducedMotion) {
+          window.setTimeout(function() {
+            var sprite = heroSprites.girl;
+            if (!sprite || sprite.busy || !sprite.ready) return;
+            heroArt.classList.add('is-girl-active');
+            sprite.playFrames(['images/hero/girl_pose_wave.png'], function() {
+              heroArt.classList.remove('is-girl-active');
+              heroCooldowns.girl = Date.now();
+            });
+          }, 980);
+        }
       });
 
       function scrollToProjects() {
